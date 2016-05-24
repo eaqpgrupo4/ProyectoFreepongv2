@@ -76,7 +76,7 @@ module.exports = function (app) {
                 usuario.telefono = req.body.telefono,
                 usuario.login = req.body.login,
                 usuario.password = req.body.password,
-                usuario.saldo = req.body.saldo
+                usuario.saldo = req.body.saldo,
                 usuario.urlfoto = req.body.urlfoto
 
             usuario.save(function (err) {
