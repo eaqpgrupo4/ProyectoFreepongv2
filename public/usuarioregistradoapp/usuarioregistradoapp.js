@@ -1,4 +1,4 @@
-var usuarioregistradoapp = angular.module('usuarioregistradoapp', ['ngMaterial','720kb.socialshare','ngMap', 'ui.router', 'ngTable', 'ngResource', 'ngCookies', 'pickadate'])
+var usuarioregistradoapp = angular.module('usuarioregistradoapp', ['ngCookies','ngMaterial','720kb.socialshare','ngMap', 'ui.router', 'ngTable', 'ngResource', 'ngCookies', 'pickadate'])
 
 usuarioregistradoapp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -28,9 +28,9 @@ usuarioregistradoapp.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'vistahistorialctrl'
         })
         .state('chat', {
-            url: '/vistachat',
-            templateUrl: 'vistachat/vistachat.html'
-
+            url: '/vistachat/:login/:IDuser',
+            templateUrl: 'vistachat/vistaschat.html',
+            controller: 'vistachatctrl'
         })
         .state('editar', {
             url: '/editar/:id',

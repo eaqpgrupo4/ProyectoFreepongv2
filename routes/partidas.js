@@ -57,7 +57,8 @@ module.exports = function (app) {
         var hora = req.body.horario;
         console.log('Put/AsignarHoraPartidaporID')
         Partida.findById(req.params.id, function (err, partida) {
-            var entidad = ({
+            var entidad = (
+            {
                 creador: {_id: req.body.IDcreador, login: req.body.login},
                 invitado: {_id: null, login: null},
                 estadopartida: 1

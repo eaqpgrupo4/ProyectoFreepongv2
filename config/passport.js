@@ -19,6 +19,7 @@ module.exports = function(passport)
         },
         function(accessToken, refreshToken, profile, done)
         {
+            console.log(profile);
 
             User.findOne({provider_id: profile.id}, function(err, user){
                 if(err) throw(err);
@@ -27,10 +28,12 @@ module.exports = function(passport)
                     {
                         nombre: profile.name.givenName,
                         apellidos: profile.name.familyName,
-                        login: (profile.id +'@facebook'),
+                        login: (profile.name.givenName+'@face'),
                         urlfoto: profile.photos[0].value,
+                        email:profile.emails[0].value,
                         provider_id:profile.id
                     });
+                console.log(user);
 
                 user.save(function(err)
                 {

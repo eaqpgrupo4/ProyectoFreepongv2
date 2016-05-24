@@ -1,0 +1,83 @@
+.list-wrapper-header{
+    height: 75px;
+    color: #fff;
+    background: #50d0c1;
+    margin-bottom:10px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 2px 7px 1px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 2px 7px 1px rgba(0,0,0,0.35);
+    box-shadow: 0px 2px 7px 1px rgba(0,0,0,0.35);
+}
+.profile_pic{
+    float: left;
+    width: 50px;
+    height: 100%;
+    margin-right: 20px;
+}
+.icon-set{
+    float: right;
+    font-size: 20px;
+    height: 100%;
+    padding: inherit;
+}
+.icon-set a{
+    margin-right: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+.userlist{
+    padding: 5px;
+    margin: 5px;
+    height:86%;
+    overflow-y: scroll;
+}
+.userlist-single{
+    height: 75px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    padding-left : 10px;
+    border: solid 1px rgba(80, 208, 193, 0.35);
+}
+.userlist-user-meta{
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    color: rgba(0, 0, 0, 0.69);
+    font-weight: 400;
+}
+.userlist-user-meta img{
+    height: 100%;
+    width: 75px;
+    border: solid 1px rgb(188, 186, 186);
+    background-color: rgba(255, 255, 255, 0.1);
+    float: left;
+    margin-right: 20px;
+}
+.userlist-user-meta span{
+    font-size: 20px;
+}
+.online-user-status{
+    float: right;
+    height: 15px;
+    margin-right: 30px;
+    width: 15px;
+    border-radius: 50%;
+    margin-top: 6.5%;
+}
+.userlist-userName
+{
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.user-meta{
+     padding: 5px;
+     text-transform: uppercase !important;
+}
+.user-meta .user-name{
+    font-size: 18px;
+
+}
+.user-meta .user-status{
+    font-size: 10px;
+}

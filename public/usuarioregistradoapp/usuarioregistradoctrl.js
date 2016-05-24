@@ -3,7 +3,8 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
     var userData=Urlactual.href.split("?");
     var username=userData[2].split("#/");
     var login= username[0];
-    var IDuser = userData[1]
+    var IDuser = userData[1];
+    var estado= new Boolean();
 
     $scope.login = login;
     $scope.editar = function () {
@@ -28,7 +29,11 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
         });
     };
     $scope.chat = function () {
-        $state.go('chat');
+
+        $state.go('chat', {
+            IDuser: IDuser,
+            login: login
+        });
     };
 
 
