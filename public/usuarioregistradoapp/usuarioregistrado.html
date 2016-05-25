@@ -1,15 +1,6 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="usuarioregistradoapp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="usuarioregistradoapp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="usuarioregistradoapp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" ng-app="usuarioregistradoapp" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="usuarioregistradoapp">
 <head>
-    <title>freepong</title>
-    <!-- You can use Open Graph tags to customize link previews.
-    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
@@ -21,85 +12,133 @@
     <link href="../css/custom-marker.css" rel="stylesheet"/>
     <link href="../css/chat.css" rel="stylesheet"/>
     <link href="../css/style.css" rel="stylesheet"/>
+    <link href="../css/estilos.css" rel="stylesheet"/>
     <link href="../css/normalize.css" rel="stylesheet"/>
     <link href="../bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../bower_components/angular-material/angular-material.css" rel="stylesheet">
-
     <link rel="stylesheet" type="text/css" href="../bower_components/sweetalert/dist/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="vistacrearpartida/angular-pickadate.css"/>
 
 </head>
-<body>
-<div>
-    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="usuarioregistradoctrl">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+<body ng-controller="usuarioregistradoctrl" ng-model="mostrar">
+<div id ="container">
+<div id="header" >
+    <div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 <span ng-model="login" class="navbar-brand"><strong>FreePong</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span
                         id="login">{{login}}</span></span>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a role="button" ng-click=chat()>Chat</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a role="button" ng-click=historial()>Historial</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a role="button" ng-click=resultados()>Insertar resultados</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a role="button" ng-click=vermesas()>Buscar partidas</a>
-                    </li>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a role="button" ng-click=historial()>Historial</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a role="button" ng-click=resultados()>Insertar resultados</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a role="button" ng-click=vermesas()>Buscar partidas</a>
+                        </li>
 
-                    <li class="page-scroll">
-                        <a role="button" ng-click=editar()>Editar perfil</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="" id="baja">Eliminar Perfil</a>
-                    </li>
-                    <li>
-                        <a id="salir2" type="button" class="btn btn-danger" href="/">
-                            <i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;Salir
-                        </a>
-                    </li>
-                </ul>
+                        <li class="page-scroll">
+                            <a role="button" ng-click=editar()>Editar perfil</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="" id="baja">Eliminar Perfil</a>
+                        </li>
+                        <li>
+                            <a id="salir2" type="button" class="btn btn-danger" href="/">
+                                <i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;Salir
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </div>
-
-
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-
 
 <section ui-view></section>
 
+</div>
+<div id="footer" >
+    <div class="rows">
+        <div class="col-md-4  list-wrapper" >
+            <div class="col-md-12 list-wrapper-header" ng-click="mostrarchat()">
+                <div class="profile_pic">
+                    <img class="img-circle" ng-src="{{userlocal.urlfoto}}">
+                </div>
+                <div class="user-meta">
+                    <span class="user-name">{{userlocal.login}}</span>
+                    <span class="user-status">{{'Online'}}
+                        <br>
+                        <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Pulsa para activar y desactivar</span>
+                </div>
+            </div>
+            <div class="userlist" ng-show="mostrar == true" >
+                <div class="userlist-single" ng-repeat="usuario in usuariosactivos" ng-hide="usuario.login==userlocal.login" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+                    <div class="userlist-user-meta">
+                        <img class="img-circle" ng-src="{{usuario.urlfoto}}"/>
+                        <span  class="userlist-userName">{{usuario.login}}</span>
+                        <span id="isTyping_{{usuario.login}}" class="is-typing">is typing...</span>
+                    </div>
+                </div>
+                <div ng-show="usuario.length == 1 && usuario[0].login==userlocal.login"  >
+                    <div class="alert alert-danger" >
+                        <p class="text-center" >
+                            Everyone is offline.
+                            <br/><br/>
+                            Share this url and Tell your friends to come online.
+                        </p >
+                    </div >
+                </div>
 
+            </div>
 
+        </div>
+        <div class="col-md-8 msg-wrapper" ng-show="mostrar == true">
+            <div class="msg-wrapper-body">
+                <div class="msg-container" id="msg-container">
+                    <div class="msg-single" ng-repeat="mensaje in mensajes" ng-style="{'float': uid==mensaje.login ? 'left' :'right'}">>
+                        <div class="msg-conatiner">
+                            <div class="actual-msg">
+                                {{mensaje.login}} dice:<br><br>
+                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp{{mensaje.msg}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="send-container">
+                    <textarea class="form-control send-msg-text" ng-model='send_text' send-typing-notification placeholder="Type your message here" ></textarea>
+                    <h1 class="send-btn" ng-click="enviarmensaje()"><span class="glyphicon glyphicon-send"></span></h1>
+                </div>
+            </div>
+        </div>
 
-
+    </div>
+</div>
 
 
 <script src="/socket.io/socket.io.js"></script>
-
-
 <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <script src="../bower_components/angular-route/angular-route.js"></script>
@@ -118,26 +157,16 @@
 <script src="../bower_components/angular-aria/angular-aria.js"></script>
 <script src="../components/version/version.js"></script>
 <script src="../components/version/version-directive.js"></script>
-
 <script src="../components/version/interpolate-filter.js"></script>
 <script type="text/javascript" src="vistacrearpartida/angular-pickadate.js"></script>
-
-
-
 <script src="usuarioregistradoapp.js"></script>
-
 <script src="usuarioregistradoctrl.js"></script>
 <script src="vistacrearpartida/crearpartidactrl.js"></script>
 <script src="vistaeditar/editarctrl.js"></script>
 <script src="vistamesas/vistamesasctrl.js"></script>
 <script src="vistainsertarresultados/vistainsertarresultadosctrl.js"></script>
 <script src="vistahistorial/vistahistorialctrl.js"></script>
-<script src="vistachat/vistachatctrl.js"></script>
 
 <script src="http://maps.google.com/maps/api/js"></script>
-
-
-
-
 </body>
 </html>

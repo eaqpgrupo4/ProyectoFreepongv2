@@ -63,34 +63,50 @@ var usuariosactivos =[];
 
 var io = require('socket.io').listen(server);
 
-io.sockets.on('connection', function(socket) {
-    console.log('Nuevo usuario conectado');
-
-
+io.sockets.on('connection', function(socket)
+{
+    console.log('Alguien ha abierto un socket')
+    socket.on('enviar mensaje', function (mensaje){
+        console.log('mensaje recibido');
+        io.sockets.emit('recibir mensaje', mensaje);
+        console.log('mensaje enviado');
+    });
     socket.on('nuevo usuario', function (IDuser){
+        console.log('Nuevo usuario');
         Usuario.findById(IDuser, function (err, usuario)
         {
             socket.usuario = usuario;
             usuariosactivos.push(usuario);
+            mostrarlogin(usuariosactivos);
             io.sockets.emit('actualizarusuariosactivos', usuariosactivos);
-
+            console.log('actualizarusuariosactivos 76');
+            console.log()
         });
     });
+
     socket.on('damesusariosactivos', function(){
+        console.log('dame ususarios activos');
         io.sockets.emit('actualizarusuariosactivos', usuariosactivos);
+        console.log('actualizarusuariosactivos 81');
     });
     socket.on('disconnect', function() {
-
-
         console.log('eliminado usuario');
-        console.log('pr'+ usuariosactivos);
-        usuariosactivos.splice(usuariosactivos.indexOf(socket.usuario), 1);
-        console.log('aa'+ usuariosactivos);
-        io.sockets.emit('actualizarusuariosactivos',usuariosactivos);
 
+        usuariosactivos.splice(usuariosactivos.indexOf(socket.usuario), 1);
+
+        io.sockets.emit('actualizarusuariosactivos',usuariosactivos);
+        console.log('actualizarusuariosactivos 89');
     });
+
 
 });
 server.listen(3000, function () {
     console.log("Servidor escuchando en, http://localhost:3000");
 });
+mostrarlogin = function(usuariosactivos){
+    var i=0;
+    while(i<usuariosactivos.length){
+        console.log(usuariosactivos[i].login)
+        i++;
+    }
+}
