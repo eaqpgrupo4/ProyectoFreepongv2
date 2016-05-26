@@ -1,121 +1,25 @@
+html, body, #wrap {height: 100%;}
 
-body {
-    margin: 50px;
+/*Lo primero, todo el cuerpo que ocupe el 100%*/
+html, body {
+    height: 100%;
 }
 
-#fondo {
-    background: url("../images/depositphotos_3655580-Ping-pong-poster-background-2.jpg") no-repeat center center fixed;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-}
-
-#reg {
-    background-color: rgba(64, 204, 107, 0.15);
-    padding: 50px;
-    border: 1px solid #369;
-    border-radius: 8px;
-
-}
-
-#add {
-    background-color: rgba(64, 159, 204, 0.15);
-    padding: 50px;
-    border: 1px solid #369;
-    border-radius: 8px;
-}
-
-.pull-right {
+/*Lo segundo, el container, con algura mínima del 100% y un margen inferior negativo igual al alto que queramos darle al pie*/
+#container {
+    min-height: 100%;
+    margin-bottom: -50px;
     position: relative;
-    float: left;
-    bottom: -20px;
-    display: block;
 }
 
-.color:hover {
-    color: #2C78BD;
-}
-
-/*Botones*/
-#salir {
+/*Lo tercero, el pie con la altura deseada (igual al margen negativo de antes)*/
+#footer {
+    height: 50px;
     position: relative;
-    display: inline-block;
-    width: 100px;
-    float: right;
-    margin-top: 20px;
 }
 
-#salir2 {
-    padding: 10px;
-    margin-top: 4px;
-    position: relative;
-    float: right;
-    margin-left: 50px;
-}
-
-#cabecera {
-    position: relative;
-    display: inline-block;
-}
-
-/*Botones*/
-
-.panel-body {
-    border: 1px solid #369;
-    border-radius: 8px;
-    background-color: aliceblue;
-}
-
-/*Tabla*/
-.ng-table th.sortable.sort-desc, .ng-table th.sortable.sort-asc {
-    background-color: rgba(255, 255, 255, 0);
-    text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
-}
-
-.ng-table-header:hover {
-    color: #2C78BD;
-}
-
-.nocolor:hover {
-    color: #EC971F;
-    text-decoration: blink;
-    cursor: pointer;
-}
-
-.nocolor {
-    color: black;
-}
-
-/*Tabla*/
-
-/*Navbar*/
-.navbar-default {
-    background-color: rgb(10, 0, 0);
-    border-color: #e7e7e7;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: rgb(255, 255, 255);
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-    color: #4E9AFF;
-}
-
-.navbar-default .navbar-brand {
-    color: #FFF;
-    font-size: 25px;
-}
-
-.navbar-default .navbar-brand:hover {
-    color: #4E9AFF;
-}
-
-#log {
-    color: red;
-}
-
-/*Navbar*/
-
- 
+/*Y terminamos con el clear, que ha de ser tan alto como el pie y "limpiar" todos los floats*/
+.clear{
+    height: 50px;
+    clear: both;
+}/* End hide from IE-mac */

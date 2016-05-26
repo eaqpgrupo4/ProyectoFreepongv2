@@ -590,7 +590,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     }
 }])
 
-.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal) {
+.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$cordovaFileTransfer', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $cordovaFileTransfer) {
     var nombre;
     var apellidos;
     var login;
@@ -599,6 +599,31 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var password;
     var email;
     var saldo;
+    var urlfoto;
+
+     $scope.picture;
+      $scope.takePicture = function(options){
+        var options = {
+            quality: 80,
+            sourceType: 1
+        }
+        $cordovaCamera.getPicture(options).then(function(imageData){
+            $scope.picture=imageData;
+        }, function(err){
+            console.log(err);
+        })
+    }
+    $scope.getPicture = function(options){
+        var options = {
+            quality: 80,
+            sourceType: 0
+        }
+        $cordovaCamera.getPicture(options).then(function(imageData){
+            $scope.picture=imageData;
+        }, function(err){
+            console.log(err);
+        })
+    }
     // $scope.usuario = {
     //       nombre: '',
     //       apellidos: '',
@@ -610,6 +635,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     // }
     $scope.usuario = {}
     $scope.registerUser = function () {
+      $cordovaFileTransfer.upload(_base+'/usuario/CrearUsuario',$scope.picture,options);
       $rootScope.hideLoading();
       api.signup($scope.usuario).success(function (data) {
         $rootScope.toast('Registrándote en FreePong...');
