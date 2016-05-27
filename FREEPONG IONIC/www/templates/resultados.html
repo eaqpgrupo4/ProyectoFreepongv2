@@ -16,7 +16,9 @@
         </label>
       </div>
       <div id="sinPartidos" class="card2" ng-show="!datosOK">
-        <p>¡No hay partidos por puntuar!</p>
+        <p style="font-size:50px">{{login}}</p>
+        <p>¡No tienes partidas por puntuar!</p>
+        <br>
       </div>
       <ion-list class="resultados_list">
         <ion-item class="card2" ng-repeat-start="partida in partidas | filter:searchText" ng-show="(partida.P1.estadopartida==2) && (partida.P1.creador.login== '{{login}}')">

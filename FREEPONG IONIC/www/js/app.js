@@ -371,8 +371,8 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 }])
 
 .controller('ResultadosController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) {
-    datosOK=true;
-    $scope.$on('$ionicView.beforeEnter', function(){      
+    $scope.$on('$ionicView.beforeEnter', function(){  
+      datosOK=true;    
       var idusuario = window.localStorage['idusuario'];
       var login = window.localStorage['login'];
       var partidas = new Object();//
@@ -408,6 +408,11 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
               $http.get(_base+'/partida/ObtenerPartidasconestadodos/'+login).success(function (data) {
                 $rootScope.toast('Resultado Enviado!');
                 partidas=data;
+                if(partidas[0]==null){
+                  $scope.datosOK = false;
+                }else{
+                  $scope.datosOK = true;
+                }
                 console.log(partidas);
                 $scope.partidas=partidas;
               });
@@ -444,7 +449,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       $scope.doRefresh = function() {
         $http.get(_base+'/historial/ObtenerHistorialesLogin/'+login)
          .success(function(newItems) {
-           $scope.historiales = newItems;
+            $scope.historiales = newItems;
          })
          .finally(function() {
            // Stop the ion-refresher from spinning

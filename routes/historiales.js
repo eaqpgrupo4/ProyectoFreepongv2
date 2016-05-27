@@ -2,6 +2,7 @@ module.exports = function (app) {
     var _base = "http://localhost:3000";
     var mongoose = require('mongoose');
     var Historial = require('../modelos/historial.js');
+    var Mesa = require('../modelos/mesa.js');
 
 
 
@@ -28,7 +29,9 @@ module.exports = function (app) {
         Historial.find({$or:[{logincreador:req.query.login},{logininvitado:req.query.login}]},function (err, historiales){
             if (err) return res.send(500, err.message);
                 console.log(historiales);
-                res.status(200).jsonp(historiales);
+                Mesa.populate(historiales, {path: "nombremesa"},function(err, historiales){
+                    res.status(200).jsonp(historiales);    
+                });
             });
     };
 
@@ -37,7 +40,9 @@ module.exports = function (app) {
         Historial.find({$or:[{logincreador:req.params.login},{logininvitado:req.params.login}]},function (err, historiales){
             if (err) return res.send(500, err.message);
                 console.log(historiales);
-                res.status(200).jsonp(historiales);
+                Mesa.populate(historiales, {path: "nombremesa"},function(err, historiales){
+                    res.status(200).jsonp(historiales);    
+                });
             });
     };
 
