@@ -10,7 +10,7 @@
             <tr ng-repeat-start="partida in partidas" ng-show="partida.P1.estadopartida==2">
                 <td>{{partida.P1.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>08:00-09:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP1"name="juegoscreadorP1" required>I:<input type="number" ng-model="juegosinvitadoP1" name="juegosinvitadoP1" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P1',partida._id,juegoscreadorP1,juegosinvitadoP1)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -18,7 +18,7 @@
             <tr ng-show="partida.P2.estadopartida==2">
                 <td>{{partida.P2.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>09:00-10:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP2"name="juegoscreadorP2" required>I:<input type="number" ng-model="juegosinvitadoP2" name="juegosinvitadoP2" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P2',partida._id,juegoscreadorP2,juegosinvitadoP2)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -26,7 +26,7 @@
             <tr ng-show="partida.P3.estadopartida==2">
                 <td>{{partida.P3.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>10:00-11:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP3"name="juegoscreadorP3" required>I:<input type="number" ng-model="juegosinvitadoP3" name="juegosinvitadoP3" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P3',partida._id,juegoscreadorP3,juegosinvitadoP3)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -34,7 +34,7 @@
             <tr ng-show="partida.P4.estadopartida==2">
                 <td>{{partida.P4.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>11:00-12:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP4"name="juegoscreadorP4" required>I:<input type="number" ng-model="juegosinvitadoP4" name="juegosinvitadoP4" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P4',partida._id,juegoscreadorP4,juegosinvitadoP4)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -42,7 +42,7 @@
             <tr ng-show="partida.P5.estadopartida==2">
                 <td>{{partida.P5.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>12:00-13:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP5"name="juegoscreadorP5" required>I:<input type="number" ng-model="juegosinvitadoP5" name="juegosinvitadoP5" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P5',partida._id,juegoscreadorP5,juegosinvitadoP5)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -50,7 +50,7 @@
             <tr ng-show="partida.P6.estadopartida===2">
                 <td>{{partida.P6.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>13:00-14:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP6"name="juegoscreadorP6" required>I:<input type="number" ng-model="juegosinvitadoP6" name="juegosinvitadoP6" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P6',partida._id,juegoscreadorP6,juegosinvitadoP6)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -58,7 +58,7 @@
             <tr ng-show="partida.P7.estadopartida==2">
                 <td>{{partida.P7.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>14:00-15:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP7"name="juegoscreadorP7" required>I:<input type="number" ng-model="juegosinvitadoP7" name="juegosinvitadoP7" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P7',partida._id,juegoscreadorP7,juegosinvitadoP7)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -66,7 +66,7 @@
             <tr ng-show="partida.P8.estadopartida==2">
                 <td>{{partida.P8.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>15:00-16:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP8"name="juegoscreadorP8" required>I:<input type="number" ng-model="juegosinvitadoP8" name="juegosinvitadoP8" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P8',partida._id,juegoscreadorP8,juegosinvitadoP8)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -74,7 +74,7 @@
             <tr ng-show="partida.P9.estadopartida==2">
                 <td>{{partida.P9.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>16:00-17:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP9"name="juegoscreadorP9" required>I:<input type="number" ng-model="juegosinvitadoP9" name="juegosinvitadoP9" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P9',partida._id,juegoscreadorP9,juegosinvitadoP9)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -82,7 +82,7 @@
             <tr ng-show="partida.P10.estadopartida==2">
                 <td>{{partida.P10.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>17:00-18:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP10"name="juegoscreadorP10" required>I:<input type="number" ng-model="juegosinvitadoP10" name="juegosinvitadoP10" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P10',partida._id,juegoscreadorP10,juegosinvitadoP10)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -90,7 +90,7 @@
             <tr ng-show="partida.P11.estadopartid==2">
                 <td>{{partida.P11.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>18:00-19:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP11"name="juegoscreadorP11" required>I:<input type="number" ng-model="juegosinvitadoP11" name="juegosinvitadoP11" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P11',partida._id,juegoscreadorP11,juegosinvitadoP11)><span class="glyphicon glyphicon-plus"></span></button></td>
@@ -98,7 +98,7 @@
             <tr ng-repeat-end ng-show="partida.P12.estadopartida==2">
                 <td>{{partida.P12.invitado.login}}</td>
                 <td>{{partida.FechaPartida}}</td>
-                <td>{{partida.IDmesa}}</td>
+                <td>{{partida.IDmesa.nombre}}</td>
                 <td>19:00-20:00</td>
                 <td>C:<input type="number" ng-model="juegoscreadorP12"name="juegoscreadorP12" required>I:<input type="number" ng-model="juegosinvitadoP12" name="juegosinvitadoP12" required></td>
                 <td><button type="button" class="btn btn-default" ng-click=insertarresultados(p='P12',partida._id,juegoscreadorP12,juegosinvitadoP12)><span class="glyphicon glyphicon-plus"></span></button></td>
