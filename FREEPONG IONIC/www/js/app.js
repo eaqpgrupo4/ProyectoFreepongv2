@@ -446,6 +446,23 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       console.log(historiales);
       console.log(historiales[0]);
       $scope.historiales=historiales;
+      // for (var i=0, l=historiales.length; i<l; i++ ){
+      //     // $scope.students=students;
+      //     if (historiales[i].resultadocreador > historiales[i].resultadoinvitado){
+      //       $scope.ganado = true;
+      //       $scope.nulo = false;
+      //       console.log("ganado SI: ",$scope.ganado);
+      //     }
+      //     else if (historiales[i].resultadocreador < historiales[i].resultadoinvitado){
+      //       $scope.ganado=false;
+      //       $scope.nulo = false;
+      //       console.log("ganado NO: ",$scope.ganado);
+      //     }
+      //     else {
+      //       $scope.nulo = true;
+      //       console.log("nulo: ",$scope.nulo);
+      //     }
+      // }  
       $scope.doRefresh = function() {
         $http.get(_base+'/historial/ObtenerHistorialesLogin/'+login)
          .success(function(newItems) {

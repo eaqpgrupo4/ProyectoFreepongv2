@@ -29,9 +29,8 @@
           <p>Resultado C: {{historial.resultadocreador}}</p>
           <p>Resultado I: {{historial.resultadoinvitado}}</p>
           <p>Mesa: {{historial.nombremesa.nombre}}</p>
-        </div>
-        <div id="win_loss">
-
+          <p style="color:green" ng-show="ganado==true">¡GANADO!</p>
+          <p style="color:red" ng-show="ganado==false">¡PERDIDO!</p>
         </div>
       </ion-item>
     </ion-list>
