@@ -12,10 +12,12 @@ module.exports = function (app) {
     var Mesa = require('../modelos/mesa.js');
     //GET - Obtener todas las partidas de la colecccion partidas de la BBDD
     ObtenerPartidas = function (req, res) {
-        Partida.find(function (err, partidas) {
+        Partida.find({},function (err, partidas) {
             if (err) res.send(500, err.message);
             console.log('GET /partidas')
-            res.status(200).jsonp(partidas);
+            Mesa.populate(partidas, {path: "IDmesa"},function(err, partidas){
+                res.status(200).jsonp(partidas);    
+            });
         });
     };
 
@@ -24,16 +26,19 @@ module.exports = function (app) {
         eval('var partida = new Partida({IDmesa: req.body.IDmesa,FechaPartida:req.body.FechaPartida,' + req.body.horario + ':{creador:{_id: req.body.IDcreador, login:req.body.login},invitado:{_id: null, login:null},estadopartida:1}});');
         partida.save(function (err) {
             if (err) return res.send(500, err.message);
-            res.status(200).jsonp(partida);
+            Mesa.populate(partida, {path: "IDmesa"},function(err, partida){
+                res.status(200).jsonp(partida);    
+            });
         });
     };
 
     ObtenerPartidaporID = function (req, res) {
         Partida.findById(req.params.id, function (err, partida) {
             if (err) return res.send(500, err.message);
-
             console.log('GET /partida/' + req.params.id);
-            res.status(200).jsonp(partida);
+            Mesa.populate(partida, {path: "IDmesa"},function(err, partida){
+                res.status(200).jsonp(partida);    
+            });
         });
     };
 
@@ -136,7 +141,9 @@ module.exports = function (app) {
         console.log('GET/ObtenerPartidaPorFechaymesa/'+ req.params.IDmesa + '/' + req.params.fechapartida);
         Partida.find({ IDmesa: req.params.IDmesa, FechaPartida: req.params.fechapartida }, function (err, partida) {
             if (err) return res.send(500, err.message);
-            res.status(200).jsonp(partida);
+            Mesa.populate(partida, {path: "IDmesa"},function(err, partida){
+                res.status(200).jsonp(partida);    
+            });
         });
     };
     ObtenerPartidasconestadodos= function (req, res){
@@ -153,10 +160,12 @@ module.exports = function (app) {
                             {$and:[{'P10.creador.login' : req.params.login},{'P10.estadopartida':2}]},
                             {$and:[{'P11.creador.login' : req.params.login},{'P11.estadopartida':2}]},
                             {$and:[{'P12.creador.login' : req.params.login},{'P12.estadopartida':2}]}]},function (err, partidas){
-                                    if (err) return res.send(500, err.message);
-                                    console.log(partidas);
-                                    res.status(200).jsonp(partidas);
-                                });
+                            if (err) return res.send(500, err.message);
+                            console.log(partidas);
+                            Mesa.populate(partidas, {path: "IDmesa"},function(err, partidas){
+                                res.status(200).jsonp(partidas);    
+                            });
+                        });
 
     };
     InsertartarResultadosporID= function (req, res){
