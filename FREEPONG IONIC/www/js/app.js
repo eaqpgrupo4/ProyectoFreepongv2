@@ -122,6 +122,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var saldo = window.localStorage['saldo'];
     var nombre = window.localStorage['nombre'];
     var email = window.localStorage['email'];
+    var password = window.localStorage['password'];
     var telefono = window.localStorage['telefono'];
     var urlfoto = window.localStorage['urlfoto'];
     var created = window.localStorage['created'];
@@ -441,6 +442,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 
 .controller('HistorialController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) { 
     var login = window.localStorage['login'];
+    $scope.login = login;
     $http.get(_base+'/historial/ObtenerHistorialesLogin/'+login).success(function (data) {
       historiales=data;
       console.log(historiales);
@@ -513,6 +515,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
               window.localStorage['nombre'] = data.nombre;
               window.localStorage['apellidos'] = data.apellidos;
               window.localStorage['email'] = data.email;
+              window.localStorage['password'] = data.password;
               window.localStorage['telefono'] = data.telefono;
               window.localStorage['urlfoto'] = data.urlfoto;
               window.localStorage['created'] = data.created;
@@ -520,6 +523,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
               $rootScope.urlfoto = data.urlfoto;
               $rootScope.nombre = data.nombre;
               $rootScope.apellidos = data.apellidos;
+              $rootScope.password = data.password;
             }).error(function(data){
           })
             // $rootScope.toast('bienvenido ' + usuario.login);
