@@ -3,6 +3,7 @@ public/bower_components/
 public/app/
 .idea/
 public/.idea/
+public/images
 # User-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml

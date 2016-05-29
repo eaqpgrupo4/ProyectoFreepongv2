@@ -1,9 +1,26 @@
+var socket = io ({forceNew: true});
 usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$scope', '$cookies','$window', function ($state, $http, $scope, $cookies, $window) {
     var Urlactual=$window.location;
     var userData=Urlactual.href.split("?");
     var username=userData[2].split("#/");
     var login= username[0];
-    var IDuser = userData[1]
+    var IDuser = userData[1];
+    var mensajes=  new Array();
+    var i=1;
+
+    $scope.mostrar=false;
+    $scope.mostrarchat = function(){
+        if(i==1) {
+            console.log('entro')
+            $scope.mostrar = true;
+            i = 0;
+        }else{
+            $scope.mostrar=false;
+            i=1;
+        }
+    }
+
+    $scope.uid=login;
 
     $scope.login = login;
     $scope.editar = function () {
@@ -27,9 +44,53 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
             login: login
         });
     };
-    $scope.chat = function () {
-        $state.go('chat');
+
+
+    $http.get('/usuario/ObtenerUsuarioPorID/' + IDuser).success(function (data) {$scope.userlocal=data;});
+    console.log('nuevo socket')
+
+    socket.emit('nuevo usuario', IDuser);
+    socket.emit('dameusuriaosactivos');
+    socket.on('actualizarusuariosactivos', function (data){
+        console.log(data);
+        $scope.$applyAsync(function ()
+        {
+            $scope.usuariosactivos = data;
+        });
+    });
+
+    $scope.enviarmensaje=function(){
+        console.log('entro enviar');
+
+        if($scope.send_text==""){
+            alert("Message can't be empty.");
+        }
+        else{
+            var mensaje = (
+            {
+                msg:$scope.send_text,
+                login: login,
+                timestamp:Math.floor(new Date() / 1000)
+
+            });
+            console.log('entro ');
+            socket.emit('enviar mensaje', mensaje);
+
+            $scope.send_text="";
+
+
+        }
     };
+    socket.on('recibir mensaje',function(mensaje){
+            mensajes.push(mensaje);
+        console.log(mensaje);
+
+        $scope.$applyAsync(function () {
+
+            $scope.mensajes = mensajes;
+
+        });
 
 
+    });
 }]);

@@ -9,6 +9,10 @@
   		<input type="text" ng-model="searchText">
   	  </label>
   	</div> -->
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="list list-inset">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
@@ -24,10 +28,9 @@
           <p>Fecha: {{historial.fecha}}</p>
           <p>Resultado C: {{historial.resultadocreador}}</p>
           <p>Resultado I: {{historial.resultadoinvitado}}</p>
-          <p>Mesa: {{historial.nombremesa}}</p>
-        </div>
-        <div id="win_loss">
-          <spa
+          <p>Mesa: {{historial.nombremesa.nombre}}</p>
+          <p style="color:green" ng-show="ganado==true">¡GANADO!</p>
+          <p style="color:red" ng-show="ganado==false">¡PERDIDO!</p>
         </div>
       </ion-item>
     </ion-list>

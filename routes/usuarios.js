@@ -50,7 +50,7 @@ module.exports = function (app) {
         Usuario.findById(req.params.id, function (err, usuario) {
             if (err) return res.send(500, err.message);
 
-            console.log('GET /user/' + req.params.id);
+
             res.status(200).jsonp(usuario);
         });
     };
@@ -60,14 +60,14 @@ module.exports = function (app) {
         Usuario.findById(req.params.id, function (err, usuario) {
             if (err) return res.send(500, err.message);
 
-            console.log('GET /user/' + req.params.id);
+
             res.status(200).jsonp(usuario);
         });
     };
 
     //PUT Modificar datos de un usuario existente por ID
     ModificarUsuario = function (req, res) {
-        console.log('PUT/  = ' + req.body.login);
+
         Usuario.findById(req.params.id, function (err, usuario) {
 
             usuario.nombre = req.body.nombre,
@@ -76,7 +76,7 @@ module.exports = function (app) {
                 usuario.telefono = req.body.telefono,
                 usuario.login = req.body.login,
                 usuario.password = req.body.password,
-                usuario.saldo = req.body.saldo
+                usuario.saldo = req.body.saldo,
                 usuario.urlfoto = req.body.urlfoto
 
             usuario.save(function (err) {
@@ -88,8 +88,7 @@ module.exports = function (app) {
 
     //DELETE - Eliminar usuario v2
     EliminarUsuarioporID = function (req, res) {
-        console.log('DELETE usuario');
-        console.log(req.params.id);
+
         Usuario.findByIdAndRemove(req.params.id, function (err) {
             if (err) {
                 res.send(err)
@@ -100,8 +99,7 @@ module.exports = function (app) {
 
     //POST loginIN Hacer login usuario
     loginIN = function (req, res) {
-        console.log('post /login');
-        console.log(req.body);
+
         resultado = res;
         var login = req.body.login;
         Usuario.find({login: login}, function (err, user) {
@@ -109,15 +107,14 @@ module.exports = function (app) {
                 return resultado.status(404).jsonp({"loginSuccessful": false, "login": login});
             }
             else {
-                console.log(user);
-                //console.log("login",user.login);
+
+
                 if (user[0].password == req.body.password) {
-                    console.log("OK", req.body.password);
+
                     return resultado.status(200).jsonp({"loginSuccessful": true, "usuario": user});
                 }
                 else {
-                    console.log("KO", req.body.password);
-                    console.log("KO", user[0].password)
+
                     return resultado.status(404).jsonp({"loginSuccessful": false, "login": login});
                 }
             }
@@ -202,14 +199,14 @@ module.exports = function (app) {
                     fs.unlink(tmp_path, function (err)
                     {//borramos el archivo tmp
                         //damos una respuesta al cliente
-                        console.log('<p>Imagen subida OK</p></br><img  src="./images/' + filename + '"/>');
+
                     });
 
                 });
                 Usuario.findOne({login: u}, function (err, usuario)
                 {
-                    console.log('find '+usuario);
-                    imagen ="/images/" + filename;
+
+                    imagen = "/images/" + filename;
 
                     usuario.urlfoto = imagen;
 
@@ -222,12 +219,12 @@ module.exports = function (app) {
 
             } else
             {
-                console.log('Tipo de archivo imagen no soportada');
+
             }
 
             if (err)
             {
-                console.error(err.message);
+
                 return;
             }
 

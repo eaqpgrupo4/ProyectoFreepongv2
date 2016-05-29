@@ -20,10 +20,10 @@ angular.module('freepong.controllers', [])
 
 .controller('PosicionController', function($scope) {})
 
-.controller('BuscarPartidaController', function($scope) {})
-
 .controller('MiPerfilController', function($scope) {})
 
 .controller('ResultadosController', function($scope) {})
 
 .controller('HistorialController', function($scope) {})
+
+.controller('HomeController', function($scope) {})

@@ -1,12 +1,9 @@
-var usuarioregistradoapp = angular.module('usuarioregistradoapp', ['ngMaterial','720kb.socialshare','ngMap', 'ui.router', 'ngTable', 'ngResource', 'ngCookies', 'pickadate', 'file-model'])
+
+var usuarioregistradoapp = angular.module('usuarioregistradoapp', ['ngCookies','ngMaterial','720kb.socialshare','ngMap', 'ui.router', 'ngTable', 'ngResource', 'ngCookies', 'pickadate'])
+
 
 usuarioregistradoapp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-        .state('inicio', {
-            url: '/',
-            templateUrl: 'usuarioregistrado.html',
-            controller: 'usuarioregistradoctrl'
-        })
         .state('mesas', {
             url: '/mesas/:IDuser/:login',
             templateUrl: 'vistamesas/vistamesas.html',
@@ -27,16 +24,10 @@ usuarioregistradoapp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'vistahistorial/vistahistorial.html',
             controller: 'vistahistorialctrl'
         })
-        .state('chat', {
-            url: '/vistachat',
-            templateUrl: 'vistachat/vistachat.html'
-
-        })
         .state('editar', {
             url: '/editar/:id',
             templateUrl: 'vistaeditar/vistaeditar.html',
             controller: 'editarCtrl'
         });
-    $urlRouterProvider.otherwise('/');
 });
 
