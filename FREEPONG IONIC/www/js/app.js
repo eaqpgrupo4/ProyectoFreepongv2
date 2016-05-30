@@ -448,29 +448,41 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     // usuarioInvitado = {};
     var usuarioInvitado = new Object();
     $scope.login = login;
-    $http.get(_base+'/historial/ObtenerusuarioporLogin/' + login).success(function (data) {
-      usuarioCreador = data[0];
-      $scope.usuarioCreador = usuarioCreador;
-      console.log("creador: ", usuarioCreador);
-      //console.log("fot creador: ", usuarioCreador[0].urlfoto);
-      //$scope.fotoCreador = usuarioCreador[0].urlfoto;
-    });
+    // $http.get(_base+'/historial/ObtenerusuarioporLogin/' + login).success(function (data) {
+    //   usuarioCreador = data[0];
+    //   $scope.usuarioCreador = usuarioCreador;
+    //   console.log("creador: ", usuarioCreador);
+    // });
     $http.get(_base+'/historial/ObtenerHistorialesLogin/'+login).success(function (data) {
       historiales=data;
       console.log(historiales);
       console.log(historiales[0]);
       $scope.historiales=historiales;
-      for (var i=0, l=historiales.length; i<l; i++ ){
-        adversario=historiales[i].logininvitado;
-        console.log(adversario);
-        $http.get(_base+'/historial/ObtenerusuarioporLogin/'+adversario).success(function (data) {
+      $scope.obtenerInvitado = function(creador, invitado) {
+        console.log("creador: ",creador);
+        console.log("invitado: ",invitado);
+        $http.get(_base+'/historial/ObtenerusuarioporLogin/' + creador).success(function (data) {
+          usuarioCreador = data[0];
+          $scope.usuarioCreador = usuarioCreador;
+          console.log("creador: ", usuarioCreador);
+        });
+        $http.get(_base+'/historial/ObtenerusuarioporLogin/' + invitado).success(function (data) {
           usuarioInvitado = data[0];
           $scope.usuarioInvitado = usuarioInvitado;
           console.log("invitado: ", usuarioInvitado);
-          //console.log("foto invitado: ", usuarioInvitado[0].urlfoto);
-          //$scope.fotoInvitado = usuarioCreador[0].urlfoto;
         });
-      }
+      };
+      // for (var i=0, l=historiales.length; i<l; i++ ){
+      //   adversario=historiales[i].logininvitado;
+      //   console.log(adversario);
+      //   $http.get(_base+'/historial/ObtenerusuarioporLogin/'+adversario).success(function (data) {
+      //     usuarioInvitado = data[0];
+      //     $scope.usuarioInvitado = usuarioInvitado;
+      //     console.log("invitado: ", usuarioInvitado);
+      //     //console.log("foto invitado: ", usuarioInvitado[0].urlfoto);
+      //     //$scope.fotoInvitado = usuarioCreador[0].urlfoto;
+      //   });
+      // }
 
       // for (var i=0, l=historiales.length; i<l; i++ ){
       //     // $scope.students=students;
@@ -790,13 +802,30 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
   })
 }])
 
-.controller('MesasController', ['$rootScope', '$scope', '$http', '$state', 'API', function($rootScope, $scope, $http, $state, api) {
+.controller('PerfilMesaController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
+  var id = $stateParams.id;
+  console.log(id);
+  $scope.$on('$ionicView.beforeEnter', function(){   
+    $http.get(_base+'/mesa/ObtenerMesaporID/' + id).success(function (data) {
+      $scope.mesa = data;
+    });
+  });  
+}])
+
+.controller('MesasController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
   $scope.$on('$ionicView.beforeEnter', function(){   
     api.getMesas().success(function (data) {
         $rootScope.toast2('Cargando mesas...');
         $scope.mesas = data;
       }).error(function(data){
     })
+    $scope.vistaPerfil = function(id){
+      //window.localStorage['id'] = id;
+      console.log(id);
+      $state.go('freepong.perfilmesa', {
+          id:id
+      });
+    };
   });  
 }])
 

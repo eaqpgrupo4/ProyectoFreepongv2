@@ -75,6 +75,15 @@ angular.module('freepong.routes', [])
         }
       }
     })
+    .state('freepong.perfilmesa', {
+      url: "/perfilmesa/:id",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/perfilmesa.html",
+          controller: 'PerfilMesaController'
+        }
+      }
+    })
     .state('freepong.posicion', {
       url: '/posicion',
       views: {

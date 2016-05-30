@@ -40,7 +40,7 @@
           <p style="color:red" ng-show="ganado==false">¡PERDIDO!</p> -->
           <br>
         </div>
-        <button class="button button-small button-positive icon ion-eye" style="width: 100%" ng-click="verHistorial=true" ng-click="verHistorial=true" ng-show="!verHistorial">
+        <button class="button button-small button-positive icon ion-eye" style="width: 100%" ng-click="obtenerInvitado(historial.logincreador, historial.logininvitado, verHistorial=true)" ng-show="!verHistorial">
         &nbsp;&nbsp;&nbsp;Ver detalles
         </button>
         <button class="button button-small button-assertive icon ion-eye-disabled" style="width: 100%" ng-click="verHistorial=false" ng-show="verHistorial">

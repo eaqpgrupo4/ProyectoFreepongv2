@@ -17,14 +17,14 @@
     </div>
     <ion-list>
       <ion-item ng-repeat="mesa in mesas | orderBy:'nombre' | filter:searchText">
-        <a class="item item-avatar" ng-click="irMapa(mesa._id)">
+        <a class="item item-avatar" ng-click="vistaPerfil(mesa._id)">
           <div id="up">
 	      	  <img id="smallpickSquare" src="{{mesa.urlfoto}}">
           </div>
           <div id="down">
   	      	<h2>{{mesa.nombre}}</h2>
-  	      	<p>{{mesa.localizacion}}</p>
-            <p>{{mesa.created | date:'mediumDate'}}</p>
+<!--   	      	<p>{{mesa.localizacion}}</p>
+            <p>{{mesa.created | date:'mediumDate'}}</p> -->
           </div>
     	  </a>
       </ion-item>
