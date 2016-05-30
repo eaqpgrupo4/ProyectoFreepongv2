@@ -22,10 +22,10 @@
     <ion-list>
        <ion-item class="card" style="text-align:center">
         <br>
-          <p style="text-align:center; color: green; font-size:30px; padding:20px;">{{login}}</p>
-          <p>Partidos Jugados: {{historial.logincreador}}</p>
-          <p>Partidos Ganados: {{historial.logininvitado}}</p>
-          <p>Partidos Perdidos: {{historial.fecha}}</p>
+          <p style="text-align:center; color: green; font-size:50px; padding:20px;">{{login}}</p><br>
+          <p><strong>Puntos Ganados: </strong>{{usuario.pganados}}</p>
+          <p><strong>Puntos Jugados: </strong>{{usuario.pjugados}}</p>
+          <p><strong>Balance: </strong>{{usuario.puntuacion}} %</p>
           <br>
         </div>
        </ion-item>
@@ -48,7 +48,7 @@
         </button>
         <div ng-show="verHistorial" style="text-align:center">
           <br>
-          <p><strong>Partido #: </strong>{{$index +1}}</p>
+          <p><strong>Partido Nº: </strong>{{$index +1}}</p>
           <img class="imgUser" src="{{usuarioCreador.urlfoto}}" alt="{{historial.resultadocreador}}">
           <div id="vs"><strong style="color:blue; font-size:30px;">&nbsp; VS &nbsp;</strong></div>
           <img class="imgUser" src="{{usuarioInvitado.urlfoto}}" alt="{{historial.resultadoinvitado}}">
@@ -56,9 +56,11 @@
           <p><strong>Creador: </strong>{{historial.logincreador}}</p>
           <p><strong>Invitado: </strong>{{historial.logininvitado}}</p>
           <p><strong>Fecha: </strong>{{historial.fecha}}</p>
-          <p><strong>Resultado C: </strong>{{historial.resultadocreador}}</p>
-          <p><strong>Resultado I: </strong>{{historial.resultadoinvitado}}</p>
+          <p><strong>Puntuación {{historial.logincreador}}: </strong>{{historial.resultadocreador}}</p>
+          <p><strong>Puntuación {{historial.logininvitado}}: </strong>{{historial.resultadoinvitado}}</p>
           <p><strong>Mesa: </strong>{{historial.nombremesa.nombre}}</p>
+          <br>
+          <p><strong>Creado: </strong>{{historial.created | date:'mediumDate'}}</p>
           <!-- <p style="color:green" ng-if="historial.resultadoinvitado<historial.resultadocreador"><strong>¡GANADO!</strong></p>
           <p style="color:red" ng-if="historial.resultadoinvitado>historial.resultadocreador"><strong>¡PERDIDO!</strong></p>
           <p style="color:#FFC900; text-align:center;" ng-if="historial.resultadoinvitado==historial.resultadocreador"><strong>¡NULO!</strong></p> -->

@@ -12,7 +12,8 @@ var historialEsquema = new Schema({
     fecha: {type: String},
     resultadocreador:{type: Number, default: 0},
     resultadoinvitado:{type: Number, default: 0},
-    nombremesa:{type: Schema.ObjectId, ref: 'Mesa'}
+    nombremesa:{type: Schema.ObjectId, ref: 'Mesa'},
+    created: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('Historial', historialEsquema);

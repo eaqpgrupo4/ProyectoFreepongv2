@@ -414,6 +414,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 
 .controller('HistorialController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) { 
     var login = window.localStorage['login'];
+    var id = window.localStorage['idusuario'];
     var adversario = [];
     // usuarioCreador = {};
     var usuarioCreador = new Object();
@@ -425,6 +426,10 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     //   $scope.usuarioCreador = usuarioCreador;
     //   console.log("creador: ", usuarioCreador);
     // });
+    $http.get(_base+'/usuario/ObtenerUsuarioPorID/'+id).success(function (data) {
+      usuario = data;
+      $scope.usuario = usuario;
+    });
     $http.get(_base+'/historial/ObtenerHistorialesLogin/'+login).success(function (data) {
       historiales=data;
       console.log(historiales);

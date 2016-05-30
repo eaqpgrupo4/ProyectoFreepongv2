@@ -22,16 +22,17 @@
     <ion-list>
       <ion-item ng-repeat="partida in partidas | orderBy:'created' | filter:searchText">
         <hr>
-        <p><strong>IDMesa: </strong>{{partida.IDmesa._id}}</p>
+        <!-- <p><strong>IDMesa: </strong>{{partida.IDmesa._id}}</p> -->
+        <p><strong>Partida Nº: </strong>{{$index+1}}</p>
         <p><strong>Nombre mesa: </strong>{{partida.IDmesa.nombre}}</p>
         <p><strong>Fecha Partida: </strong>{{partida.FechaPartida}}</p>
         <p><strong>Fecha de creación: </strong>{{partida.created | date:'mediumDate'}}</p> 
         <br>
-        <button class="button button-small button-positive" style="width: 49%" ng-click="verPartida=true">
-          Mostrar Horarios
+        <button class="button button-small button-positive icon ion-eye" ng-show="!verPartida" style="width: 100%" ng-click="verPartida=true">
+        &nbsp;&nbsp;&nbsp;Mostrar Horarios
         </button>
-        <button class="button button-small button-assertive" style="width: 49%" ng-click="verPartida=false">
-          Ocultar Horarios
+        <button class="button button-small button-assertive icon ion-eye-disabled" ng-show="verPartida" style="width: 100%" ng-click="verPartida=false">
+        &nbsp;&nbsp;&nbsp;Ocultar Horarios
         </button>
         <br>
         <hr>
