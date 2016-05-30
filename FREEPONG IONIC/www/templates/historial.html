@@ -49,6 +49,10 @@
         <div ng-show="verHistorial" style="text-align:center">
           <br>
           <p><strong>Partido #: </strong>{{$index +1}}</p>
+          <img class="imgUser" src="{{fotoCreador.urlfoto}}">
+          <div id="vs"> VS </div>
+          <img class="imgUser" src="{{fotoInvitado.urlfoto}}">
+          <br><br>
           <p><strong>Creador: </strong>{{historial.logincreador}}</p>
           <p><strong>Invitado: </strong>{{historial.logininvitado}}</p>
           <p><strong>Fecha: </strong>{{historial.fecha}}</p>

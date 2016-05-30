@@ -298,5 +298,10 @@ input[type="number"]{
 	height: 100%;
 }
 
+#vs{
+	position: relative;
+	display: inline-block;
+}
+
 
 

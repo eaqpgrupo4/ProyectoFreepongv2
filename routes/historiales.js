@@ -3,6 +3,7 @@ module.exports = function (app) {
     var mongoose = require('mongoose');
     var Historial = require('../modelos/historial.js');
     var Mesa = require('../modelos/mesa.js');
+    var Usuario = require('../modelos/usuario.js');
 
 
 
@@ -23,6 +24,13 @@ module.exports = function (app) {
     //             res.status(200).jsonp(historiales);
     //         });
     // };
+     //GET - Obtner usuario a partir de el ID
+    ObtenerusuarioporLogin = function (req, res) {
+        Usuario.find({login: req.params.login}, function (err, usuario) {
+            if (err) return res.send(500, err.message);
+            res.status(200).jsonp(usuario);
+        });
+    };
 
     ObtenerHistorialesL2= function (req, res){
         console.log('GET/ObtenerHistorialesLogin2/' + req.query.login);
@@ -99,4 +107,6 @@ module.exports = function (app) {
     app.get('/historial/ObtenerHisorialesPaginados', ObtenerHistorialesP);
     app.get('/historial/ObtenerHisorialesLogin2', ObtenerHistorialesL2);
     app.get('/historial/ObtenerHistorialesLogin/:login/', ObtenerHistorialesL);
+    app.get('/historial/ObtenerusuarioporLogin/:login/', ObtenerusuarioporLogin);
+
 }
