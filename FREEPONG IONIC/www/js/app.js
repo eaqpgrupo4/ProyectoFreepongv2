@@ -246,44 +246,8 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         $scope.partida=partida;
         $scope.verHorarios=false;
         $scope.verPartida=true;
-        // if(data[0]==null){
-        //     console.log("entro data: ");
-        //     $scope.verHorarios=false;
-        //     $scope.verPartida=true;
-        // }
-        // else{
-        //     partida=data[0];
-        //     $scope.partida=partida;
-        //     console.log("entro else: ");
-        //     $scope.verHorarios=false;
-        //     $scope.verPartida=true;
-        // }
       })
     }
-    // $scope.crearPartida = function(creador, invitado, index){
-    //   console.log('creador  P'+index+': '+creador);
-    //   console.log('invitado P'+index+': '+invitado);
-    //   alert('creador  P'+index+': '+creador+' - invitado P'+index+': '+invitado);
-    //   if(creador==null && invitado==null){
-    //     console.log('no hay usuario creador ni usuario invitado');
-    //     console.log('__________________________________________');
-    //     alert('no hay usuario creador ni usuario invitado');
-    //     $scope.crearUnaPartida = function(){
-    //       //Crear partida  
-    //     }
-    //   } else if(invitado==null){
-    //       console.log('no hay usuario invitado pero si creador');
-    //       console.log('________________________________________');
-    //       alert('no hay usuario invitado pero si creador');
-    //       $scope.unirsePartida = function(){
-    //         //unirse a partida
-    //       } 
-    //   } else{
-    //       console.log('Partida cerrada!');
-    //       console.log('________________________________________');
-    //       alert('Partida cerrada!!');
-    //   }
-    // }
     $scope.crearPartida = function(h){
       //$state.reload();
       $http.get(_base+'/partida/ObtenerPartidaPorFechaymesa/' + IDmesa + '/' + FechaPartida).success(function (data) {
@@ -333,10 +297,14 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
           console.log('| horario: '+box1.horario);
           console.log('|_____________________________________');
           $http.put(_base+'/partida/AsignarHoraPartidaporID/' + IDpartida, box1).success(function (data) {
-            console.log('Entramos en PUT/ AsignarHoraPartidaporID');
-            console.log(data);
-            partida = data;
-            $scope.partida = partida;
+            // console.log('Entramos en PUT/ AsignarHoraPartidaporID');
+            // console.log(data);
+            // partida = data;
+            // $scope.partida = partida;
+            api.getPartidasPorFechaID(IDmesa, FechaPartida).success(function (data) {
+              partida=data[0];
+              $scope.partida=partida;
+            })
           });
         }
       });
@@ -362,10 +330,14 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         console.log('IDpartida: '+IDpartida);
         console.log('partida._id: '+p._id);
         $http.put(_base+'/partida/UnirsePartida/' + IDpartida, box2).success(function (data) {
-            console.log('Entramos en PUT/ unirseapartida');
-            console.log(data);
-            partida = data;
-            $scope.partida = partida;
+            // console.log('Entramos en PUT/ unirseapartida');
+            // console.log(data);
+            // partida = data;
+            // $scope.partida = partida;
+            api.getPartidasPorFechaID(IDmesa, FechaPartida).success(function (data) {
+              partida=data[0];
+              $scope.partida=partida;
+            })
         });
       });
     };
@@ -809,7 +781,11 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     $http.get(_base+'/mesa/ObtenerMesaporID/' + id).success(function (data) {
       $scope.mesa = data;
     });
-  });  
+  });
+  $scope.crearPartida = function(){
+      $state.go('freepong.crearPartida', {
+      });
+    };  
 }])
 
 .controller('MesasController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
