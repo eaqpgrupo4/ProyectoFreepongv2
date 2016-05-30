@@ -1,0 +1,14 @@
+
+<ion-view title="Ubicación Mesas" align-title="center">
+  <ion-content padding="'true'" class="has-header">
+  	<div>
+		<ng-map zoom="13" center="barcelona" style="height:600px" on-center-changed="centerCustomMarker()">
+			<marker ng-repeat="mesa in mesas" id="custom-marker-{{$index}}" position="{{mesa.localizacion}}"
+			title="{{mesa.nombre}}" on-click="showCustomMarker(event,'custom-marker-'+$index)"></marker>
+			<custom-marker ng-repeat="mesa in mesas" id="custom-marker-{{$index}}" visible="false" position="{{mesa.localizacion}}" on-click="closeCustomMarker()">
+            	<a ng-click="vistaPerfil(mesa._id)">{{mesa.nombre}}</a>
+			</custom-marker>
+		</ng-map>
+	</div>
+  </ion-content>
+</ion-view>

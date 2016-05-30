@@ -1,4 +1,4 @@
-angular.module('freepong.routes', [])
+angular.module('freepong.routes', ['ngMap'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -90,6 +90,15 @@ angular.module('freepong.routes', [])
          'menuContent': {
           templateUrl: 'templates/posicion.html',
           controller: 'PosicionController'
+        }
+      }
+    })
+    .state('freepong.ubicacionmesas', {
+      url: '/ubicacionmesas',
+      views: {
+         'menuContent': {
+          templateUrl: 'templates/ubicacionmesas.html',
+          controller: 'UbicacionMesasController'
         }
       }
     })

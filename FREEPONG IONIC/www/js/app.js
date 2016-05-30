@@ -835,6 +835,34 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
   }); 
 }])
 
+.controller('UbicacionMesasController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', 'NgMap', function($rootScope, $scope, $http, $state, api, $stateParams, NgMap) {
+  $scope.$on('$ionicView.beforeEnter', function(){
+    NgMap.getMap().then(function (map) {
+        $http.get(_base+'/mesa/ObtenerMesas').success(function (data) {
+            var mesas = data;
+            console.log("mesas: ",mesas);
+            $scope.mesas = mesas;
+            console.log("vm.mesas: ",mesas);
+            console.log(map);
+        });
+        $scope.showCustomMarker = function (event, nombre) {
+            console.log(nombre);
+            map.customMarkers[nombre].setVisible(true);
+            map.customMarkers[nombre].setPosition(this.getPosition());
+        };
+        $scope.closeCustomMarker = function (evt) {
+            this.style.display = 'none';
+        };
+        $scope.vistaPerfil = function(id){
+          console.log(id);
+          $state.go('freepong.perfilmesa', {
+              id:id
+          });
+        };
+    });
+  }); 
+}])
+
 .controller('PosicionController', function ($scope, $cordovaGeolocation, $ionicLoading) {
     ionic.Platform.ready(function () {
       $ionicLoading.show({
