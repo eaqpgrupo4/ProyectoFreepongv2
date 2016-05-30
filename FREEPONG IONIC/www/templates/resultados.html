@@ -29,10 +29,10 @@
             <p>Horario: 8:00 - 9:00</p>
             <div>
               <div class="creador">
-                <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP1" name="juegoscreadorP1" required>
+                <p>{{partida.P1.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP1" name="juegoscreadorP1" required>
               </div>
               <div class="invitado">
-                <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP1" name="juegosinvitadoP1" required>
+                <p>{{partida.P1.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP1" name="juegosinvitadoP1" required>
               </div>
             </div>
           </div>
@@ -43,16 +43,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P2.estadopartida==2) && (partida.P2.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P2.invitado.login}}</p>
+              <p>Adversario: {{partida.P2.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 9:00 - 10:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP2" name="juegoscreadorP2" required>
+                  <p>{{partida.P2.creador.login}}:  </p><input class="inputbox" type="number" ng-model="juegoscreadorP2" name="juegoscreadorP2" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP2" name="juegosinvitadoP2" required>
+                  <p>{{partida.P2.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP2" name="juegosinvitadoP2" required>
                 </div>
               </div>
             </div>
@@ -63,16 +63,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P3.estadopartida==2) && (partida.P3.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P3.invitado.login}}</p>
+              <p>Adversario: {{partida.P3.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 10:00 - 11:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP3" name="juegoscreadorP3" required>
+                  <p>{{partida.P3.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP3" name="juegoscreadorP3" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP3" name="juegosinvitadoP3" required>
+                  <p>{{partida.P3.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP3" name="juegosinvitadoP3" required>
                 </div>
               </div>
             </div>
@@ -83,16 +83,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P4.estadopartida==2) && (partida.P4.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P4.invitado.login}}</p>
+              <p>Adversario: {{partida.P4.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 11:00 - 12:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP4" name="juegoscreadorP4" required>
+                  <p>{{partida.P4.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP4" name="juegoscreadorP4" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP4" name="juegosinvitadoP4" required>
+                  <p>{{partida.P4.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP4" name="juegosinvitadoP4" required>
                 </div>
               </div>
             </div>
@@ -103,16 +103,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P5.estadopartida==2) && (partida.P5.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P5.invitado.login}}</p>
+              <p>Adversario: {{partida.P5.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 12:00 - 13:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP5" name="juegoscreadorP5" required>
+                  <p>{{partida.P5.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP5" name="juegoscreadorP5" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP5" name="juegosinvitadoP5" required>
+                  <p>{{partida.P5.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP5" name="juegosinvitadoP5" required>
                 </div>
               </div>
             </div>
@@ -123,16 +123,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P6.estadopartida==2) && (partida.P6.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P6.invitado.login}}</p>
+              <p>Adversario: {{partida.P6.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 13:00 - 14:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP6" name="juegoscreadorP6" required>
+                  <p>{{partida.P6.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP6" name="juegoscreadorP6" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP6" name="juegosinvitadoP6" required>
+                  <p>{{partida.P6.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP6" name="juegosinvitadoP6" required>
                 </div>
               </div>
             </div>
@@ -143,16 +143,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P7.estadopartida==2) && (partida.P7.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P7.invitado.login}}</p>
+              <p>Adversario: {{partida.P7.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 14:00 - 15:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP7" name="juegoscreadorP7" required>
+                  <p>{{partida.P7.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP7" name="juegoscreadorP7" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP7" name="juegosinvitadoP7" required>
+                  <p>{{partida.P7.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP7" name="juegosinvitadoP7" required>
                 </div>
               </div>
             </div>
@@ -163,16 +163,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P8.estadopartida==2) && (partida.P8.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P8.invitado.login}}</p>
+              <p>Adversario: {{partida.P8.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 15:00 - 16:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP8" name="juegoscreadorP8" required>
+                  <p>{{partida.P8.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP8" name="juegoscreadorP8" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP8" name="juegosinvitadoP8" required>
+                  <p>{{partida.P8.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP8" name="juegosinvitadoP8" required>
                 </div>
               </div>
             </div>
@@ -183,16 +183,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P9.estadopartida==2) && (partida.P9.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P9.invitado.login}}</p>
+              <p>Adversario: {{partida.P9.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 16:00 - 17:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP9" name="juegoscreadorP9" required>
+                  <p>{{partida.P9.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP9" name="juegoscreadorP9" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP9" name="juegosinvitadoP9" required>
+                  <p>{{partida.P9.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP9" name="juegosinvitadoP9" required>
                 </div>
               </div>
             </div>
@@ -203,16 +203,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P10.estadopartida==2) && (partida.P10.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P10.invitado.login}}</p>
+              <p>Adversario: {{partida.P10.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 17:00 - 18:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP10" name="juegoscreadorP10" required>
+                  <p>{{partida.P10.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP10" name="juegoscreadorP10" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP10" name="juegosinvitadoP10" required>
+                  <p>{{partida.P10.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP10" name="juegosinvitadoP10" required>
                 </div>
               </div>
             </div>
@@ -223,16 +223,16 @@
         </ion-item>
         <ion-item class="card2"  ng-show="(partida.P11.estadopartida==2) && (partida.P11.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P11.invitado.login}}</p>
+              <p>Adversario: {{partida.P11.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 18:00 - 19:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP11" name="juegoscreadorP11" required>
+                  <p>{{partida.P11.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP11" name="juegoscreadorP11" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP11" name="juegosinvitadoP11" required>
+                  <p>{{partida.P11.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP11" name="juegosinvitadoP11" required>
                 </div>
               </div>
             </div>
@@ -243,16 +243,16 @@
         </ion-item>
         <ion-item class="card2"  ng-repeat-end ng-show="(partida.P12.estadopartida==2) && (partida.P12.creador.login== '{{login}}')">
             <div>
-              <p>Invitado: {{partida.P12.invitado.login}}</p>
+              <p>Adversario: {{partida.P12.invitado.login}}</p>
               <p>Fecha: {{partida.FechaPartida}}</p>
-              <p>Mesa: {{partida.IDmesa}}</p>
+              <p>Mesa: {{partida.IDmesa.nombre}}</p>
               <p>Horario: 19:00 - 20:00</p>
               <div>
                 <div class="creador">
-                  <p>Creador: </p><input class="inputbox" type="number" ng-model="juegoscreadorP12" name="juegoscreadorP12" required>
+                  <p>{{partida.P12.creador.login}}: </p><input class="inputbox" type="number" ng-model="juegoscreadorP12" name="juegoscreadorP12" required>
                 </div>
                 <div class="invitado">
-                  <p>Invitado: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP12" name="juegosinvitadoP12" required>
+                  <p>{{partida.P12.invitado.login}}: </p><input class="inputbox" type="number" ng-model="juegosinvitadoP12" name="juegosinvitadoP12" required>
                 </div>
               </div>
             </div>

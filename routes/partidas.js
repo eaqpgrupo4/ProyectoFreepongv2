@@ -208,6 +208,7 @@ module.exports = function (app) {
                     Usuario.findById(idusercreador, function (err, usuario) {
                         usuario.pjugados= (usuario.pjugados + (req.body.juegoscreador+req.body.juegosinvitado));
                         usuario.pganados=(usuario.pganados + req.body.juegoscreador);
+                        usuario.puntuacion=(usuario.pganados/usuario.pjugados)*100;
                         console.log('nuevo registro'+ usuario);
                         usuario.save(function (err) {
                             if (err){console.log('error al añadir resultado');}
@@ -218,6 +219,7 @@ module.exports = function (app) {
                     Usuario.findById(iduserinvitado, function (err, usuario) {
                         usuario.pjugados= (usuario.pjugados + (req.body.juegoscreador+req.body.juegosinvitado));
                         usuario.pganados=(usuario.pganados + req.body.juegosinvitado);
+                        usuario.puntuacion=(usuario.pganados/usuario.pjugados)*100;
                         console.log('nuevo registro'+ usuario);
                         usuario.save(function (err) {
                             if (err){console.log('error al añadir resultado');}

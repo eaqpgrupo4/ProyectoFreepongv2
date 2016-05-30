@@ -20,18 +20,50 @@
       </label>
     </div>
     <ion-list>
+       <ion-item class="card" style="text-align:center">
+        <br>
+          <p style="text-align:center; color: green; font-size:30px; padding:20px;">{{login}}</p>
+          <p>Partidos Jugados: {{historial.logincreador}}</p>
+          <p>Partidos Ganados: {{historial.logininvitado}}</p>
+          <p>Partidos Perdidos: {{historial.fecha}}</p>
+          <br>
+        </div>
+       </ion-item>
       <ion-item class="card" ng-repeat="historial in historiales | filter:searchText">
         <div>
-          <p><strong>Partido #: </strong>{{$index +1}}</p>
-  	      <p>Creador: {{historial.logincreador}}</p>
-  	      <p>Invitado: {{historial.logininvitado}}</p>
-          <p>Fecha: {{historial.fecha}}</p>
-          <p>Resultado C: {{historial.resultadocreador}}</p>
-          <p>Resultado I: {{historial.resultadoinvitado}}</p>
-          <p>Mesa: {{historial.nombremesa.nombre}}</p>
-          <p style="color:green" ng-show="ganado==true">¡GANADO!</p>
-          <p style="color:red" ng-show="ganado==false">¡PERDIDO!</p>
+        <br>
+          <p style="text-align:center; font-size:20px;">{{historial.logincreador}} <strong style="color:red"> VS </strong> {{historial.logininvitado}}</p><br>
+          <p style="color:green; text-align:center;" ng-if="historial.resultadoinvitado<historial.resultadocreador"><strong>¡GANADO!</strong></p>
+          <p style="color:red; text-align:center;" ng-if="historial.resultadoinvitado>historial.resultadocreador"><strong>¡PERDIDO!</strong></p>
+          <p style="color:#FFC900; text-align:center;" ng-if="historial.resultadoinvitado==historial.resultadocreador"><strong>¡NULO!</strong></p>
+          <!-- <p style="color:green" ng-show="ganado==true">¡GANADO!</p>
+          <p style="color:red" ng-show="ganado==false">¡PERDIDO!</p> -->
+          <br>
         </div>
+        <button class="button button-small button-positive icon ion-eye" style="width: 100%" ng-click="verHistorial=true" ng-click="verHistorial=true" ng-show="!verHistorial">
+        &nbsp;&nbsp;&nbsp;Ver detalles
+        </button>
+        <button class="button button-small button-assertive icon ion-eye-disabled" style="width: 100%" ng-click="verHistorial=false" ng-show="verHistorial">
+        &nbsp;&nbsp;&nbsp;Ocultar detalles
+        </button>
+        <div ng-show="verHistorial" style="text-align:center">
+          <br>
+          <p><strong>Partido #: </strong>{{$index +1}}</p>
+          <img class="imgUser" src="{{usuarioCreador.urlfoto}}" alt="{{historial.resultadocreador}}">
+          <div id="vs"><strong style="color:blue; font-size:30px;">&nbsp; VS &nbsp;</strong></div>
+          <img class="imgUser" src="{{usuarioInvitado.urlfoto}}" alt="{{historial.resultadoinvitado}}">
+          <br><br>
+          <p><strong>Creador: </strong>{{historial.logincreador}}</p>
+          <p><strong>Invitado: </strong>{{historial.logininvitado}}</p>
+          <p><strong>Fecha: </strong>{{historial.fecha}}</p>
+          <p><strong>Resultado C: </strong>{{historial.resultadocreador}}</p>
+          <p><strong>Resultado I: </strong>{{historial.resultadoinvitado}}</p>
+          <p><strong>Mesa: </strong>{{historial.nombremesa.nombre}}</p>
+          <!-- <p style="color:green" ng-if="historial.resultadoinvitado<historial.resultadocreador"><strong>¡GANADO!</strong></p>
+          <p style="color:red" ng-if="historial.resultadoinvitado>historial.resultadocreador"><strong>¡PERDIDO!</strong></p>
+          <p style="color:#FFC900; text-align:center;" ng-if="historial.resultadoinvitado==historial.resultadocreador"><strong>¡NULO!</strong></p> -->
+        </div>
+        <br><br>
       </ion-item>
     </ion-list>
   </ion-content>
