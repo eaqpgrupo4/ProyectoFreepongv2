@@ -1,0 +1,42 @@
+<ion-view hide-nav-bar="true" view-title="Login" >
+    <ion-content id="fondoLogin" class="login" has-header="false">
+        <div class="list card padding">
+            <div>
+                <img src="img/logo.png" width="50%" height="auto" style="display: block; margin-left: auto; margin-right: auto; width: 100%;">
+            </div>
+            <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="log.login">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="log.password">
+            </label>
+            <button ng-click="loginUser()" class="button button-block button-positive activated">
+              Login
+            </button>
+        </div>
+        <div class="list" style="text-align:center;">
+            <button id="buttonNewCount" class="button button-balanced icon ion-person-add" ng-click="registro()">
+              Crear una cuenta nueva
+            </button>
+            <!-- <div>
+                <button id="buttonFacebook" class="button button-positive icon ion-social-facebook" ng-click="facebookLogin()">
+                Inicia sesión vía Facebook
+                </button>
+                <button id="buttonTwitter" class="button button-calm icon ion-social-twitter" ng-click="twitterLogin()">
+                  Inicia sesión vía Twitter
+                </button>
+            </div> -->
+            <div class="button-bar social-login">
+                <button id="buttonFacebook" class="button button-positive icon ion-social-facebook" ng-click="facebookLogin()">
+                    Facebook
+                </button>
+                <button id="buttonTwitter" class="button button-calm icon ion-social-twitter" ng-click="twitterLogin()">
+                    Twitter
+                </button>
+            </div>
+        </div>
+        
+    </ion-content>
+</ion-view>

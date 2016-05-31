@@ -1,0 +1,197 @@
+<ion-view title="Crear Partida" hide-back-button="true">
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+	<ion-content class="has-header">
+		<!-- <div class="card">
+			<label class="item item-input">
+	          <input id="fondopikerusuario" type="text" 
+	          placeholder="Usuario" 
+	          ng-model="verusuario" 
+	          name="verusuario" 
+	          readonly>
+	        </label>
+	    </div> -->
+	    <ion-item>
+	    	<h2 style="color: green">&nbsp;&nbsp;Elegir Mesa:</h2>
+		    <div class="card">
+				<label class="item item-input">
+		          <input id="fondopikermesa" type="text" 
+		          placeholder="Mesas" 
+		          ng-model="vermesas" 
+		          name="vermesas" 
+		          ng-click="opendateModalM()" 
+		          readonly>
+		        </label>
+		    </div>
+		</ion-item>
+		<ion-item>
+		  <h2 style="color: green">&nbsp;&nbsp;Escoger Fecha:</h2>
+			<div class="card">
+				<label class="item item-input">
+		          <input id="fondopikerdate" type="text" 
+		          placeholder="Pick date"
+		          ng-model="datepicker"
+		          name="datepicker"
+		          ng-click="opendateModal()"
+		          readonly>
+		        </label>
+		    </div>
+	    </ion-item>
+	    <br>
+	    <button style="margin-left: 10px; width: 95%" class="button button-big button-energized" ng-click="obtenerHorarios()">Mostrar Partidas</button>
+	    <br><br>
+	    <div ng-show="verPartida">
+        	<ion-item>
+		        <hr>
+		        <p><strong>IDMesa: </strong>{{partida.IDmesa._id}}</p>
+		        <p><strong>Nombre Mesa: </strong>{{partida.IDmesa.nombre}}</p>
+		        <p><strong>Fecha Partida: </strong>{{partida.FechaPartida}}</p>
+		        <p><strong>Fecha de creación: </strong>{{partida.created | date:'mediumDate'}}</p> 
+		        <br>
+		        <button class="button button-small button-positive icon ion-eye" style="width: 49%" ng-click="verPartidaC=true">
+		        &nbsp;&nbsp;&nbsp;Mostrar Horarios
+		        </button>
+		        <button class="button button-small button-assertive icon ion-eye-disabled" style="width: 49%" ng-click="verPartidaC=false">
+		        &nbsp;&nbsp;&nbsp;Ocultar Horarios
+		        </button>
+		        <br>
+		        <hr>
+		        <div ng-show="verPartidaC">
+		          	<ion-item>
+			      		<div class="partidaInfo">
+			      			<p>HORARIO: 8:00 - 9:00</p>
+			        		<p><strong>Local: </strong>{{partida.P1.creador.login}}</p>
+			        		<p><strong>Visitante: </strong>{{partida.P1.invitado.login}}</p>
+			        	</div>
+			        	<div class="buttonPartida">
+			        		<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P1')" ng-show="partida.P1.creador.login == null"></button>
+			        		<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P1') ng-hide="partida.P1.invitado.login != null || partida.P1.creador.login == null"></button>
+			        	</div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 9:00 - 10:00</p>
+				        	<p><strong>Local: </strong>{{partida.P2.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P2.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P2')" ng-show="partida.P2.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P2') ng-hide="partida.P2.invitado.login != null || partida.P2.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 10:00 - 11:00</p>
+				        	<p><strong>Local: </strong>{{partida.P3.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P3.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P3')" ng-show="partida.P3.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P3') ng-hide="partida.P3.invitado.login != null || partida.P3.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 11:00 - 12:00</p>
+				        	<p><strong>Local: </strong>{{partida.P4.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P4.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P4')" ng-show="partida.P4.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P4') ng-hide="partida.P4.invitado.login != null || partida.P4.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 12:00 - 13:00</p>
+				        	<p><strong>Local: </strong>{{partida.P5.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P5.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P5')" ng-show="partida.P5.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P5') ng-hide="partida.P5.invitado.login != null || partida.P5.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 13:00 - 14:00</p>
+				        	<p><strong>Local: </strong>{{partida.P6.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P6.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P6')" ng-show="partida.P6.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P6') ng-hide="partida.P6.invitado.login != null || partida.P6.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 14:00 - 15:00</p>
+				        	<p><strong>Local: </strong>{{partida.P7.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P7.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P7')" ng-show="partida.P7.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P7') ng-hide="partida.P7.invitado.login != null || partida.P7.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 15:00 - 16:00</p>
+				        	<p><strong>Local: </strong>{{partida.P8.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P8.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P8')" ng-show="partida.P8.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P8') ng-hide="partida.P8.invitado.login != null || partida.P8.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 16:00 - 17:00</p>
+				        	<p><strong>Local: </strong>{{partida.P9.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P9.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P9')" ng-show="partida.P9.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P9') ng-hide="partida.P9.invitado.login != null || partida.P9.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 18:00 - 19:00</p>
+				        	<p><strong>Local: </strong>{{partida.P10.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P10.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P10')" ng-show="partida.P10.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P10') ng-hide="partida.P10.invitado.login != null || partida.P10.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 19:00 - 20:00</p>
+				        	<p><strong>Local: </strong>{{partida.P11.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P11.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P11')" ng-show="partida.P11.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P11') ng-hide="partida.P11.invitado.login != null || partida.P11.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+			      	<ion-item>
+				      	<div class="partidaInfo">
+				      		<p>HORARIO: 20:00 - 21:00</p>
+				        	<p><strong>Local: </strong>{{partida.P12.creador.login}}</p>
+				        	<p><strong>Visitante: </strong>{{partida.P12.invitado.login}}</p>
+				        </div>
+				        <div class="buttonPartida">
+				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P12')" ng-show="partida.P12.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-android-done" ng-click=unirseapartida(p='P12') ng-hide="partida.P12.invitado.login != null || partida.P12.creador.login == null"></button>
+				        </div>
+			      	</ion-item>
+        		</div>
+        	</ion-item>
+        </div>
+	</ion-content>
+</ion-view>

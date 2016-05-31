@@ -1,0 +1,27 @@
+<ion-view view-title="{{mesa.nombre}}">
+    <ion-content>
+        <ion-item>
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <div class="textPerfil">
+                        <h1 style="color: green;">{{mesa.nombre}}</h1>
+                    </div>
+                    <br>
+                    <div class="imagenPerfil">
+                        <img class="imgPerfil col-90" src="http://147.83.7.158:3000{{mesa.urlfoto}}">
+                    </div>
+                    <div class="textPerfil">
+                        <br>
+                        <p><strong>Nombre: </strong>{{mesa.nombre}}</p>
+                        <p><strong>Localización: </strong>{{mesa.localizacion}}</p>
+                        <br>
+                        <button class="button button-small button-positive icon ion-paper-airplane" style="width: 100%" ng-click="crearPartida()">
+                        &nbsp;&nbsp;&nbsp;Crear Partida
+                        </button><br><br>
+                        <p><strong>Creado: </strong>{{mesa.created | date:'mediumDate'}}</p><br>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+</ion-view>

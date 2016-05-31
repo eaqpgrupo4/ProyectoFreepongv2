@@ -1,0 +1,13 @@
+{
+  "name": "FreePong",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4"
+  },
+  "dependencies": {
+    "angular-google-maps": "^2.3.2",
+    "ngCordova": "^0.1.26-alpha",
+    "bluebird": "^3.3.5",
+    "jquery": "^2.2.3"
+  }
+}
