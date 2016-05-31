@@ -779,18 +779,45 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
   })
 }])
 
-.controller('PerfilMesaController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
+.controller('PerfilMesaController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', 'NgMap', function($rootScope, $scope, $http, $state, api, $stateParams, NgMap) {
   var id = $stateParams.id;
   console.log(id);
-  $scope.$on('$ionicView.beforeEnter', function(){   
+  $scope.$on('$ionicView.beforeEnter', function(){
     $http.get(_base+'/mesa/ObtenerMesaporID/' + id).success(function (data) {
-      $scope.mesa = data;
+      var mesa = data;
+      $scope.mesa = mesa;
     });
-  });
-  $scope.crearPartida = function(){
+    $scope.crearPartida = function(){
       $state.go('freepong.crearPartida', {
       });
-    };  
+    };
+    $scope.image = {
+      url: 'img/pala.png',
+      size: [32, 32],
+      origin: [0,0],
+      anchor: [0, 32]
+    };
+    // $scope.shape = {
+    //   coords: [1, 1, 1, 20, 18, 20, 18 , 1],
+    //   type: 'poly'
+    // };
+    NgMap.getMap().then(function (map) {
+      $http.get(_base+'/mesa/ObtenerMesaporID/' + id).success(function (data) {
+            var mesa = data;
+            console.log("mesa: ",mesa);
+            $scope.mesa = mesa;
+            console.log(map);
+        });
+        $scope.showCustomMarker = function (event, nombre) {
+            console.log(nombre);
+            map.customMarkers[nombre].setVisible(true);
+            map.customMarkers[nombre].setPosition(this.getPosition());
+        };
+        $scope.closeCustomMarker = function (evt) {
+            this.style.display = 'none';
+        };
+    });
+  }); 
 }])
 
 .controller('MesasController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
@@ -816,14 +843,25 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
   }); 
 }])
 
+.controller('RankController', ['$rootScope', '$scope', '$http', '$state', 'API', function($rootScope, $scope, $http, $state, api) {
+  $scope.$on('$ionicView.beforeEnter', function(){
+    api.getUsuarios().success(function (data) {
+        $rootScope.toast2('Cargando Ranking...');
+        $scope.usuarios = data;
+      }).error(function(data){
+    })
+    $scope.vistaPerfil = function(id){
+      //window.localStorage['id'] = id;
+      console.log(id);
+      $state.go('freepong.perfil', {
+          id:id
+      });
+    };
+  });
+}])
+
 .controller('UbicacionMesasController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', 'NgMap', function($rootScope, $scope, $http, $state, api, $stateParams, NgMap) {
   $scope.$on('$ionicView.beforeEnter', function(){
-    // $scope.image = {
-    //   url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-    //   size: [20, 32],
-    //   origin: [0,0],
-    //   anchor: [0, 32]
-    // };
     $scope.image = {
       url: 'img/pala.png',
       size: [32, 32],

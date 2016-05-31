@@ -49,9 +49,9 @@
         <div ng-show="verHistorial" style="text-align:center">
           <br>
           <p><strong>Partido Nº: </strong>{{$index +1}}</p>
-          <img class="imgUser" src="http://147.83.7.158:3000{{usuarioCreador.urlfoto}}" alt="{{historial.resultadocreador}}">
+          <img class="imgUser" src="{{usuarioCreador.urlfoto}}" alt="{{historial.resultadocreador}}">
           <div id="vs"><strong style="color:blue; font-size:30px;">&nbsp; VS &nbsp;</strong></div>
-          <img class="imgUser" src="http://147.83.7.158:3000{{usuarioInvitado.urlfoto}}" alt="{{historial.resultadoinvitado}}">
+          <img class="imgUser" src="{{usuarioInvitado.urlfoto}}" alt="{{historial.resultadoinvitado}}">
           <br><br>
           <p><strong>Creador: </strong>{{historial.logincreador}}</p>
           <p><strong>Invitado: </strong>{{historial.logininvitado}}</p>

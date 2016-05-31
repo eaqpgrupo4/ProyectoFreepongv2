@@ -15,12 +15,28 @@
                         <p><strong>Nombre: </strong>{{mesa.nombre}}</p>
                         <p><strong>Localización: </strong>{{mesa.localizacion}}</p>
                         <br>
-                        <button class="button button-small button-positive icon ion-paper-airplane" style="width: 100%" ng-click="crearPartida()">
+                        <button class="button button-small button-balanced icon ion-paper-airplane" style="width: 100%" ng-click="crearPartida()">
                         &nbsp;&nbsp;&nbsp;Crear Partida
                         </button><br><br>
                         <p><strong>Creado: </strong>{{mesa.created | date:'mediumDate'}}</p><br>
+                        <button class="button button-small button-positive icon ion-map" style="width:100%" ng-show="!verMapa" ng-click="verMapa=true">
+                        &nbsp;&nbsp;&nbsp;Ubicar Mesa en Mapa
+                        </button>
+                        <button class="button button-small button-assertive icon ion-map" style="width:100%" ng-show="verMapa" ng-click="verMapa=false">
+                        &nbsp;&nbsp;&nbsp;Esconder Ubicación
+                        </button>
                     </div>
                 </div>
+            </div>
+            <div class="textPerfil" ng-show="verMapa">
+                <ng-map zoom="11" center="barcelona" style="width:100%">
+                    <marker icon="{{image}}" shape="{{shape}}" id="custom-marker-{{$index}}" animation="Animation.DROP" position="{{mesa.localizacion}}"
+                    title="{{mesa.nombre}}" on-click="showCustomMarker(event,'custom-marker-'+$index)"></marker>
+                    <custom-marker id="custom-marker-{{$index}}" visible="false" position="{{mesa.localizacion}}" on-click="closeCustomMarker()">
+                        <img id="mesa" width="150" height="100" src="{{mesa.urlfoto}}"><br/>
+                        <p style="font-size:20px">{{mesa.nombre}}</a>
+                    </custom-marker>
+                </ng-map>
             </div>
         </ion-item>
     </ion-content>

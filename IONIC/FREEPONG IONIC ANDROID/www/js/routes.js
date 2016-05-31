@@ -31,6 +31,15 @@ angular.module('freepong.routes', ['ngMap'])
         }
       }
     })
+    .state('freepong.rank', {
+      url: '/rank',
+      views: {
+        'menuContent': {
+         templateUrl: 'templates/rank.html',
+         controller: 'RankController'
+        }
+      }
+    })
     .state('freepong.amigos', {
       url: '/amigos',
       views: {

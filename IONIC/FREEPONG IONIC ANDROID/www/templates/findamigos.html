@@ -18,7 +18,7 @@
     <ion-list>
       <ion-item ng-repeat="usuario in usuarios | orderBy:'nombre' | filter:searchText">
         <a class="item item-avatar" ng-click="vistaPerfil(usuario._id)">
-	      	<img src="http://147.83.7.158:3000{{usuario.urlfoto}}">
+	      	<img src="{{usuario.urlfoto}}">
 	      	<h2>{{usuario.login}}</h2>
 	      	<p>{{usuario.nombre}} {{usuario.apellidos}}</p>
           <p>{{usuario.email}}</p>
