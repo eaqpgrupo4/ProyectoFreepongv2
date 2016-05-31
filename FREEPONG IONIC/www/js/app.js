@@ -818,12 +818,27 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 
 .controller('UbicacionMesasController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', 'NgMap', function($rootScope, $scope, $http, $state, api, $stateParams, NgMap) {
   $scope.$on('$ionicView.beforeEnter', function(){
+    // $scope.image = {
+    //   url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+    //   size: [20, 32],
+    //   origin: [0,0],
+    //   anchor: [0, 32]
+    // };
+    $scope.image = {
+      url: 'img/pala.png',
+      size: [32, 32],
+      origin: [0,0],
+      anchor: [0, 32]
+    };
+    // $scope.shape = {
+    //   coords: [1, 1, 1, 20, 18, 20, 18 , 1],
+    //   type: 'poly'
+    // };
     NgMap.getMap().then(function (map) {
         $http.get(_base+'/mesa/ObtenerMesas').success(function (data) {
             var mesas = data;
             console.log("mesas: ",mesas);
             $scope.mesas = mesas;
-            console.log("vm.mesas: ",mesas);
             console.log(map);
         });
         $scope.showCustomMarker = function (event, nombre) {

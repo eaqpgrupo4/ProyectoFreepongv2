@@ -3,7 +3,7 @@
   <ion-content padding="'true'" class="has-header">
   	<div>
 		<ng-map zoom="13" center="barcelona" style="height:600px" on-center-changed="centerCustomMarker()">
-			<marker ng-repeat="mesa in mesas" id="custom-marker-{{$index}}" position="{{mesa.localizacion}}"
+			<marker ng-repeat="mesa in mesas" icon="{{image}}" shape="{{shape}}" id="custom-marker-{{$index}}" animation="Animation.DROP" position="{{mesa.localizacion}}"
 			title="{{mesa.nombre}}" on-click="showCustomMarker(event,'custom-marker-'+$index)"></marker>
 			<custom-marker ng-repeat="mesa in mesas" id="custom-marker-{{$index}}" visible="false" position="{{mesa.localizacion}}" on-click="closeCustomMarker()">
 				<img id="mesa" width="150" height="100" src="{{mesa.urlfoto}}" ng-click="vistaPerfil(mesa._id)"><br/>
@@ -13,3 +13,10 @@
 	</div>
   </ion-content>
 </ion-view>
+
+<marker ng-repeat="beach in vm.beaches"
+      icon="{{vm.image}}"
+      shape="{{vm.shape}}"
+      title="{{beach[0]}}"
+      position="{{beach[1]}}, {{beach[2]}}"
+      z-index="{{beach[3]}}"></marker>
