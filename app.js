@@ -9,7 +9,7 @@ var express = require("express"),// Express: Framework HTTP para Node.js
     require('mongoose-middleware').initialize(mongoose);
 
 // Conexión a la base de datos de MongoDB que tenemos en local
-mongoose.connect('mongodb://127.0.0.1:27017/freepong', function (err, res) {
+mongoose.connect('mongodb://127.0.0.1:27017/freepong2', function (err, res) {
     if (err) throw err;
     console.log('Conectado correctamente a la Base de Datos');
 });
