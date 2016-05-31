@@ -11,7 +11,6 @@ USER
 
 - ubicar chat en alguna parte concreta, posibilidad de abrirlo en ventana independiente?
 - historial: visualizar nombre de mesa en lugar de ID
-- insertar resultados: estructurar aspecto web y hacerlo entendible mostrando solo datos útiles
 - editar perfil: no muestra la imagen y poder ver si se puede subir una nueva
 - eliminar perfil: no funciona
 - Suprimir saldo (de una p.. vez)?
