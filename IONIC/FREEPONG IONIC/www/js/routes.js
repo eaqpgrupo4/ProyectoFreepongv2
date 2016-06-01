@@ -31,6 +31,15 @@ angular.module('freepong.routes', ['ngMap'])
         }
       }
     })
+    .state('freepong.editarperfil', {
+      url: '/editarperfil/:id',
+      views: {
+        'menuContent': {
+         templateUrl: 'templates/editarperfil.html',
+         controller: 'EditarPerfilController'
+        }
+      }
+    })
     .state('freepong.rank', {
       url: '/rank',
       views: {

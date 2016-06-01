@@ -142,6 +142,39 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     console.log("id: "+$scope.login);
     console.log("PATH urlfoto: ",urlfoto);
     console.log("puntuacion: "+$scope.puntuacion);
+    $scope.editarPerfil = function(){
+      console.log(idusuario);
+      $state.go('freepong.editarperfil', {
+          id:idusuario
+      });
+    };
+}])
+
+.controller('EditarPerfilController', ['$rootScope', '$state', '$stateParams', '$scope', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $stateParams, $scope, $http, $ionicModal, $ionicHistory) {
+  var id = $stateParams.id;
+  console.log(id);
+  $http.get(_base + '/usuario/ObtenerUsuarioPorID/' + id).success(function (data) {
+      $rootScope.toast2('Cargando Perfil');
+      usuario = data;
+      $scope.usuario = usuario;
+      console.log("usuario: ", usuario);
+      console.log("usuario.nombre: ", $scope.usuario.nombre);
+      console.log("usuario.apellidos: ", usuario.apellidos);
+    }).error(function(data){
+  })
+  $scope.editarPerfil = function(nombre, apellidos, email, telefono, password){
+      var usuario = {};
+      usuario.nombre = nombre;
+      usuario.apellidos = apellidos;
+      usuario.email = email;
+      usuario.telefono = telefono;
+      usuario.password = password;
+      console.log("Usuario: "+usuario);
+      $http.put(_base + '/usuario/ModificarUsuarioPorID/' + id, usuario).success(function (data) {
+        $rootScope.toast2('Perfil Editado!');
+      }).error(function(data){
+    })
+  }
 }])
 
 .controller('LogoutController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) {

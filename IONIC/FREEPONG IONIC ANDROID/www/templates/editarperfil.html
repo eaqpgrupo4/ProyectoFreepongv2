@@ -1,0 +1,45 @@
+<ion-view view-title="{{nombre}} {{apellidos}}">
+    <ion-content>
+        <ion-item>
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <div class="imagenPerfil">
+                        <h1 class="textPerfil"style="color: green;">{{login}}</h1><br>
+                        <img class="imgPerfil col-90" src="http://localhost:3000{{urlfoto}}">
+                    </div>
+                    <br>
+                    <div class="textPerfil">
+                        <label class="item item-input">
+                            Nombre:&nbsp;&nbsp;&nbsp;
+                            <input type="text" placeholder="Nombre" ng-model="usuario.nombre">
+                        </label>
+                        <label class="item item-input">
+                            Apellidos:&nbsp;&nbsp;&nbsp;
+                            <input type="text" placeholder="Apellidos" ng-model="usuario.apellidos">
+                        </label>
+                        <label class="item item-input">
+                            Email:&nbsp;&nbsp;&nbsp;
+                            <input type="email" placeholder="Email" ng-model="usuario.email">
+                        </label>
+                        <label class="item item-input">
+                            Teléfono:&nbsp;&nbsp;&nbsp;
+                            <input type="text" placeholder="Telefono" ng-model="usuario.telefono">
+                        </label>
+                        <label class="item item-input">
+                            Login:&nbsp;&nbsp;&nbsp;
+                            <input type="text" placeholder="Login" ng-model="usuario.login">
+                        </label>
+                        <label class="item item-input">
+                            Password:&nbsp;&nbsp;&nbsp;
+                            <input type="password" placeholder="Password" ng-model="usuario.password">
+                        </label>
+                        <br><br>
+                    </div>
+                    <button class="button button button-balanced icon ion-settings" style="width:100%" ng-click="editarPerfil(usuario.nombre, usuario.apellidos, usuario.email, usuario.telefono, usuario.login, usuario.password)">
+                    &nbsp;&nbsp;&nbsp;Editar Perfil
+                    </button>
+                </div>
+            </div>
+        </ion-item>
+    </ion-content>
+</ion-view>

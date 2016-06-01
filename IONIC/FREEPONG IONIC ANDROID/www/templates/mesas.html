@@ -19,7 +19,7 @@
       <ion-item ng-repeat="mesa in mesas | orderBy:'nombre' | filter:searchText">
         <a class="item item-avatar" ng-click="vistaPerfil(mesa._id)">
           <div id="up">
-	      	  <img id="smallpickSquare" src="{{mesa.urlfoto}}">
+	      	  <img id="smallpickSquare" src="http://localhost:3000{{mesa.urlfoto}}">
           </div>
           <div id="down">
   	      	<h2>{{mesa.nombre}}</h2>
