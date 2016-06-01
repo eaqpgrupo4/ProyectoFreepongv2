@@ -869,7 +869,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 .controller('UbicacionMesasController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', 'NgMap', function($rootScope, $scope, $http, $state, api, $stateParams, NgMap) {
   $scope.$on('$ionicView.beforeEnter', function(){
     $scope.image = {
-      url: 'img/pala.png',
+      url: 'img/Pala1.png',
       size: [32, 32],
       origin: [0,0],
       anchor: [0, 32]
