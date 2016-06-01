@@ -126,6 +126,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var telefono = window.localStorage['telefono'];
     var urlfoto = window.localStorage['urlfoto'];
     var created = window.localStorage['created'];
+    var puntuacion = window.localStorage['puntuacion'];
     $scope.id = idusuario;
     $scope.login = login;
     $scope.nombre = nombre;
@@ -135,9 +136,12 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     $scope.saldo = saldo;
     $scope.urlfoto = urlfoto;
     $scope.created = created;
+    $scope.puntuacion = puntuacion;
     console.log("idusuario: "+idusuario);
     console.log("id: "+$scope.id);
     console.log("id: "+$scope.login);
+    console.log("PATH urlfoto: ",urlfoto);
+    console.log("puntuacion: "+$scope.puntuacion);
 }])
 
 .controller('LogoutController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) {
@@ -598,11 +602,13 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
               window.localStorage['telefono'] = data.telefono;
               window.localStorage['urlfoto'] = data.urlfoto;
               window.localStorage['created'] = data.created;
+              window.localStorage['puntuacion'] = data.puntuacion;
               $rootScope.login = data.login;
               $rootScope.urlfoto = data.urlfoto;
               $rootScope.nombre = data.nombre;
               $rootScope.apellidos = data.apellidos;
               $rootScope.password = data.password;
+              $rootScope.puntuacion = data.puntuacion;
             }).error(function(data){
           })
             // $rootScope.toast('bienvenido ' + usuario.login);
@@ -720,7 +726,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         $rootScope.toast('Registrándote en FreePong...');
         console.log(data);
         console.log(data);
-        $state.go('freepong.home');
+        $state.go('login');
         $scope.usuario = {}
       }).error(function (data) {
         $rootScope.hideLoading();

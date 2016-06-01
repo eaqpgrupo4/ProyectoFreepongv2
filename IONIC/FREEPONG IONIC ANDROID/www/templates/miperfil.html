@@ -3,8 +3,12 @@
         <ion-item>
             <div class="card">
                 <div class="item item-text-wrap">
+                    <div class="imagenPerfil">
+                        <h1 class="textPerfil"style="color: green;">{{login}}</h1><br>
+                        <img class="imgPerfil col-90" src="{{urlfoto}}">
+                    </div>
+                    <br>
                     <div class="textPerfil">
-                        <h1 style="color: green;">{{login}}</h1>
                         <p><strong>Nombre: </strong>{{nombre}}</p>
                         <p><strong>Apellidos: </strong>{{apellidos}}</p>
                         <p><strong>E-mail: </strong>{{email}}</p>
@@ -12,10 +16,8 @@
                         <p><strong>Username: </strong>{{login}}</p>
                         <p><strong>Password: </strong>{{password}}</p>
                         <p><strong>Saldo: </strong>{{saldo | currency:'€ '}}</p>
+                        <p><strong>Puntuación: </strong>{{puntuacion | number}}%</p><br>
                         <p><strong>Creado: </strong>{{created | date:'mediumDate'}}</p><br>
-                    </div>
-                    <div class="imagenPerfil">
-                        <img class="imgPerfil col-90" src="{{urlfoto}}">
                     </div>
                 </div>
             </div>

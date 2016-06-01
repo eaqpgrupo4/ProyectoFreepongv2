@@ -15,7 +15,7 @@ var usuarioEsquema = new Schema({
     password: {type: String},
     //rol: {type: String},
     provider_id: {type: String},
-    urlfoto: {type: String},
+    urlfoto: {type: String, default:'http://localhost:3000/images/default-profile.png'},
     saldo: {type: Number, default: 0},
     created: {type: Date, default: Date.now},
     pjugados:{type: Number, default: 0},
