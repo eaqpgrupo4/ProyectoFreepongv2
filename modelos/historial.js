@@ -8,7 +8,7 @@ var historialEsquema = new Schema({
     logininvitado: {type: String},
     // creador: {type: Schema.ObjectId, ref: 'Usuario'},
     // invitado: {type: Schema.ObjectId, ref: 'Usuario'},
-    ganador: {type: String},
+    // ganador: {type: String},
     fecha: {type: String},
     resultadocreador:{type: Number, default: 0},
     resultadoinvitado:{type: Number, default: 0},
