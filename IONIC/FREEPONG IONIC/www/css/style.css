@@ -76,7 +76,11 @@
 }
 
 #fondoLogin{
-	background-color: rgba(0, 128, 0, 0.25);
+	background-color: #886AEA;
+}
+
+#fondoLogin2{
+	background-color: #886AEA;
 }
 
 /* Maps */
@@ -347,5 +351,13 @@ input[type="number"]{
 
 #mesa{
 	padding: 20px;
+}
+
+#logoInicio{
+	margin: 60px;
+}
+
+#buttonsInicio{
+	margin-left: 50px;
 }
 

@@ -143,6 +143,11 @@ angular.module('freepong.routes', ['ngMap'])
       templateUrl: 'templates/login.html',
       controller: 'LoginController'
     })
+    .state('inicio', {
+      url: '/inicio',
+      templateUrl: 'templates/inicio.html',
+      controller: 'InicioController'
+    })
     .state('freepong.logout', {
       url: '/logout',
       views: {
@@ -198,5 +203,5 @@ angular.module('freepong.routes', ['ngMap'])
       }
     });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/inicio');
 });

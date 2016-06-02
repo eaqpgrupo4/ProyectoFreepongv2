@@ -174,6 +174,15 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
   }
 }])
 
+.controller('InicioController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) {
+    $scope.login = function (){
+      $state.go('login');
+    }
+    $scope.registro = function (){
+      $state.go('freepong.registro');
+    }
+}])
+
 .controller('LogoutController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) {
     $scope.signout = function () {
       // window.localStorage['idusuario'] = '';
@@ -188,7 +197,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       localStorage.clear();
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
-      $state.go('login');
+      $state.go('inicio');
     }
 }])
 
