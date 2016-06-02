@@ -32,7 +32,7 @@
       <ion-item class="card" ng-repeat="historial in historiales | filter:searchText">
         <div>
         <br>
-          <p style="text-align:center; font-size:20px;">{{historial.logincreador}} <strong style="color:green">V</strong><strong style="color:red">S </strong> {{historial.logininvitado}}</p><br>
+          <p style="text-align:center; font-size:20px;">{{historial.logincreador}} <strong style="color:#387ef5">V</strong><strong style="color:red">S </strong> {{historial.logininvitado}}</p><br>
           <p style="color:green; text-align:center;" ng-if="historial.resultadoinvitado<historial.resultadocreador && historial.logincreador==login"><strong>¡GANADO!</strong></p>
           <p style="color:green; text-align:center;" ng-if="historial.resultadoinvitado>historial.resultadocreador && historial.logininvitado==login"><strong>¡GANADO!</strong></p>
           <p style="color:red; text-align:center;" ng-if="historial.resultadoinvitado>historial.resultadocreador && historial.logincreador==login"><strong>¡PERDIDO!</strong></p>

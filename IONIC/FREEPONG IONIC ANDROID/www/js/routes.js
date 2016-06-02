@@ -102,6 +102,15 @@ angular.module('freepong.routes', ['ngMap'])
         }
       }
     })
+    .state('freepong.perfilpartida', {
+      url: "/perfilpartida/:id",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/perfilpartida.html",
+          controller: 'PerfilPartidaController'
+        }
+      }
+    })
     .state('freepong.posicion', {
       url: '/posicion',
       views: {

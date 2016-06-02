@@ -68,9 +68,6 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 	    deleteUsuario: function (id) {
 	        return $http.delete(_base + '/usuario/EliminarUsuarioPorID/' + id);
 	    },
-	    deleteUsuario: function (id) {
-	        return $http.delete(_base + '/usuario/EliminarUsuarioPorID/' + id);
-	    },
       //LOG IN & SIGN UP
       login: function (usuario) {
           return $http.post(_base + '/usuario/Login/', usuario);
