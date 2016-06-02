@@ -199,6 +199,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var partida = new Object();
     var idusuario = window.localStorage['idusuario'];
     var login = window.localStorage['login'];
+    $scope.login = login;
     var FechaPartida = '';
     var h = '';
     var IDmesa = '';
