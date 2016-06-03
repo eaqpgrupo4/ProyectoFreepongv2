@@ -93,6 +93,15 @@ angular.module('freepong.routes', ['ngMap'])
         }
       }
     })
+    .state('freepong.chat', {
+      url: "/chat",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/chat.html",
+          controller: 'ChatController'
+        }
+      }
+    })
     .state('freepong.perfilmesa', {
       url: "/perfilmesa/:id",
       views: {

@@ -1,0 +1,64 @@
+<ion-view title="Chat FreePong">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <ion-list>
+    <div id="footer" >
+        <div class="rows">
+        <div class="col-md-4  list-wrapper" >
+            <div class="col-md-12 list-wrapper-header" ng-click="mostrarchat()">
+                <div class="profile_pic">
+                    <img class="profile_pic" ng-src="http://localhost:3000{{userlocal.urlfoto}}">
+                </div>
+                <div class="user-meta">
+                    <span class="user-name">{{userlocal.login}}</span>
+                    <span class="user-status">{{'Online'}}
+                        <br>
+                        Pulsa para activar y desactivar
+                    </span>
+                </div>
+            </div>
+            <div class="userlist" ng-show="mostrar == true">
+                <div class="userlist-single" ng-repeat="usuario in usuariosactivos" ng-hide="usuario.login==userlocal.login" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+                    <div class="userlist-user-meta">
+                        <img class="img-circle" ng-src="http://localhost:3000{{usuario.urlfoto}}"/>
+                        <span  class="userlist-userName">{{usuario.login}}</span>
+                        <span id="isTyping_{{usuario.login}}" class="is-typing">está conectado</span>
+                    </div>
+                </div>
+                <div ng-show="usuario.length == 1 && usuario[0].login==userlocal.login"  >
+                    <div class="alert alert-danger" >
+                        <p class="text-center">
+                            No hay ningún jugador conectado!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 msg-wrapper" ng-show="mostrar == true">
+          <div class="msg-wrapper-body">
+                <div class="send-container">
+                  <input id="inputmsg" class="form-control send-msg-text" ng-model="send_text" placeholder="Escribe tu mensaje aquí..." ></input>
+                  <button class="send-btn ion-android-send" id="sendmsg" ng-click="enviarmensaje()"></button>
+                  <!-- <h1 class="send-btn" ng-click="enviarmensaje()"><span class="glyphicon glyphicon-send"></span></h1> -->
+                </div>
+                <div class="msg-container" id="msg-container">
+                    <div class="msg-single" ng-repeat="mensaje in mensajes" ng-style="{'float': uid==mensaje.login ? 'left' :'right'}">
+                        <div class="msg-conatiner">
+                            <div id="msguser" class="actual-msg">
+                            <br>
+                              {{mensaje.login}} dice:
+                              {{mensaje.msg}}
+                            <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

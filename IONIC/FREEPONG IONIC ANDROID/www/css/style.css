@@ -75,7 +75,7 @@
 
 }
 
-#fondoLogin{
+.fondoLogin{
 	background-color: #886AEA;
 }
 
@@ -353,17 +353,48 @@ input[type="number"]{
 	padding: 20px;
 }
 
-#logoInicio{
-	margin-left: 45px;
-	margin-bottom: 10px;
-	margin-top: 10px;
+.tituloInicio{
+	margin-left: -10px;
 }
 
-#tituloInicio{
-	margin-left: -16px;
+.logoInicio{
+	margin-left: 50px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 #buttonsInicio{
 	margin-left: 50px;
 }
 
+#inputLogin{
+	/*background-color: rgba(107, 70, 229, 0.42);*/
+}
+
+#labelUser{
+	background-color: white;
+}
+
+#labelPass{
+	background-color: white;
+}
+
+#sendmsg{
+	position: relative;
+	display: inline-block;
+	float: right;
+	font-size: 40px;
+	color: green;
+	margin-top: -10px;
+	margin-right: 10px;
+}
+
+#inputmsg{
+	width: 300px;
+	height: 50px;
+	margin-left: 10px;
+}
+
+#msguser{
+	width: 100%;
+}

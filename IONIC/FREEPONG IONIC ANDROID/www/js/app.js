@@ -1,4 +1,6 @@
 
+// var socket = io ({forceNew: true});
+var socket = io.connect('http://localhost:3000', {'forceNew': true});
 var _base = "http://localhost:3000";
 angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 'freepong.services', 'freepong.directives', 'ngCordovaOauth', 'ngCordova', 'pickadate'])
 
@@ -805,6 +807,64 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       });
   	};
   });
+}])
+
+.controller('ChatController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
+    var idusuario = window.localStorage['idusuario'];
+    var login = window.localStorage['login'];
+    console.log(idusuario);
+    console.log(login);
+    var mensajes=  new Array();
+    var i=1;
+    $scope.mostrar=false;
+    $scope.mostrarchat = function(){
+        if(i==1) {
+            console.log('entro')
+            $scope.mostrar = true;
+            i = 0;
+        }else{
+            $scope.mostrar=false;
+            i=1;
+        }
+    }
+    $scope.uid=login;
+    $http.get(_base+'/usuario/ObtenerUsuarioPorID/' + idusuario).success(function (data) {
+      userlocal = data;
+      $scope.userlocal = userlocal;
+    });
+    console.log('nuevo socket');
+    socket.emit('nuevo usuario', idusuario);
+    socket.emit('dameusuriaosactivos');
+    socket.on('actualizarusuariosactivos', function (data){
+        console.log(data);
+        $scope.$applyAsync(function (){
+            $scope.usuariosactivos = data;
+        });
+    });
+    $scope.enviarmensaje=function(){
+        console.log('entro enviar');
+        if($scope.send_text==""){
+            alert("¡No has escrito nada!");
+        }
+        else{
+            var mensaje = (
+            {
+                msg:$scope.send_text,
+                login: login,
+                timestamp:Math.floor(new Date() / 1000)
+            });
+            console.log('entro ');
+            socket.emit('enviar mensaje', mensaje);
+            $scope.send_text="";
+        }
+    };
+    socket.on('recibir mensaje',function(mensaje){
+        mensajes.push(mensaje);
+        console.log(mensaje);
+        $scope.$applyAsync(function () {
+            $scope.mensajes = mensajes;
+        });
+    });
 }])
 
 .controller('PartidasController', ['$rootScope', '$scope', '$http', '$state', 'API', function($rootScope, $scope, $http, $state, api) {	
