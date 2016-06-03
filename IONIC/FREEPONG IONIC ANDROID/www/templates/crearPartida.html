@@ -59,7 +59,7 @@
 			        		<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P1')" ng-show="partida.P1.creador.login == null"></button>
 			        		<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P1') ng-hide="partida.P1.invitado.login != null || partida.P1.creador.login == null || partida.P1.creador.login == login"></button>
 			        		<button style="background-color:#FF8100" ng-show="partida.P1.creador.login && partida.P1.invitado.login" class="button button-energized icon ion-locked"></button>
-			        		<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P1.creador.login == login"></button>
+			        		<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P1.creador.login == login && partida.P1.invitado.login == null"></button>
 			        	</div>
 			      	</ion-item>
 			      	<ion-item>
@@ -72,7 +72,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P2')" ng-show="partida.P2.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P2') ng-hide="partida.P2.invitado.login != null || partida.P2.creador.login == null || partida.P2.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P2.creador.login && partida.P2.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P2.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P2.creador.login == login && partida.P2.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -85,7 +85,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P3')" ng-show="partida.P3.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P3') ng-hide="partida.P3.invitado.login != null || partida.P3.creador.login == null || partida.P3.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P3.creador.login && partida.P3.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P3.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P3.creador.login == login && partida.P3.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -98,7 +98,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P4')" ng-show="partida.P4.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P4') ng-hide="partida.P4.invitado.login != null || partida.P4.creador.login == null || partida.P4.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P4.creador.login && partida.P4.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P4.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P4.creador.login == login && partida.P4.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -111,7 +111,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P5')" ng-show="partida.P5.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P5') ng-hide="partida.P5.invitado.login != null || partida.P5.creador.login == null || partida.P5.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P5.creador.login && partida.P5.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P5.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P5.creador.login == login && partida.P5.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -124,7 +124,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P6')" ng-show="partida.P6.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P6') ng-hide="partida.P6.invitado.login != null || partida.P6.creador.login == null || partida.P6.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P6.creador.login && partida.P6.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P6.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P6.creador.login == login  && partida.P6.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -137,7 +137,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P7')" ng-show="partida.P7.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P7') ng-hide="partida.P7.invitado.login != null || partida.P7.creador.login == null || partida.P7.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P7.creador.login && partida.P7.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P7.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P7.creador.login == login && partida.P7.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -150,7 +150,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P8')" ng-show="partida.P8.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P8') ng-hide="partida.P8.invitado.login != null || partida.P8.creador.login == null || partida.P8.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P8.creador.login && partida.P8.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P8.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P8.creador.login == login && partida.P8.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -163,7 +163,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P9')" ng-show="partida.P9.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P9') ng-hide="partida.P9.invitado.login != null || partida.P9.creador.login == null || partida.P9.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P9.creador.login && partida.P9.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P9.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P9.creador.login == login && partida.P9.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -176,7 +176,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P10')" ng-show="partida.P10.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P10') ng-hide="partida.P10.invitado.login != null || partida.P10.creador.login == null || partida.P10.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P10.creador.login && partida.P10.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P10.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P10.creador.login == login && partida.P10.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -189,7 +189,7 @@
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P11')" ng-show="partida.P11.creador.login == null"></button>
 				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P11') ng-hide="partida.P11.invitado.login != null || partida.P11.creador.login == null || partida.P11.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P11.creador.login && partida.P11.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P11.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P11.creador.login == login && partida.P11.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
 			      	<ion-item>
@@ -200,9 +200,9 @@
 				        </div>
 				        <div class="buttonPartida">
 				        	<button class="button button-balanced icon ion-plus" ng-click="crearPartida(h='P12')" ng-show="partida.P12.creador.login == null"></button>
-				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P12') ng-hide="partida.P12.invitado.login != null || partida.P12.creador.login == null"></button>
+				        	<button class="button button-calm icon ion-unlocked" ng-click=unirseapartida(p='P12') ng-hide="partida.P12.invitado.login != null || partida.P12.creador.login == null || partida.P12.creador.login == login"></button>
 				        	<button style="background-color:#FF8100" ng-show="partida.P12.creador.login && partida.P12.invitado.login" class="button button-energized icon ion-locked"></button>
-				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P12.creador.login == login"></button>
+				        	<button class="button button-assertive icon ion-minus-circled" ng-show="partida.P12.creador.login == login && partida.P12.invitado.login == null"></button>
 				        </div>
 			      	</ion-item>
         		</div>

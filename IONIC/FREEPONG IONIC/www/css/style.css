@@ -354,7 +354,13 @@ input[type="number"]{
 }
 
 #logoInicio{
-	margin: 60px;
+	margin-left: 45px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#tituloInicio{
+	margin-left: -16px;
 }
 
 #buttonsInicio{
