@@ -824,32 +824,34 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var login = window.localStorage['login'];
     console.log(idusuario);
     console.log(login);
-    var mensajes=  [];    
-    $http.get(_base+'/usuario/ObtenerUsuarioPorID/' + idusuario).success(function (data) {
-      userlocal = data;
-      $scope.userlocal = userlocal;
-    });
-    console.log('nuevo socket');
+    var mensajes=  new Array();
+    $http.get('/usuario/ObtenerUsuarioPorID/' + idusuario).success(function (data) {$scope.userlocal=data;});
+    console.log('nuevo socket')
     socket.emit('nuevo usuario', idusuario);
     socket.emit('dameusuriaosactivos');
     socket.on('actualizarusuariosactivos', function (data){
         console.log(data);
-        $scope.$applyAsync(function (){
+        $scope.$applyAsync(function ()
+        {
             $scope.usuariosactivos = data;
         });
     });
     $scope.enviarmensaje=function(text){
-      // mensaje.msg = text;
-      // mensaje.login = login;
-      // mensaje.timestamp = Math.floor(new Date() / 1000);
-      var mensaje = (
-        {
-          msg:text,
-          login: login,
-          timestamp:Math.floor(new Date() / 1000)
-        });
-        console.log('entramos en enviar');
-        socket.emit('enviar mensaje', mensaje);
+        console.log('entro enviar');
+        if($scope.vtext==""){
+            $rootScope.toast2('Mensaje vacío!');
+        }
+        else{
+            var mensaje = (
+            {
+                msg:text,
+                login: login,
+                timestamp:Math.floor(new Date() / 1000)
+            });
+            console.log('entro ');
+            socket.emit('enviar mensaje', mensaje);
+            $scope.text="";
+        }
     };
     socket.on('recibir mensaje',function(mensaje){
         mensajes.push(mensaje);
@@ -857,8 +859,49 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         $scope.$applyAsync(function () {
             $scope.mensajes = mensajes;
         });
-    });
+    });    
 }])
+
+// .controller('ChatController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
+//     var idusuario = window.localStorage['idusuario'];
+//     var login = window.localStorage['login'];
+//     console.log(idusuario);
+//     console.log(login);
+//     var mensajes=  [];
+//     $http.get(_base+'/usuario/ObtenerUsuarioPorID/' + idusuario).success(function (data) {
+//       userlocal = data;
+//       $scope.userlocal = userlocal;
+//     });
+//     console.log('nuevo socket');
+//     socket.emit('nuevo usuario', idusuario);
+//     socket.emit('dameusuriaosactivos');
+//     socket.on('actualizarusuariosactivos', function (data){
+//         console.log(data);
+//         $scope.$applyAsync(function (){
+//             $scope.usuariosactivos = data;
+//         });
+//     });
+//     $scope.enviarmensaje=function(text){
+//       // mensaje.msg = text;
+//       // mensaje.login = login;
+//       // mensaje.timestamp = Math.floor(new Date() / 1000);
+//       var mensaje = (
+//         {
+//           msg:text,
+//           login: login,
+//           timestamp:Math.floor(new Date() / 1000)
+//         });
+//         console.log('entramos en enviar');
+//         socket.emit('enviar mensaje', mensaje);
+//     };
+//     socket.on('recibir mensaje',function(mensaje){
+//         mensajes.push(mensaje);
+//         console.log(mensaje);
+//         $scope.$applyAsync(function () {
+//             $scope.mensajes = mensajes;
+//         });
+//     });
+// }])
 
 .controller('PartidasController', ['$rootScope', '$scope', '$http', '$state', 'API', function($rootScope, $scope, $http, $state, api) {	
   api.getPartidas().success(function (data) {
