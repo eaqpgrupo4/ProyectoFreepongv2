@@ -10,7 +10,7 @@ usuarioregistradoapp.controller('editarCtrl', ['$stateParams', '$state', '$http'
         $scope.loginc = data.login;
         $scope.password = data.password;
         $scope.saldo = data.saldo;
-        $scope.urlfoto = data.saldo;
+        $scope.urlfoto = data.urlfoto;
 
         console.log($scope.urlfoto)
     });
