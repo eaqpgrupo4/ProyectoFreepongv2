@@ -9,11 +9,10 @@ ADMIN
 
 USER
 
-- ubicar chat en alguna parte concreta, posibilidad de abrirlo en ventana independiente?
 - historial: visualizar nombre de mesa en lugar de ID
-- editar perfil: no muestra la imagen y poder ver si se puede subir una nueva
+- editar perfil: no muestra la imagen y poder ver si se puede subir una nueva --> OK
 - eliminar perfil: no funciona
-- Suprimir saldo (de una p.. vez)?
+- Suprimir saldo (de una p.. vez)? --> OK
 
 IONIC (pruebas en local con la version de 31/05/2016)
 -----------------------------------------------------
