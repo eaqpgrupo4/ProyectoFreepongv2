@@ -1,0 +1,27 @@
+<ion-view hide-nav-bar="true" view-title="Login" >
+    <ion-content class="fondoLogin" class="login" has-header="false">
+        <div>
+            <img class="tituloInicio" src="img/textLogout.png">
+        </div>
+        <div>
+            <img class="logoInicio" src="img/palaLogout.png">
+        </div>
+        <br>
+        <div class="button-bar social-login">
+            <button id="buttonFacebook" class="button button-positive active icon ion-log-in" ng-click="login()">
+            Login
+             </button>
+            <button id="buttonTwitter" class="button button-balanced icon ion-person-add" ng-click="registro()">
+            Crear cuenta
+            </button>
+        </div>
+        <div class="button-bar social-login">
+            <button id="buttonFacebook" class="button button-positive icon ion-social-facebook" ng-click="facebookLogin()">
+            Facebook
+             </button>
+            <button id="buttonTwitter" class="button button-calm icon ion-social-twitter" ng-click="twitterLogin()">
+            Twitter
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

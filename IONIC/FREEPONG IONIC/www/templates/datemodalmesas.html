@@ -1,0 +1,27 @@
+<div class="modal">
+	<header class="bar bar-header bar-assertive">
+		<h1 class="title">SELECCIONA UNA MESA</h1>
+		<button class="button button-small button-positive ion-reply" style="font-size: 30px" ng-click="closedateModalM()"></button>
+	</header>  
+	<ion-content has-header="true">
+		<div>
+		  	<ion-item></ion-item>
+		</div>
+		<div class="card">
+			<ion-list>
+			    <ion-item ng-repeat="mesa in mesas | orderBy:'nombre' | filter:searchText" ng-click="closedateModalM(mesa)">
+				    <div class="infoMesa">
+				    	<p><strong>Nombre: </strong>{{mesa.nombre}}</p>
+			        	<p><strong>Localización: </strong>{{mesa.localizacion}}</p>
+			        </div>
+			        <br>
+			        <div class="fotoMesa">
+			        	<img class="smallpick" src="http://localhost:3000{{mesa.urlfoto}}">
+			        </div>
+			    </ion-item>
+			</ion-list>
+		</div>
+		<!-- <button class="button button-full button-dark" ng-click="closedateModalM(mymesa)">OK</button> -->
+	</ion-content>
+</div>
+

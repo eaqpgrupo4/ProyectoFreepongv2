@@ -55,6 +55,14 @@ module.exports = function (app) {
         });
     };
 
+     //GET - Obtner usuario a partir de el login
+    ObtenerUsuarioporLog = function (req, res) {
+        Usuario.find({login: req.params.login}, function (err, usuario) {
+            if (err) return res.send(500, err.message);
+            res.status(200).jsonp(usuario);
+        });
+    };
+
     //GET - Obtner usuario a partir de el ID
     ObtenerUsuarioporID = function (req, res) {
         Usuario.findById(req.params.id, function (err, usuario) {
@@ -76,9 +84,27 @@ module.exports = function (app) {
                 usuario.telefono = req.body.telefono,
                 usuario.login = req.body.login,
                 usuario.password = req.body.password,
-                usuario.saldo = req.body.saldo
+                usuario.saldo = req.body.saldo,
                 usuario.urlfoto = req.body.urlfoto
 
+            usuario.save(function (err) {
+                if (err) return res.send(500, err.message);
+                res.status(200).jsonp(usuario);
+            });
+        });
+    };
+
+    //PUT Modificar datos de un usuario existente por login
+    ModificarUsuarioLog = function (req, res) {
+        Usuario.find({login: req.params.login}, function (err, usuario) {
+            usuario.nombre = req.body.nombre,
+            usuario.apellidos = req.body.apellidos,
+            usuario.email = req.body.email,
+            usuario.telefono = req.body.telefono,
+            usuario.login = req.body.login,
+            usuario.password = req.body.password,
+            usuario.saldo = req.body.saldo,
+            usuario.urlfoto = req.body.urlfoto
             usuario.save(function (err) {
                 if (err) return res.send(500, err.message);
                 res.status(200).jsonp(usuario);
@@ -239,7 +265,9 @@ module.exports = function (app) {
     app.get('/usuario/ObtenerUsuarios', ObtenerUsuarios);
     app.get('/usuario/ObtenerUsuariosPaginados', ObtenerUsuariosP);
     app.get('/usuario/ObtenerUsuarioPorID/:id', ObtenerUsuarioporID);
+    app.get('/usuario/ObtenerUsuarioPorLogin/:login', ObtenerUsuarioporLog);
     app.put('/usuario/ModificarUsuarioPorID/:id', ModificarUsuario);
+    app.put('/usuario/ModificarUsuarioPorLogin/:login', ModificarUsuarioLog);
     app.delete('/usuario/EliminarUsuarioPorID/:id', EliminarUsuarioporID);
     app.post('/usuario/Login', loginIN);
     app.put('/usuario/upload/:login', uploadimage);

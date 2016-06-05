@@ -1,0 +1,29 @@
+WEB (pruebas en produccion)
+---------------------------
+
+ADMIN
+
+- eliminar funcion de edicion de usuario. Solo podrá eliminar. Eliminar opcion de registro ---> OK
+- ver partidas no muestra los datos, ¿opciones de editar, eliminar y ver detalles tienen que estar?
+- ver mesas, solo funciona boton de eliminar mesa, ¿opciones de editar y ver detalles tienen que estar?
+
+USER
+
+- ubicar chat en alguna parte concreta, posibilidad de abrirlo en ventana independiente?
+- historial: visualizar nombre de mesa en lugar de ID
+- editar perfil: no muestra la imagen y poder ver si se puede subir una nueva
+- eliminar perfil: no funciona
+- Suprimir saldo (de una p.. vez)?
+
+IONIC (pruebas en local con la version de 31/05/2016)
+-----------------------------------------------------
+
+- Al crear partida no ha de mostrar el ID de mesa. Aclarar que tiene que pasar cuando se selecciona un horario pq aparentemente no hace nada
+- Mi perfil: no muestra datos del usuario - ¿incluir opcion de eliminar perfil aquí?
+- Suprimir saldo (de una p.. vez)?
+- Ver jugadores: no tiene que aparecer la opcion de eliminar ni la de editar,solo ver perfil y sin la password
+- Ver historial/ ver ranking: ¿cómo funciona? ¿se está implementando?
+- Chat: puede ser exclusivo de la parte WEB, hay que decidirlo
+- Ver Partidas: ¿como funciona?¿pq muestra todos los horarios? Suprimir boton "mostrar horarios"? Es posible mostrar en el mismo recuadro la hora concreta de esta partida?
+- Notificaciones: Suprimir apartado?
+- Buscar jugadores: Hace lo mismo que ver jugadores pero sin las opciones de suprimir etc. yo dejaria este apartado y suprimiria "Ver jugadores"

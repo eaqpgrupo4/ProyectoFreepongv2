@@ -1,0 +1,94 @@
+<ion-view hide-nav-bar="true" title="Registro">
+  <!-- <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons> -->
+  <ion-content class="padding" id="fondoLogin2" has-header="true">
+    <div class="list">
+    </div>
+    <div class="list card padding">
+      <label class="item item-input">
+        <input type="text" placeholder="Nombre" ng-model="usuario.nombre">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Apellidos" ng-model="usuario.apellidos">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Telefono" ng-model="usuario.telefono">
+      </label>
+      <label class="item item-input">
+        <input type="email" placeholder="E-Mail" ng-model="usuario.email">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Username" ng-model="usuario.login">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="usuario.password">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Saldo" ng-model="usuario.saldo">
+      </label>
+      <br>
+      <div class="button-bar social-login">
+        <button class="button button-balanced" ng-click="registerUser()" ng-disabled="!usuario.nombre || !usuario.apellidos || !usuario.login || !usuario.password || !usuario.email || !usuario.telefono">
+            Registrar
+        </button>
+        <button id="" class="button button-assertive" ui-sref='inicio'>
+            Cancelar
+        </button>
+      </div>
+      <br><br>
+    </div>
+  </ion-content>
+</ion-view>
+
+
+    <!-- <script id="my-modal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-content>
+          <button class="button button-full buttom-assertive" ng-click="closeRegister()">Cancel</button>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+ -->
+
+
+
+
+<!-- <ion-view view-title="Registro">
+        <div class="bar bar-subheader">
+            <div class="list">
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Nombre</span>
+			    <input type="text" placeholder="Raul">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Apellidos</span>
+			    <input type="text" placeholder="Lorenzo Merino">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Email</span>
+			    <input type="text" placeholder="raul@mac.com">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Teléfono</span>
+			    <input type="text" placeholder="+34 677667766">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Username</span>
+			    <input type="text" placeholder="master">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Password</span>
+			    <input type="text" placeholder="Introduce tu password">
+			  </label>
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">Saldo</span>
+			    <input type="text" placeholder="€ 100.00">
+			  </label>
+			</div>
+			<br>
+			<button class="button button-block button-positive">
+  				Registrar
+			</button>
+        </div>
+</ion-view> -->

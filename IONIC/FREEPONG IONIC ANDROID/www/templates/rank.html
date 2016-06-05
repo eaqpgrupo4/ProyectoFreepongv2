@@ -1,0 +1,33 @@
+<ion-view title="Ranking FreePong">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+	<!-- <div>
+	  <label class="item item-input">
+		<span class="input-label">Buscar usuario:</span>
+		<input type="text" ng-model="searchText">
+	  </label>
+	</div> -->
+    <!-- <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Busca jugadores" ng-model="searchText">
+      </label>
+    </div> -->
+    <ion-list>
+      <div ng-repeat="usuario in usuarios | orderBy:'puntuacion':true | filter:searchText">
+        <div>
+          <a class="item item-avatar" ng-click="vistaPerfil(usuario._id)">
+  	      	<img src="http://localhost:3000{{usuario.urlfoto}}">
+            <h3><strong>Posición Nº:{{$index+1}}</strong></h3>
+  	      	<h2 style="color:blue"><strong>{{usuario.login}}</strong></h2>
+            <p><strong style="color:purple">Puntuación: </strong><strong style="color:brown">{{usuario.puntuacion | number}}</strong> <strong style="color:green">%</strong></p>
+  	      	<!-- <p>{{usuario.nombre}} {{usuario.apellidos}}</p>
+            <p>{{usuario.email}}</p> -->
+      	  </a>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
