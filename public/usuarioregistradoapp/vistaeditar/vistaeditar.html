@@ -43,10 +43,10 @@
                    value="{{usuario.password}}" required/>
             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">El password es necesario</span>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <label for="saldo">Saldo</label>
             <input type="text" name="saldo" class="form-control" ng-model="saldo" value="{{usuario.saldo}}">
-        </div>
+        </div>-->
         <div class="flash-message" ng-if="flash">
             <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
         </div>
@@ -64,13 +64,12 @@
 <div class="col-md-1">
 </div>
 
-<div class="col-md-4"><h3>Foto de perfil actual</h3>
+<div class="col-md-4"><h3>Foto de perfil</h3>
     <img src="{{urlfoto}}" height="300" width="350">
+    <!--<h4>Actualizar foto</h4>
     <div class="form-group" ng-class="{ 'has-error': form.imagen.$dirty && form.imagen.$error.required }">
-        <h4>Actualizar foto</h4>
         <input type="file" file-model="myFile" class="form-control" name="imagen" required/>
-        <span ng-show="form.imagen.$dirty && form.imagen.$error.required" class="help-block">La imagen es necesaria</span>
-    </div>
+    </div>-->
 </div>
 </div>
 <div class="col-md-1">

@@ -104,7 +104,7 @@ module.exports = function (app) {
             usuario.login = req.body.login,
             usuario.password = req.body.password,
             usuario.saldo = req.body.saldo,
-            usuario.urlfoto = req.body.urlfoto
+            //usuario.urlfoto = req.body.urlfoto
             usuario.save(function (err) {
                 if (err) return res.send(500, err.message);
                 res.status(200).jsonp(usuario);
