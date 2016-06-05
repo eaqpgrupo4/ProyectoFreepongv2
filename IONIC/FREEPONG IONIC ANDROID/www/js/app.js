@@ -151,6 +151,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 
 .controller('EditarPerfilController', ['$rootScope', '$state', '$stateParams', '$scope', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $stateParams, $scope, $http, $ionicModal, $ionicHistory) {
   var id = $stateParams.id;
+  var usuario = {};
   console.log(id);
   $http.get(_base + '/usuario/ObtenerUsuarioPorID/' + id).success(function (data) {
       $rootScope.toast2('Cargando Perfil');
@@ -161,16 +162,25 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       console.log("usuario.apellidos: ", usuario.apellidos);
     }).error(function(data){
   })
-  $scope.editarPerfil = function(nombre, apellidos, email, telefono, password){
-      var usuario = {};
-      usuario.nombre = nombre;
-      usuario.apellidos = apellidos;
-      usuario.email = email;
-      usuario.telefono = telefono;
-      usuario.password = password;
+  $scope.editarPerfil = function(usuario){
+      usuario.nombre = usuario.nombre;
+      usuario.apellidos = usuario.apellidos;
+      usuario.email = usuario.email;
+      usuario.login = usuario.login;
+      usuario.telefono = usuario.telefono;
+      usuario.password = usuario.password;
+      usuario.urlfoto = usuario.urlfoto;
       console.log("Usuario: "+usuario);
       $http.put(_base + '/usuario/ModificarUsuarioPorID/' + id, usuario).success(function (data) {
         $rootScope.toast2('Perfil Editado!');
+        $http.get(_base + '/usuario/ObtenerUsuarioPorID/' + id).success(function (data) {
+            usuario = data;
+            $scope.usuario = usuario;
+            console.log("usuario: ", usuario);
+            console.log("usuario.nombre: ", $scope.usuario.nombre);
+            console.log("usuario.apellidos: ", usuario.apellidos);
+          }).error(function(data){
+        })
       }).error(function(data){
     })
   }
@@ -814,20 +824,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var login = window.localStorage['login'];
     console.log(idusuario);
     console.log(login);
-    var mensajes=  new Array();
-    var i=1;
-    $scope.mostrar=false;
-    $scope.mostrarchat = function(){
-        if(i==1) {
-            console.log('entro')
-            $scope.mostrar = true;
-            i = 0;
-        }else{
-            $scope.mostrar=false;
-            i=1;
-        }
-    }
-    $scope.uid=login;
+    var mensajes=  [];    
     $http.get(_base+'/usuario/ObtenerUsuarioPorID/' + idusuario).success(function (data) {
       userlocal = data;
       $scope.userlocal = userlocal;
@@ -841,22 +838,18 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
             $scope.usuariosactivos = data;
         });
     });
-    $scope.enviarmensaje=function(){
-        console.log('entro enviar');
-        if($scope.send_text==""){
-            alert("¡No has escrito nada!");
-        }
-        else{
-            var mensaje = (
-            {
-                msg:$scope.send_text,
-                login: login,
-                timestamp:Math.floor(new Date() / 1000)
-            });
-            console.log('entro ');
-            socket.emit('enviar mensaje', mensaje);
-            $scope.send_text="";
-        }
+    $scope.enviarmensaje=function(text){
+      // mensaje.msg = text;
+      // mensaje.login = login;
+      // mensaje.timestamp = Math.floor(new Date() / 1000);
+      var mensaje = (
+        {
+          msg:text,
+          login: login,
+          timestamp:Math.floor(new Date() / 1000)
+        });
+        console.log('entramos en enviar');
+        socket.emit('enviar mensaje', mensaje);
     };
     socket.on('recibir mensaje',function(mensaje){
         mensajes.push(mensaje);

@@ -385,16 +385,58 @@ input[type="number"]{
 	float: right;
 	font-size: 40px;
 	color: green;
-	margin-top: -10px;
+	margin-top: -5px;
 	margin-right: 10px;
+	padding: 1px;
 }
 
 #inputmsg{
-	width: 300px;
+	width: 70%;
 	height: 50px;
 	margin-left: 10px;
+	border-bottom: 1px;
+	border-right: 0px;
+	border-bottom: 1px;
+	border-bottom: 1px;
+	border-left: 0px;
+	border-width: 0.5px;
+	padding-left: 2px; 
 }
 
 #msguser{
+	position: relative;
+	display: block;
+	margin-left: 20px;
+	margin-right: 40px;
+	overflow-y: scroll;
+}
+
+#blockmsg{
+}
+
+#bubble{
+	margin-left: 20px;
+	margin-right: 40px;
+	background-color: hsla(202, 65%, 52%, 0.62);
+	color: white;
+	min-height: 80px;
+	height: auto;
+	border-radius: 0% 900% 990% 900%;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 5px;
+}
+
+#blockmsg2{
+	margin-left: 20px;
+}
+
+#footer{
+	position:absolute;
 	width: 100%;
 }
+
+/*#headchat{
+	position:absolute;
+	width: 100%;
+}*/
