@@ -6,19 +6,7 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
     var login= username[0];
     var IDuser = userData[1];
     var mensajes=  new Array();
-    var i=1;
 
-    $scope.mostrar=false;
-    $scope.mostrarchat = function(){
-        if(i==1) {
-            console.log('entro')
-            $scope.mostrar = true;
-            i = 0;
-        }else{
-            $scope.mostrar=false;
-            i=1;
-        }
-    }
 
     $scope.uid=login;
 

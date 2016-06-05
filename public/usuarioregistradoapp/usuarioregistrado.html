@@ -80,42 +80,35 @@
 <section ui-view></section>
 
 </div>
-<div id="footer" >
-    <div class="rows">
-        <div class="col-md-4  list-wrapper" >
-            <div class="col-md-12 list-wrapper-header" ng-click="mostrarchat()">
-                <div class="profile_pic">
+
+<div class="chat-box">
+    <input type="checkbox"/>
+    <label data-expanded="Close Chatbox" data-collapsed="Open Chatbox"></label>
+    <div class="chat-box-content">
+       <div class="rows">
+          <div class="col-md-4 list-wrapper" >
+              <div class="col-md-12 list-wrapper-header">
+                  <div class="profile_pic">
                     <img class="img-circle" ng-src="{{userlocal.urlfoto}}">
-                </div>
-                <div class="user-meta">
-                    <span class="user-name">{{userlocal.login}}</span>
-                    <span class="user-status">{{'Online'}}
-                        <br>
-                        <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Pulsa para activar y desactivar</span>
-                </div>
-            </div>
-            <div class="userlist" ng-show="mostrar == true" >
-                <div class="userlist-single" ng-repeat="usuario in usuariosactivos" ng-hide="usuario.login==userlocal.login" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
-                    <div class="userlist-user-meta">
-                        <img class="img-circle" ng-src="{{usuario.urlfoto}}"/>
-                        <span  class="userlist-userName">{{usuario.login}}</span>
-                        <span id="isTyping_{{usuario.login}}" class="is-typing">is typing...</span>
-                    </div>
-                </div>
-                <div ng-show="usuario.length == 1 && usuario[0].login==userlocal.login"  >
-                    <div class="alert alert-danger" >
-                        <p class="text-center" >
-                            Everyone is offline.
-                            <br/><br/>
-                            Share this url and Tell your friends to come online.
-                        </p >
-                    </div >
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-md-8 msg-wrapper" ng-show="mostrar == true">
+                  </div>
+                  <div class="user-meta">
+                      <span class="user-name">{{userlocal.login}}</span>
+                      <span class="user-status">{{'Online'}}
+                          <br>
+                          <br>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Pulsa para activar y desactivar</span>
+                  </div>
+              </div>
+              <div class="userlist">
+                  <div class="userlist-single" ng-repeat="usuario in usuariosactivos" ng-hide="usuario.login==userlocal.login" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+                      <div class="userlist-user-meta">
+                          <img class="img-circle" ng-src="{{usuario.urlfoto}}"/>
+                          <span  class="userlist-userName">{{usuario.login}}</span>
+                          <span id="isTyping_{{usuario.login}}" class="is-typing">is typing...</span>
+                      </div>
+                  </div>
+               </div>
+          </div>
+          <div class="col-md-7 msg-wrapper">
             <div class="msg-wrapper-body">
                 <div class="msg-container" id="msg-container">
                     <div class="msg-single" ng-repeat="mensaje in mensajes" ng-style="{'float': uid==mensaje.login ? 'left' :'right'}">>
@@ -127,15 +120,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="send-container">
+                    <div class="send-container">
                     <textarea class="form-control send-msg-text" ng-model='send_text' send-typing-notification placeholder="Type your message here" ></textarea>
                     <h1 class="send-btn" ng-click="enviarmensaje()"><span class="glyphicon glyphicon-send"></span></h1>
+                    </div>
                 </div>
             </div>
-        </div>
-
-    </div>
+         </div>
+   </div>
 </div>
+
+
 
 
 <script src="/socket.io/socket.io.js"></script>

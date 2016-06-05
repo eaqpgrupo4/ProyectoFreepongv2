@@ -226,7 +226,7 @@ Header Ends
 List of users starts
 ------------------------------*/
 .list-wrapper{
-	height: 100%;
+	height: 25%;
 	padding: 0px ;
 	background: #F9F7F7;
 	color: #fff;
@@ -304,7 +304,7 @@ Message Area starts
 ------------------------------------*/
 
 .msg-wrapper{
-	height: 100%;		
+	height: 100%;
 	padding: 0px;
 	border-left: solid 1px rgba(0, 0, 0, 0.3);
 }
@@ -327,8 +327,8 @@ Message Area starts
 	display: block;
 }
 .msg-wrapper-body{
-	height: 100%;
-	padding: 25px;
+	height:100%;
+	padding: 0px;
 	border-left: solid 1px rgba(80, 208, 193, 0.35);
 	width: 100%;
 	background-color: #fff;
@@ -336,12 +336,12 @@ Message Area starts
 .msg-container{
 	height: 80%;
 	width: 100%;
-	overflow-y:scroll;  
+	overflow:auto;
 }
 .msg-container{
 	height: 85%;
 	width: 100%;
-	overflow-y:scroll;
+	overflow:auto;
 	padding-top: 15px;
 	padding-left: 15px;
 	padding-right: 15px; 
@@ -349,10 +349,10 @@ Message Area starts
 	margin-bottom: 10px; 
 }
 .send-container{
-	height: 10%;
+	height: 100%;
 	width: 100%;
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
 }
 .msg-single{
 	clear: both;
