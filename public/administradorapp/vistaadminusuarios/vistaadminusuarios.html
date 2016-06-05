@@ -4,40 +4,38 @@
         <tr ng-repeat="usuario in $data">
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Foto'"><img src="{{usuario.urlfoto}}" height="42" width="42"></td>
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Nombre'" sortable="'nombre'" filter="{ 'nombre': 'text' }">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" ng-click="editar(usuario)">{{usuario.nombre}}</a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" >{{usuario.nombre}}</a><br>
             </td>
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Apellidos'" sortable="'apellidos'"
                 filter="{ 'apellidos': 'text' }">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" ng-click="editar(usuario)">{{usuario.apellidos}}</a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" >{{usuario.apellidos}}</a><br>
             </td>
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;E-mail'" sortable="'email'" filter="{ 'email': 'text' }">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" ng-click="editar(usuario)">{{usuario.email}}</a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" >{{usuario.email}}</a><br>
             </td>
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Username'" sortable="'login'" filter="{ 'login': 'text' }">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" ng-click="editar(usuario)">{{usuario.login}}</a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" >{{usuario.login}}</a><br>
             </td>
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Password'" sortable="'password'" filter="{ 'password': 'text' }">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" ng-click="editar(usuario)">{{usuario.password}}</a><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" >{{usuario.password}}</a><br>
             </td>
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Saldo'" sortable="'saldo'" filter="{ 'saldo': 'text' }">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" ng-click="editar(usuario)">{{usuario.saldo | currency:'€
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" >{{usuario.saldo | currency:'€
                 '}}</a><br>
             </td>
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Fecha'" sortable="'created'" filter="{ 'created': 'text' }">
-                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor" ng-click="editar(usuario)"
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor"
                                            ng-bind="usuario.created | date:'mediumDate'"></a>
             </td>
             <td>
                 <div style="margin-left: 7%" class="table-actions">
-                    <button class="btn btn-warning">
+                    <!--<button class="btn btn-warning">
                         <span class="glyphicon glyphicon-edit" ng-click="editar(usuario)" aria-hidden="true"></span>
-                    </button>
+                    </button>-->
                     <button type="submit" class="btn btn-danger">
                         <span class="glyphicon glyphicon-trash" ng-click="delete(usuario)" aria-hidden="true"></span>
                     </button>
-                    <!--<button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-user" ng-click="editar(usuario)" aria-hidden="true"></span>
-                    </button>-->
+
                 </div>
             </td>
         </tr>
@@ -46,7 +44,5 @@
 <!-- <div class="alert alert-warning text-center" data-ng-hide="!usuarios.$resolved || usuarios.length">
     No existen usuarios ahora. Por qué no <a ui-sref="add">creas uno</a>?
 </div> -->
-<div class="alert alert-warning text-center" data-ng-hide="usuarios.length">
-    No existen usuarios ahora. Por qué no <a ui-sref="add">creas uno</a>?
-</div>
+
 
