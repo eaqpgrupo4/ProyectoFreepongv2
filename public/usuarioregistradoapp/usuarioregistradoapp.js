@@ -24,6 +24,10 @@ usuarioregistradoapp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'vistahistorial/vistahistorial.html',
             controller: 'vistahistorialctrl'
         })
+        .state('eliminar', {
+            url: '/eliminar/:id',
+            controller: 'usuarioregistradoctrl'
+        })
         .state('editar', {
             url: '/editar/:id',
             templateUrl: 'vistaeditar/vistaeditar.html',

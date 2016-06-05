@@ -4,7 +4,7 @@ WEB (pruebas en produccion)
 ADMIN
 
 - eliminar funcion de edicion de usuario. Solo podrá eliminar. Eliminar opcion de registro ---> OK
-- ver partidas no muestra los datos, ¿opciones de editar, eliminar y ver detalles tienen que estar?
+- ver partidas no muestra los datos, ¿opciones de editar, eliminar y ver detalles tienen que estar? -- eliminar
 - ver mesas, solo funciona boton de eliminar mesa, ¿opciones de editar y ver detalles tienen que estar?
 
 USER

@@ -33,6 +33,40 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
         });
     };
 
+    $scope.delete = function (_id) {
+        console.log(_id)
+        swal(
+            {
+                title: "¿Estás Seguro/a?",
+                text: "¡Vas a borrar a  de la base de datos!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55", confirmButtonText: "Sí, borrar!",
+                cancelButtonText: "No, cancelar!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function (isConfirm) {
+                if (isConfirm) {
+                    if (_id) {
+                        $http.delete('/usuario/EliminarUsuarioPorID/' + id)
+                            .success(function (data) {
+
+                                swal("Eliminado de FreePong", "success");
+
+                            })
+                            .error(function (data) {
+                                console.log('Error: ' + data);
+                            });
+                    }
+                }
+                else {
+                    swal("Cancelado", "Has decidido no borrar al usuario ", "error");
+                }
+            })
+
+    };
+
 
     $http.get('/usuario/ObtenerUsuarioPorID/' + IDuser).success(function (data) {$scope.userlocal=data;});
     console.log('nuevo socket')
