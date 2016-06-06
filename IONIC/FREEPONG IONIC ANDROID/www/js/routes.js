@@ -49,14 +49,6 @@ angular.module('freepong.routes', ['ngMap'])
         }
       }
     })
-    .state('freepong.amigos', {
-      url: '/amigos',
-      views: {
-        'menuContent': {
-         templateUrl: 'templates/amigos.html'
-        }
-      }
-    })
     .state('freepong.resultados', {
       url: "/resultados",
       views: {

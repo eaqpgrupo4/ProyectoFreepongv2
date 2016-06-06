@@ -824,8 +824,8 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var login = window.localStorage['login'];
     console.log(idusuario);
     console.log(login);
-    var mensajes=  new Array();
-    $http.get('/usuario/ObtenerUsuarioPorID/' + idusuario).success(function (data) {$scope.userlocal=data;});
+    var mensajes = [];
+    $http.get(_base+'/usuario/ObtenerUsuarioPorID/' + idusuario).success(function (data) {$scope.userlocal=data;});
     console.log('nuevo socket')
     socket.emit('nuevo usuario', idusuario);
     socket.emit('dameusuriaosactivos');
@@ -838,7 +838,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     });
     $scope.enviarmensaje=function(text){
         console.log('entro enviar');
-        if($scope.vtext==""){
+        if($scope.text==""){
             $rootScope.toast2('Mensaje vacío!');
         }
         else{
@@ -850,15 +850,16 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
             });
             console.log('entro ');
             socket.emit('enviar mensaje', mensaje);
-            $scope.text="";
         }
     };
     socket.on('recibir mensaje',function(mensaje){
+      if (mensaje.msg != ''){
         mensajes.push(mensaje);
-        console.log(mensaje);
-        $scope.$applyAsync(function () {
-            $scope.mensajes = mensajes;
-        });
+      }
+      console.log(mensaje);
+      $scope.$applyAsync(function () {
+          $scope.mensajes = mensajes;
+      });
     });    
 }])
 
