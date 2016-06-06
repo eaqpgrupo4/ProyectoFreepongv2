@@ -104,7 +104,9 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
         }
     };
     socket.on('recibir mensaje',function(mensaje){
+        if (mensaje.msg != ''){
             mensajes.push(mensaje);
+        }
         console.log(mensaje);
 
         $scope.$applyAsync(function () {
