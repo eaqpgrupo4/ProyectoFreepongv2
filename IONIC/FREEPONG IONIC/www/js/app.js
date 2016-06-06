@@ -753,7 +753,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     }
 }])
 
-.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal) {
+.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http','$cordovaFileTransfer', '$ionicModal', '$cordovaCamera', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $cordovaFileTransfer, $ionicModal, $cordovaCamera) {
     var nombre;
     var apellidos;
     var login;
@@ -762,6 +762,37 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var password;
     var email;
     var saldo;
+    var urlfoto;    
+    
+    var picture ='';
+    $scope.picture = picture;
+     $scope.takePicture = function(){
+         var options = {
+             quality: 80,
+             sourceType: 1
+         }
+         $cordovaCamera.getPicture(options).then(function(imageData){
+            picture = imageData;
+            $scope.picture=picture;
+        }, function(err){
+            console.log(err);
+         })
+     }
+     $scope.getPicture = function(options){
+         var options = {
+             quality: 80,
+             sourceType: 0
+         }
+         $cordovaCamera.getPicture(options).then(function(imageData){
+             picture = imageData;
+            $scope.picture=picture;
+         }, function(err){
+             console.log(err);
+         })
+     }
+
+
+
     // $scope.usuario = {
     //       nombre: '',
     //       apellidos: '',
@@ -773,6 +804,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     // }
     $scope.usuario = {}
     $scope.registerUser = function () {
+      $cordovaFileTransfer.upload(_base+'/usuario/CrearUsuario',picture,options);
       $rootScope.hideLoading();
       api.signup($scope.usuario).success(function (data) {
         $rootScope.toast('Registrándote en FreePong...');
