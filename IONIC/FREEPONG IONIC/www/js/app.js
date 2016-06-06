@@ -753,7 +753,15 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     }
 }])
 
-.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http','$cordovaFileTransfer', '$ionicModal', '$cordovaCamera', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $cordovaFileTransfer, $ionicModal, $cordovaCamera) {
+.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal) {
+   
+  $ionicModal.fromTemplateUrl('my-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.modal = modal;
+    }); 
+
     var nombre;
     var apellidos;
     var login;
@@ -762,35 +770,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var password;
     var email;
     var saldo;
-    var urlfoto;    
-    
-    var picture ='';
-    $scope.picture = picture;
-     $scope.takePicture = function(){
-         var options = {
-             quality: 80,
-             sourceType: 1
-         }
-         $cordovaCamera.getPicture(options).then(function(imageData){
-            picture = imageData;
-            $scope.picture=picture;
-        }, function(err){
-            console.log(err);
-         })
-     }
-     $scope.getPicture = function(options){
-         var options = {
-             quality: 80,
-             sourceType: 0
-         }
-         $cordovaCamera.getPicture(options).then(function(imageData){
-             picture = imageData;
-            $scope.picture=picture;
-         }, function(err){
-             console.log(err);
-         })
-     }
-
+    var urlfoto;   
 
 
     // $scope.usuario = {
@@ -804,7 +784,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     // }
     $scope.usuario = {}
     $scope.registerUser = function () {
-      $cordovaFileTransfer.upload(_base+'/usuario/CrearUsuario',picture,options);
+     
       $rootScope.hideLoading();
       api.signup($scope.usuario).success(function (data) {
         $rootScope.toast('Registrándote en FreePong...');
@@ -812,11 +792,58 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         console.log(data);
         $state.go('login');
         $scope.usuario = {}
+        $scope.modal.show();
       }).error(function (data) {
         $rootScope.hideLoading();
         $rootScope.toast('El usuario ya existe');
         $scope.usuario = {}
       })
+    }
+    $scope.addMedia = function () {
+      console.log("hola");
+      navigator.camera.getPicture(uploadPhoto, function (message) {
+          $rootScope.toast('Error al obtener la foto');
+        }, {
+          quality: 50,
+          destinationType: navigator.camera.DestinationType.FILE_URI,
+          sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+        }
+      );
+
+    }
+
+    function uploadPhoto(imageURI) {
+      var options = new FileUploadOptions();
+      options.fileKey = "file";
+      options.fileName = "image.jpg";
+      options.mimeType = "image/jpg";
+
+      var params = new Object();
+      params.value1 = "test";
+      params.value2 = "param";
+
+      options.params = params;
+      options.chunkedMode = false;
+
+      var ft = new FileTransfer();
+      ft.upload(imageURI, _base + "/upload/" + username, win, fail, options);
+    }
+
+    function win(r) {
+      console.log("Code = " + r.responseCode);
+      console.log("Response = " + r.response);
+      console.log("Sent = " + r.bytesSent);
+      $scope.modal.hide();
+      $state.go ('login');
+    }
+
+    function fail(error) {
+      alert(error.code);
+    }
+    
+    $scope.closeRegister = function () {
+      $scope.modal.hide();
+      $state.go("login");
     }
 }])
             //   api.getUsuarios().success(function (data) {
