@@ -56,3 +56,16 @@ body {height:3000px}
 .chat-box > input[type="checkbox"]:checked + label {background-color:#212A35}
 .chat-box > input[type="checkbox"]:checked + label:before {content:attr(data-expanded)}
 .chat-box > input[type="checkbox"]:checked ~ .chat-box-content {display:block}
+
+
+#chatdiv{
+    overflow-y: scroll;
+    position: relative;
+}
+
+#msg-container2{
+    position: relative;
+    overflow-y: scroll;
+    height: 500px;
+}
+
