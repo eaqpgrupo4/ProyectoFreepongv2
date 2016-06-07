@@ -147,6 +147,24 @@ module.exports = function (app) {
         });
     };
 
+    addUserTwitter = function (req, res) {
+        Usuario.findOne({login: req.body.screen_name}, function(err, usuario) {
+            var ok= false;
+            if(err) throw(err);
+            // Si existe en la Base de Datos, lo devuelve
+            if(!err && usuario!= null) return ok ;
+            // Si no existe crea un nuevo objecto usuario
+            var usuario = new Usuario({
+                login: req.body.screen_name,
+                urlfoto: _base+"/images/admin.png"
+            })
+            usuario.save(function (err, usuario) {
+                if (err) return res.send(500, err.message);
+                res.status(200).jsonp(usuario);
+            });
+        });
+    };
+
     //GET Obtener todos los usuarios de la colecccion usuarios paginado
     ObtenerUsuariosP = function (req, res) {
         console.log('post /obtenerusuariosP');
@@ -271,4 +289,5 @@ module.exports = function (app) {
     app.delete('/usuario/EliminarUsuarioPorID/:id', EliminarUsuarioporID);
     app.post('/usuario/Login', loginIN);
     app.put('/usuario/upload/:login', uploadimage);
+    app.post('/usuario/twitter/', addUserTwitter);
 }

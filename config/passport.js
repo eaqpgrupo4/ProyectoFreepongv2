@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('Usuario');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var configAuth = require('./auth');
+var TwitterStrategy = require('passport-twitter').Strategy;
 
 
 module.exports = function(passport)
@@ -30,7 +31,7 @@ module.exports = function(passport)
                         apellidos: profile.name.familyName,
                         login: (profile.name.givenName+'@face'),
                         urlfoto: profile.photos[0].value,
-                        email:profile.emails[0].value,
+                        //email:profile.emails[0].value,
                         provider_id:profile.id
                     });
                 console.log(user);

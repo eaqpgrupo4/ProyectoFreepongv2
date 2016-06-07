@@ -34,7 +34,7 @@
                     title="{{mesa.nombre}}" on-click="showCustomMarker(event,'custom-marker-'+$index)"></marker>
                     <custom-marker id="custom-marker-{{$index}}" visible="false" position="{{mesa.localizacion}}" on-click="closeCustomMarker()">
                         <img id="mesa" width="150" height="100" src="http://localhost:3000{{mesa.urlfoto}}"><br/>
-                        <p style="font-size:20px">{{mesa.nombre}}</a>
+                        <p style="font-size:20px">{{mesa.nombre}}</p>
                     </custom-marker>
                 </ng-map>
             </div>
