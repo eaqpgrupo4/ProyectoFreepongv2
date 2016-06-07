@@ -147,6 +147,16 @@ module.exports = function (app) {
         });
     };
 
+    loginTwitter = function (req, res) {
+
+        resultado = res;
+        var login = req.body.login;
+        Usuario.find({login: login}, function (err, user) {
+            if (user.length == 0) {
+                return resultado.status(200).jsonp({"loginSuccessful": true, "usuario": user});            }
+        });
+    };
+
     addUserTwitter = function (req, res) {
         Usuario.findOne({login: req.body.screen_name}, function(err, usuario) {
             var ok= false;
@@ -288,6 +298,9 @@ module.exports = function (app) {
     app.put('/usuario/ModificarUsuarioPorLogin/:login', ModificarUsuarioLog);
     app.delete('/usuario/EliminarUsuarioPorID/:id', EliminarUsuarioporID);
     app.post('/usuario/Login', loginIN);
+    app.post('/usuario/LoginTwitter', loginTwitter);
     app.put('/usuario/upload/:login', uploadimage);
     app.post('/usuario/twitter/', addUserTwitter);
 }
+
+

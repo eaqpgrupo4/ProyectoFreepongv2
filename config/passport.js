@@ -31,7 +31,7 @@ module.exports = function(passport)
                         apellidos: profile.name.familyName,
                         login: (profile.name.givenName+'@face'),
                         urlfoto: profile.photos[0].value,
-                        email:profile.emails[0].value,
+                        // email:profile.emails[0].value,
                         provider_id:profile.id
                     });
                 console.log(user);
