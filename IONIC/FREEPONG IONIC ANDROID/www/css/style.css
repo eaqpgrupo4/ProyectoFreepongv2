@@ -436,6 +436,42 @@ input[type="number"]{
 	width: 100%;
 }
 
+#datos1,#datos2,#datos6,#datos7{
+	background-color: #886aea;
+	color: white;
+	margin-left:-15px; 
+	color: black; 
+}
+
+#datos3,#datos4,#datos5,#datos8,#datos9,#datos10{
+	background-color: rgba(136, 106, 234, 0.33);
+	margin-left:-15px;
+	color: black; 
+}
+
+#datos11{
+	background-color: rgba(255, 201, 0, 0.42);
+	height: 100%;
+	width: 100%;
+	padding-bottom: 30px;
+	margin-top: 10px;
+	border-radius: 10px;
+}
+
+#datos01{
+	background-color: #886aea;
+	color: white;
+	color: black; 
+	border-radius:10px 10px 0px 0px;
+}
+
+#datos02,#datos07,#datos03,#datos04,#datos05,#datos08,#datos09{
+	background-color: rgba(136, 106, 234, 0.33);
+	color: black; 
+	border-radius: 0px;
+}
+
+
 /*#headchat{
 	position:absolute;
 	width: 100%;

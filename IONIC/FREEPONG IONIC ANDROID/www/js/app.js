@@ -708,29 +708,29 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     //     console.log(JSON.stringify(error));
     //   });
     // };
-     $scope.facebookLogin1 = function() {
-       console.log ("hola");
-       $cordovaOauth.facebook("203907273328129", ["displayName"], {"auth_type": "rerequest"}).then(function (result) {
-          $localStorage.accessToken = result.access_token;
-          console.log(JSON.stringify(result));
-          $rootScope.tipologin = "facebook";
-          $state.go('freepong.home');
-        },  
-        function (error) {
-          console.log(JSON.stringify(error));
-        });
-     }
-     $scope.facebookLogin = function () {
-        $cordovaOauth.facebook("203907273328129", ["email", "user_location"]).then(function (result) {
-            $localStorage.accessToken = result.access_token;
-            console.log(result);
-            $rootScope.tipologin = "facebook";
-            $state.go('freepong.home');
-        }, function (error) {
-            alert("There was a problem signing in!  See the console for logs");
-            console.log(error);
-        });
-    };
+    //  $scope.facebookLogin1 = function() {
+    //    console.log ("hola");
+    //    $cordovaOauth.facebook("203907273328129", ["displayName"], {"auth_type": "rerequest"}).then(function (result) {
+    //       $localStorage.accessToken = result.access_token;
+    //       console.log(JSON.stringify(result));
+    //       $rootScope.tipologin = "facebook";
+    //       $state.go('freepong.home');
+    //     },  
+    //     function (error) {
+    //       console.log(JSON.stringify(error));
+    //     });
+    //  }
+    //  $scope.facebookLogin = function () {
+    //     $cordovaOauth.facebook("203907273328129", ["email", "user_location"]).then(function (result) {
+    //         $localStorage.accessToken = result.access_token;
+    //         console.log(result);
+    //         $rootScope.tipologin = "facebook";
+    //         $state.go('freepong.home');
+    //     }, function (error) {
+    //         alert("There was a problem signing in!  See the console for logs");
+    //         console.log(error);
+    //     });
+    // };
     // $scope.twitterLogin = function () {
     //     var api_key = "tWqQ3nPA0aULUz7Z7c9H6hTZM";
     //     var api_secret = "HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA";
@@ -746,21 +746,94 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     //             console.log(error);
     //         });
     // };
-    $scope.twitterLogin = function () {
-      $cordovaOauth.twitter("tWqQ3nPA0aULUz7Z7c9H6hTZM", "HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA").then(function (usuario) {
-        api.signup_twitter(usuario).success(function (data) {
-          window.localStorage['idusuario'] = data._id;
-          window.localStorage['login'] = data.login;
-        }).error(function (data) {
-        })
-        $state.go('freepong.home');
-      }, function (error) {
-        console.log(JSON.stringify(error));
-      });
+    // $scope.twitterLogin = function () {
+    //   $cordovaOauth.twitter("tWqQ3nPA0aULUz7Z7c9H6hTZM", "HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA").then(function (usuario) {
+    //     api.signup_twitter(usuario).success(function (data) {
+    //       window.localStorage['idusuario'] = data._id;
+    //       window.localStorage['login'] = data.login;
+    //     }).error(function (data) {
+    //     })
+    //     $state.go('freepong.home');
+    //   }, function (error) {
+    //     console.log(JSON.stringify(error));
+    //   });
+    // };
+    // $scope.registro = function () {
+    //   $state.go('freepong.registro');
+    // }
+    $scope.facebookLogin1 = function() {
+       console.log ("hola");
+       $cordovaOauth.facebook("203907273328129", ["displayName"], {"auth_type": "rerequest"}).then(function (result) {
+          $localStorage.accessToken = result.access_token;
+          console.log(JSON.stringify(result));
+          $rootScope.tipologin = "facebook";
+          $state.go('freepong.home');
+        },  
+        function (error) {
+          console.log(JSON.stringify(error));
+        });
+     }
+     $scope.facebookLogin = function () {
+        $cordovaOauth.facebook("230153647346505", ["email", "user_location"]).then(function (result) {
+            $localStorage.accessToken = result.access_token;
+            console.log(result);
+            $rootScope.tipologin = "facebook";
+            $state.go('freepong.home');
+        }, function (error) {
+            alert("There was a problem signing in!  See the console for logs");
+            console.log(error);
+        });
     };
-    $scope.registro = function () {
-      $state.go('freepong.registro');
-    }
+
+    $scope.twitterLogin = function () {
+        var usuariot = {};
+        var api_key = "tWqQ3nPA0aULUz7Z7c9H6hTZM";
+        var api_secret = "HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA";
+        $cordovaOauth.twitter(api_key, api_secret, ["email"]).then(function (usuario) {
+                $rootScope.login = usuario.screen_name;
+                $rootScope._id = usuario.user_id;
+                console.log(usuario);
+                $rootScope.tipologin = "twitter";
+                var user = {};
+                user.login = usuario.screen_name;
+                api.signup(user).success(function (data) {
+                    usuariot = data;
+                    console.log(data);
+                    console.log(data);
+                  }).error(function (data) {
+                    api.loginTwitter(usuariot).success(function (data) {
+                      var id = data.usuario[0]._id;
+                      window.localStorage['idusuario'] = data.usuario[0]._id;
+                      window.localStorage['login'] = data.usuario[0].login;
+                      console.log("id: "+id);
+                      api.getUsuario(id).success(function (data) {
+                          usuario = {};
+                          $scope.usuario = data;
+                           window.localStorage['login'] = data.login;
+                        }).error(function(data){
+                      })
+                    })
+                })
+                /// Logeamos
+                api.loginTwitter(usuariot).success(function (data) {
+                  var id = data.usuario._id;
+                  window.localStorage['idusuario'] = data.usuario._id;
+                  window.localStorage['login'] = data.usuario.login;
+                  console.log("id: "+id);
+                  api.getUsuario(id).success(function (data) {
+                      usuario = {};
+                      $scope.usuario = data;
+                       window.localStorage['login'] = data.login;
+                    }).error(function(data){
+                  })
+                })
+                $state.go('freepong.home');
+            },
+            function (error) {
+              alert("There was a problem signing in!  See the console for logs");
+                console.log(error);
+            });
+    };
 }])
 
 .controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal) {
@@ -1183,7 +1256,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     });
 })
 
-.controller('PerfilController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams', function($rootScope, $scope, $http, $state, api, $stateParams) {
+.controller('PerfilController', ['$rootScope', '$scope', '$http', '$state', 'API', '$stateParams','$window', function($rootScope, $scope, $http, $state, api, $stateParams, $window) {
 	//var id = window.localStorage['id'];
   var id = $stateParams.id;
 	api.getUsuario(id).success(function (data) {
@@ -1199,6 +1272,14 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       // $scope.saldo = data.saldo;
 		}).error(function(data){
 	})
+  $scope.call = function () {
+    console.log('tel: ',$scope.usuario.telefono);
+    $window.open('tel:' + $scope.usuario.telefono, '_system');
+  };
+  $scope.mail = function () {
+    console.log('mailto: ',$scope.usuario.email);
+    $window.open('mailto:' + $scope.usuario.email, '_system');
+  };
 }]);
 
 

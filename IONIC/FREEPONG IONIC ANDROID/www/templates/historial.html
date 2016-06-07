@@ -52,17 +52,45 @@
           <br>
           <p><strong>Partido Nº: </strong>{{$index +1}}</p>
           <img class="imgUser" src="http://localhost:3000{{usuarioCreador.urlfoto}}" alt="{{historial.resultadocreador}}">
-          <div id="vs"><strong style="color:blue; font-size:30px;">&nbsp; VS &nbsp;</strong></div>
+          <div id="vs"><strong style="color:#387ef5; font-size:30px;">&nbsp; VS &nbsp;</strong></div>
           <img class="imgUser" src="http://localhost:3000{{usuarioInvitado.urlfoto}}" alt="{{historial.resultadoinvitado}}">
           <br><br>
-          <p><strong style="font-size:15px; color:green;">Creador: </strong>{{historial.logincreador}}</p>
-          <p><strong style="font-size:15px; color:green;">Invitado: </strong>{{historial.logininvitado}}</p>
-          <p><strong style="font-size:15px; color:green;">Fecha: </strong>{{historial.fecha}}</p>
-          <p><strong style="font-size:15px; color:green;">Puntuación <strong style="font-size:15px; color:purple;">{{historial.logincreador}}</strong>: </strong>{{historial.resultadocreador}}</p>
-          <p><strong style="font-size:15px; color:green;">Puntuación <strong style="font-size:15px; color:purple;">{{historial.logininvitado}}</strong>: </strong>{{historial.resultadoinvitado}}</p>
-          <p><strong style="font-size:15px; color:green;">Mesa: </strong>{{historial.nombremesa.nombre}}</p>
+          <ion-item id="datos01" class="item-divider item-icon-right"><b>Resultado del Partido</b> <i class="icon ion-clipboard"></i></ion-item>
+          <ion-item id="datos03" class="item-icon-right">
+          <p style="color:black" ><strong style="font-size:15px; color:green;">Creador: </strong>{{historial.logincreador}}</p>
+          <i style="color:#387ef5" class="icon ion-person"></i>
+          </ion-item>
+          <ion-item id="datos04" class="item-icon-right">
+          <p style="color:black" ><strong style="font-size:15px; color:green;">Invitado: </strong>{{historial.logininvitado}}</p>
+          <i style="color:red" class="icon ion-person-add"></i>
+          </ion-item>
+          <ion-item id="datos05" class="item-icon-right">
+          <p style="color:black" ><strong style="font-size:15px; color:green;">Fecha: </strong>{{historial.fecha}}</p>
+          <i class="icon ion-ios-calendar-outline"></i>
+          </ion-item>
+          <ion-item id="datos08" class="item-icon-right">
+          <p style="color:black" ><strong style="font-size:15px; color:green;">Puntuación <strong style="font-size:15px; color:purple;">{{historial.logincreador}}</strong>: </strong>{{historial.resultadocreador}}</p>
+          <i style="color:#387ef5" class="icon ion-tshirt"></i>
+          </ion-item>
+          <ion-item id="datos09" class="item-icon-right">
+           <p style="color:black" ><strong style="font-size:15px; color:green;">Puntuación <strong style="font-size:15px; color:purple;">{{historial.logininvitado}}</strong>: </strong>{{historial.resultadoinvitado}}</p>
+          <i style="color:red" class="icon ion-tshirt"></i>
+          </ion-item>
+          <ion-item id="datos02" class="item-icon-right">
+           <p style="color:black" ><strong style="font-size:15px; color:green;">Mesa: </strong>{{historial.nombremesa.nombre}}</p>
+          <i class="icon ion-pricetag"></i>
+          </ion-item>
+          <ion-item id="datos07" class="item-icon-right">
           <br>
           <p><strong>Creado: </strong>{{historial.created | date:'mediumDate'}}</p>
+          </ion-item>
+          
+          
+          
+          
+         
+          
+          
           <!-- <p style="color:green" ng-if="historial.resultadoinvitado<historial.resultadocreador"><strong>¡GANADO!</strong></p>
           <p style="color:red" ng-if="historial.resultadoinvitado>historial.resultadocreador"><strong>¡PERDIDO!</strong></p>
           <p style="color:#FFC900; text-align:center;" ng-if="historial.resultadoinvitado==historial.resultadocreador"><strong>¡NULO!</strong></p> -->
