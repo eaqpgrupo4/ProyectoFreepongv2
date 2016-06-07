@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('Usuario');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var configAuth = require('./auth');
-var TwitterStrategy = require('passport-twitter').Strategy;
+// var TwitterStrategy = require('passport-twitter').Strategy;
 
 
 module.exports = function(passport)
