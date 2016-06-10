@@ -33,8 +33,8 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
         });
     };
 
-    $scope.delete = function (_id) {
-        console.log(_id)
+    $scope.delete = function (login) {
+        console.log(login)
         swal(
             {
                 title: "¿Estás Seguro/a?",
@@ -48,7 +48,7 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
             },
             function (isConfirm) {
                 if (isConfirm) {
-                    if (_id) {
+                    if (login) {
                         $http.delete('/usuario/EliminarUsuarioPorID/' + id)
                             .success(function (data) {
 
