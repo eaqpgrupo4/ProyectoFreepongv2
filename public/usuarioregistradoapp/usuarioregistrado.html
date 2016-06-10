@@ -37,7 +37,6 @@
                     </button>
                 <span ng-model="login" class="navbar-brand"><strong>FreePong</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span
                         id="login">{{login}}</span></span>
-
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
@@ -58,7 +57,7 @@
                             <a role="button" ng-click=editar()>Editar perfil</a>
                         </li>
                         <li class="page-scroll" >
-                            <a role="button" ng-click=delete(usuario.login)>Eliminar Perfil</a>
+                            <a role="button" ng-click=delete(_id)>Eliminar Perfil</a>
                         </li>
                         <li>
                             <a id="salir2" type="button" class="btn btn-danger" href="/">

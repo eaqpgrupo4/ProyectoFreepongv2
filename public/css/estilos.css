@@ -61,11 +61,17 @@ body {height:3000px}
 #chatdiv{
     overflow-y: scroll;
     position: relative;
+    margin-bottom: 2px;
+    position:absolute; 
+    left:0px; 
+    right:0px; 
+    bottom:0px; 
+    z-index:0;
 }
 
 #msg-container2{
     position: relative;
     overflow-y: scroll;
-    height: 500px;
+    height: 650px;
 }
 

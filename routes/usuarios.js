@@ -1,3 +1,5 @@
+var __dirname = './public/images/';
+
 module.exports = function (app) {
     var _base = "http://localhost:3000";
     var mongoose = require('mongoose');
@@ -287,8 +289,128 @@ module.exports = function (app) {
 
     };
 
+    signup = function (req, res) {
+        console.log(req.files.file.path);
+        console.log(req.files.urlfoto);
+        var resultado = res;
+        if (!req.body.login) {
+            res.status(400).send('Bad request');
+        }
+        else {
+            if (req.files.file.path != undefined) {
+                fs.readFile(req.files.file.path, function (err, data) {
+                    var imageName = 'profile_' + req.body.login + '.png';
+                    console.log(imageName);
+                    var path = __dirname + imageName;
+                    fs.writeFile(path, data, function (err) {
+                        console.log('Guardamos el usuario');
+                        Usuario.find({login: req.body.login}, function (err, user) {
+                            if (user.length != 0) {
+                                resultado.status(409).send('Username already exists');
+                            }
+                            else {
+                                var newUser = new Usuario({
+                                    nombre: req.body.nombre,
+                                    apellidos: req.body.apellidos,
+                                    email: req.body.email,
+                                    telefono: req.body.telefono,
+                                    login: req.body.login,
+                                    password: req.body.password,
+                                    urlfoto: URL + imageName
+                                });
+                                console.log(newUser._id);
+                                newUser.save(function (err) {
+                                    if (err) res.status(500).send('Internal server error');
+                                        else {
+                                            res.status(200).json(newUser);
+                                    }
+                                });
+                            }
+                        })
+
+                    });
+
+                });
+            }
+            else {
+                Usuario.find({login: req.body.login}, function (err, user) {
+                    if (user.length != 0) {
+                        resultado.status(409).send('Username already exists');
+                    }
+                    else {
+                        var newUser = new Usuario({
+                                    nombre: req.body.nombre,
+                                    apellidos: req.body.apellidos,
+                                    email: req.body.email,
+                                    telefono: req.body.telefono,
+                                    login: req.body.login,
+                                    password: req.body.password,
+                                    urlfoto: URL + 'user.png'
+                        });
+                        newUser.save(function (err) {
+                            if (err) res.status(500).send('Internal server error');
+                                else {
+                                    res.status(200).json(newUser);
+                            }
+                        });
+                    }
+                })
+            }
+        }
+    };
+
+    //PUT- Funcion para subir la foto al servidor
+    uploadimage_ionic = function (req, res) {
+        var form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields, files) {
+            console.log (files);
+            var tmp_path = files.file.path;
+            var tipo = files.file.type;//tipo del archivo
+
+            if (tipo == 'image/png' || tipo == 'image/jpg' || tipo == 'image/jpeg') {
+                //Si es de tipo png jpg o jpeg
+                var aleatorio = Math.floor((Math.random() * 9999) + 1);//Variable aleatoria
+                filename = aleatorio + "" + files.file.name;//nombre del archivo mas variable aleatoria
+
+                var target_path = './public/images/' + filename;// hacia donde subiremos nuestro archivo dentro de nuestro servidor
+                fs.rename(tmp_path, target_path, function (err) {//Escribimos el archivo
+                    fs.unlink(tmp_path, function (err) {//borramos el archivo tmp
+                        //damos una respuesta al cliente
+                        console.log('<p>Imagen subida OK</p></br><img  src="./images/' + filename + '"/>');
+                    });
+
+                });
+
+                var u = req.params.login;
+                Usuario.findOne({login: u}, function (err, usuario) {
+                    imagen = base+'./public/images/' + filename;
+                    console.log ("usuario: " + usuario);
+                    usuario.urlfoto = imagen;
+
+                    usuario.save(function (err) {
+                        if (err) return res.send(500, err.message);
+                        res.status(200).jsonp(usuario);
+                    });
+                });
+
+            } else {
+                console.log('Tipo de archivo imagen no soportada');
+            }
+
+            if (err) {
+                console.error(err.message);
+                return;
+            }
+
+
+        });
+
+    };
+
 
     //ENDPOINTS
+    app.post('/usuario/uploadionic/:username', uploadimage_ionic);
+    app.post('/usuario/signup/', signup);
     app.post('/usuario/CrearUsuario', CrearUsuario);
     app.get('/usuario/ObtenerUsuarios', ObtenerUsuarios);
     app.get('/usuario/ObtenerUsuariosPaginados', ObtenerUsuariosP);
