@@ -1,8 +1,18 @@
-<!--<img src="/vistas/logo.jpg" height="300" width="350" align="center">-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login/normalize.css">
+    <link rel="stylesheet" href="../css/login/style.css">
+
+</head>
+<br>
+<img src="/vistas/logo.png" height="300" width="350" class="img-responsive center-block">
 <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
 
     <div style="padding-top:30px" class="panel-body">
+
 
 
         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
@@ -24,10 +34,12 @@
             <div class="input-group">
                 <div class="checkbox">
                     <label>
-                        <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                        <input id="login-remember" type="checkbox" name="remember" value="2"> Remember me
                     </label>
                 </div>
             </div>
+            <br>
+            <br>
             <div style="margin-top:10px" class="form-group">
                 <div class="col-lg-12 controls">
                     <a id="btn-login" href="#" class="btn btn-success" ng-click="login()">Login </a>
@@ -35,7 +47,7 @@
                 </div>
             </div>
             <div class="col-md-12 control">
-                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                <div style="border-top: 1px solid #FFFFFF; padding-top:15px; font-size:100%">
                     No tienes cuenta!
                     <a href="#/registro">Registrate aquí</a>
                 </div>
@@ -43,3 +55,4 @@
         </form>
     </div>
 </div>
+</body>
