@@ -2,7 +2,7 @@
     <div class="flash-message" ng-if="flash">
         <div id="error1" class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
     </div>
-    <ng-map zoom="13" center="barcelona" style="height:600px" on-center-changed="centerCustomMarker()">
+    <ng-map zoom="13" center="barcelona" style="height:500px" on-center-changed="centerCustomMarker()">
         <marker ng-repeat="mesa in vm.mesas" id="custom-marker-{{$index}}" position="{{mesa.localizacion}}"
                 title="{{mesa.nombre}}" on-click="vm.showCustomMarker(event,'custom-marker-'+$index)"></marker>
         <custom-marker ng-repeat="mesa in vm.mesas" id="custom-marker-{{$index}}" visible="false"
