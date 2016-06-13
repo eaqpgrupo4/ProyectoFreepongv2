@@ -98,9 +98,11 @@ module.exports = function (app) {
                         message: getErrorMessage(err)
                     });
                 } else {
+                    console.log(historiales);
                     res.jsonp(historiales);
                 }
             });
+
 
     };
 

@@ -53,7 +53,8 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
                             .success(function (data) {
 
                                 swal("Eliminado de FreePong", "success");
-                                $state.go('login')
+
+                                $window.location.href = 'http://localhost:3000'
                             })
                             .error(function (data) {
                                 console.log('Error: ' + data);

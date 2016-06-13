@@ -4,6 +4,11 @@ var usuarioregistradoapp = angular.module('usuarioregistradoapp', ['ngCookies','
 
 usuarioregistradoapp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
+        .state('inicio', {
+            url: '/',
+            templateUrl: 'administrador.html',
+
+        })
         .state('mesas', {
             url: '/mesas/:IDuser/:login',
             templateUrl: 'vistamesas/vistamesas.html',
