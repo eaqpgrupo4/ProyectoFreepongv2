@@ -61,7 +61,7 @@ body {height:3000px}
 #chatdiv{
     overflow-y: scroll;
     margin-bottom: 2px;
-    position:absolute; 
+    position:fixed; 
     left:0px; 
     right:0px; 
     bottom:0px; 
