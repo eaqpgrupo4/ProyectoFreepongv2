@@ -8,5 +8,11 @@ module.exports = {
         // profileFields: ['id','name','emails','photos']
         profileFields: ['id','name','photos']
 
+    },
+    'twitterAuth': {
+        'consumerKey': 'tWqQ3nPA0aULUz7Z7c9H6hTZM',
+        'consumerSecret': 'HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA',
+        'callbackURL': '/auth/twitter/callback'
     }
 };
+

@@ -31,4 +31,7 @@ angular.module('freepongapp').controller('loginCtrl', ['$state', '$http', '$scop
     $scope.loginFB = function () {
         $window.location.href = 'http://localhost:3000/facebook';
     };
+    $scope.loginTW = function () {
+        $window.location.href = 'http://localhost:3000/facebook';
+    };
 }]);

@@ -58,6 +58,12 @@ app.get('/auth/facebook/callback',passport.authenticate('facebook',{failureRedir
         res.redirect('/usuarioregistradoapp/usuarioregistrado.html?' + req.user._id+ '?'+ req.user.login);
     });
 
+app.get('/auth/twitter', passport.authenticate('twitter',{scope: ['public_profile']}));
+app.get('/auth/twitter/callback',passport.authenticate('twitter',{failureRedirect: '/'}),function(req,res){
+        console.log('3333333333333333333'+req.user);
+        res.redirect('/usuarioregistradoapp/usuarioregistrado.html?' + req.user._id+ '?'+ req.user.login);
+    });
+
 var Usuario = require('./modelos/usuario.js');
 var usuariosactivos =[];
 
