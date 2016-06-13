@@ -384,7 +384,7 @@ module.exports = function (app) {
 
                 var u = req.params.login;
                 Usuario.findOne({login: u}, function (err, usuario) {
-                    imagen = base+'./public/images/' + filename;
+                    imagen = _base+'./public/images/' + filename;
                     console.log ("usuario: " + usuario);
                     usuario.urlfoto = imagen;
 
