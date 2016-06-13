@@ -33,8 +33,8 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
         });
     };
 
-    $scope.delete = function (login) {
-        console.log(login)
+    $scope.delete = function (usuario) {
+        console.log(usuario._id)
         swal(
             {
                 title: "¿Estás Seguro/a?",
@@ -48,12 +48,12 @@ usuarioregistradoapp.controller('usuarioregistradoctrl', ['$state', '$http', '$s
             },
             function (isConfirm) {
                 if (isConfirm) {
-                    if (login) {
-                        $http.delete('/usuario/EliminarUsuarioPorID/' + id)
+                    if (usuario) {
+                        $http.delete('/usuario/EliminarUsuarioPorID/' + usuario._id)
                             .success(function (data) {
 
                                 swal("Eliminado de FreePong", "success");
-
+                                $state.go('login')
                             })
                             .error(function (data) {
                                 console.log('Error: ' + data);
