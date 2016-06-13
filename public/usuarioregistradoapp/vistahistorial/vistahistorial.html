@@ -1,12 +1,12 @@
 <div>
     <table class="table table-hover" ng-table="tableParams" show-filter="true">
-        <tr ng-repeat="historial in $data">
-            <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;logincreador'"      sortable="'logincreador'"      filter="{ 'logincreador': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.logincreador}}</a><br></td>
-            <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;logininvitado'"     sortable="'logininvitado'"     filter="{ 'logininvitado': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.logininvitado}}</a><br></td>
-            <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;fecha'"             sortable="'fecha'"             filter="{ 'fecha': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.fecha}}</a><br></td>
-            <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;resultadocreador'"  sortable="'resultadocreador'"  filter="{ 'resultadocreador': 'number' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.resultadocreador}}</a><br></td>
-            <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;resultadoinvitado'" sortable="'resultadoinvitado'" filter="{ 'resultadoinvitado': 'number' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.resultadoinvitado}}</a><br></td>
-            <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;nombremesa'"        sortable="'nombremesa'"        filter="{ 'nombremesa': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.nombremesa}}</a><br></td>
+        <tr  ng-repeat="historial in $data">
+            <td id="vistahistorial" data-title="'&nbsp;&nbsp;&nbsp;&nbsp;logincreador'"      sortable="'logincreador'"      filter="{ 'logincreador': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.logincreador}}</a><br></td>
+            <td id="vistahistorial" data-title="'&nbsp;&nbsp;&nbsp;&nbsp;logininvitado'"     sortable="'logininvitado'"     filter="{ 'logininvitado': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.logininvitado}}</a><br></td>
+            <td id="vistahistorial" data-title="'&nbsp;&nbsp;&nbsp;&nbsp;fecha'"             sortable="'fecha'"             filter="{ 'fecha': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.fecha}}</a><br></td>
+            <td id="vistahistorial" data-title="'&nbsp;&nbsp;&nbsp;&nbsp;resultadocreador'"  sortable="'resultadocreador'"  filter="{ 'resultadocreador': 'number' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.resultadocreador}}</a><br></td>
+            <td id="vistahistorial" data-title="'&nbsp;&nbsp;&nbsp;&nbsp;resultadoinvitado'" sortable="'resultadoinvitado'" filter="{ 'resultadoinvitado': 'number' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.resultadoinvitado}}</a><br></td>
+            <td id="vistahistorial" data-title="'&nbsp;&nbsp;&nbsp;&nbsp;nombremesa'"        sortable="'nombremesa'"        filter="{ 'nombremesa': 'text' }">&nbsp;&nbsp;&nbsp;&nbsp;<a class="nocolor">{{historial.nombremesa}}</a><br></td>
         </tr>
     </table>
 </div>

@@ -1,8 +1,8 @@
 <form name="form" role="form">
-<div class="col-md-1">
+<div style="color:white" class="col-md-1">
 </div>
-<div class="col-md-5">
-    <h2>Usuario: {{login}}</h2>
+<div style="color:white" class="col-md-5">
+    <h2>Usuario: {{login}} </h2>
 
         <div class="form-group" ng-class="{ 'has-error': form.nombre.$dirty && form.nombre.$error.required }">
             <label for="nombre">Nombre</label>
@@ -55,17 +55,17 @@
             <button type="submit" class="btn btn-primary"
                     ng-click="update(nombre,apellidos,email,telefono,loginc,password,saldo)">Actualizar
             </button>
-            <a ui-sref="inicio" class="btn btn-link">Volver</a>
+            <a ui-sref="inicio" class="btn btn-danger">Volver</a>
         </div>
 
 
 </div>
-
 <div class="col-md-1">
 </div>
 
-<div class="col-md-4"><h3>Foto de perfil</h3>
-    <img src="{{urlfoto}}" height="300" width="350">
+<div  style="color:white" class="col-md-4"><h3>Foto de perfil</h3>
+<br><br>
+    <img style="border: 5px solid black" src="{{urlfoto}}" height="300" width="350">
     <!--<h4>Actualizar foto</h4>
     <div class="form-group" ng-class="{ 'has-error': form.imagen.$dirty && form.imagen.$error.required }">
         <input type="file" file-model="myFile" class="form-control" name="imagen" required/>
