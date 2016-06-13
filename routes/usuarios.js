@@ -5,7 +5,6 @@ module.exports = function (app) {
     var mongoose = require('mongoose');
     var Usuario = require('../modelos/usuario.js');
     var formidable = require('formidable');
-    images
 
 
     //GET - Obtener todos los usuarios de la colecccion usuarios de la BBDD
@@ -168,8 +167,9 @@ module.exports = function (app) {
             if(!err && usuario!= null) return ok ;
             // Si no existe crea un nuevo objecto usuario
             var usuario = new Usuario({
+                
                 login: req.body.screen_name,
-                urlfoto: _base+"/images/admin.png"
+                urlfoto: _base+"/images/"+req.body.screen_name+".png"
             })
             usuario.save(function (err, usuario) {
                 if (err) return res.send(500, err.message);
