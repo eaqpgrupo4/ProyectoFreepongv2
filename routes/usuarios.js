@@ -171,9 +171,9 @@ module.exports = function (app) {
             if(!err && usuario!= null) return ok ;
             // Si no existe crea un nuevo objecto usuario
             var usuario = new Usuario({
-                
+                nombre: req.body.screen_name,
                 login: req.body.screen_name,
-                urlfoto: _base+"/images/"+req.body.screen_name+".png"
+                urlfoto: _base+"/images/"+req.body.profile_image+".png"
             })
             usuario.save(function (err, usuario) {
                 if (err) return res.send(500, err.message);
