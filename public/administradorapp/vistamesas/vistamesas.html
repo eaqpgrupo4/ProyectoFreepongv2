@@ -1,4 +1,4 @@
-<div>
+<div id="vistamesas">
     <table class="table table-hover" ng-table="tableParams" show-filter="true">
         <tr ng-repeat="mesa in $data">
             <td data-title="'&nbsp;&nbsp;&nbsp;&nbsp;Foto'"><img src="{{mesa.urlfoto}}" height="42" width="42"></td>
@@ -26,6 +26,6 @@
 <!-- <div class="alert alert-warning text-center" data-ng-hide="!mesas.$resolved || mesas.length">
     No existen mesas creadas. Por qué no <a ui-sref="crearMesa">creas una</a>?
 </div> -->
-<div class="alert alert-warning text-center" data-ng-hide="mesas.length">
+<div class="alert alert-warning text-center" data-ng-hide="!mesas.length">
     No existen mesas creadas. Por qué no <a ui-sref="crearmesa">creas una</a>?
 </div>

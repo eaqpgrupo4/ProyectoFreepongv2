@@ -60,7 +60,6 @@ body {height:3000px}
 
 #chatdiv{
     overflow-y: scroll;
-    position: relative;
     margin-bottom: 2px;
     position:absolute; 
     left:0px; 
@@ -88,4 +87,40 @@ body {
       overflow:hidden;
       background-position:50% 50%;
 }
-
+#fondousuario {
+  background: url(../images/img1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  position: relative;
+      width:100%;
+      height:0; /* Simple trick to keep a 16:9 ratio on your background image (height=0;padding-bottom=56.25%) */
+      padding-bottom: 56.25%;
+      overflow:hidden;
+      background-position:50% 50%;
+}
+#fondousuariomesa {
+  background: url(../images/img1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  position: relative;
+      width:100%;
+      height:0; /* Simple trick to keep a 16:9 ratio on your background image (height=0;padding-bottom=56.25%) */
+      padding-bottom: 56.25%;
+      overflow:hidden;
+      top: -10px;
+      background-position:50% 50%;
+}
+ #vistamesas{
+    background-color: rgba(204, 204, 204, 0.61);
+ }
+ #vistacrearmesa{
+    background-color: rgba(204, 204, 204, 0.61);
+ }
+ #vistaresultados{
+    background-color: rgba(204, 204, 204, 0.61);
+ }
+ #vistahistorial{
+    background-color: rgba(204, 204, 204, 0.61);
+ }
