@@ -2,52 +2,66 @@
   <!-- <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons> -->
-  <ion-content class="padding" id="fondoLogin2" has-header="true">
+  <ion-content ng-controller="registroController" padding="true" class="padding" id="fondoLogin2" has-header="true">
     <div class="list">
-    </div>
-    <div class="list card padding">
-      <label class="item item-input">
-        <input type="text" placeholder="Nombre" ng-model="usuario.nombre">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Apellidos" ng-model="usuario.apellidos">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Telefono" ng-model="usuario.telefono">
-      </label>
-      <label class="item item-input">
-        <input type="email" placeholder="E-Mail" ng-model="usuario.email">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Username" ng-model="usuario.login">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Password" ng-model="usuario.password">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Saldo" ng-model="usuario.saldo">
-      </label>
-      <br>
-
-     <!--  <div class="padding">
-            <button class="button button-full ion-camera  button-clear button-positive" ng-click="takePicture()"> Añade una Foto</button>
+    </div ng-show="bool == false">
+      <div>
+        <img class="tituloInicio2" src="img/textLogout.png">
+      </div><br>
+      <div class="list card padding">
+        <label class="item item-input">
+          <input type="text" placeholder="Nombre" ng-model="usuario.nombre">
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Apellidos" ng-model="usuario.apellidos">
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Telefono" ng-model="usuario.telefono">
+        </label>
+        <label class="item item-input">
+          <input type="email" placeholder="E-Mail" ng-model="usuario.email">
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Username" ng-model="usuario.login">
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Password" ng-model="usuario.password">
+        </label>
+     
+     <!--  <div class="botonFoto">
+          <button class="button button-full icon ion-camera  button-clear button-positive" ng-click="addFoto()">&nbsp;&nbsp;&nbsp; Añade una Foto</button>
       </div> -->
-      
-      <div class="button-bar social-login">
-        <button class="button button-balanced" ng-click="registerUser()" ng-disabled="!usuario.nombre || !usuario.apellidos || !usuario.login || !usuario.password || !usuario.email || !usuario.telefono">
-            Registrar
+       <div ng-hide="bool == false" id="botonesReg" class="button-bar social-login">
+        <button class="button button-balanced icon ion-plus-circled" ng-click="registerUser(); bool=true" ng-disabled="!usuario.nombre || !usuario.apellidos || !usuario.login || !usuario.password || !usuario.email || !usuario.telefono">
+        &nbsp;&nbsp;&nbsp;Registrar
         </button>
-        <button id="" class="button button-assertive" ui-sref='inicio'>
-            Cancelar
+        <button id="" class="button button-assertive icon ion-close-circled" ui-sref='inicio'>
+        &nbsp;&nbsp;&nbsp;Cancelar
         </button>
       </div>
+      <br>
+      <div ng-show="bool == true" id="botonesReg" class="button-bar social-login">
+        <!-- <button class="button button-full button-positive icon ion-camera" ng-click="takePhoto()">
+        &nbsp;&nbsp;&nbsp;Hacer Foto
+        </button> -->
+        <button class="button button-full button-energized icon ion-images" ng-click="choosePhoto()">
+        &nbsp;&nbsp;&nbsp;Elegir Foto
+        </button>
+      </div>
+      <br>
+      <!-- <center>
+        <img ng-show="imageURI !== undefined" ng-src="{{imageURI}}" style="text-align: center">
+      </center> -->
+     <!--  <div class="botonFoto">
+          <button ng-show="imageURI !== undefined" class="button button-full icon ion-camera  button-clear button-positive" ng-click="subirFoto()">&nbsp;&nbsp;&nbsp; Subir Foto</button>
+      </div> -->
       <br><br>
     </div>
   </ion-content>
 </ion-view>
 
 
-<script id="my-modal.html" type="text/ng-template">
+<!-- <script id="my-modal.html" type="text/ng-template">
   <ion-modal-view>
     <ion-header-bar>
       <h1 class="title" align="center">Añadir Foto Perfil</h1>
@@ -57,7 +71,7 @@
       <button class="button button-full buttom-assertive" ng-click="closeRegister()">Cancel</button>
     </ion-content>
   </ion-modal-view>
-</script>
+</script> -->
 
 
 

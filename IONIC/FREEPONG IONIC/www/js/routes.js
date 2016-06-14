@@ -14,14 +14,6 @@ angular.module('freepong.routes', ['ngMap'])
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
-    .state('freepong.notificaciones', {
-      url: '/notificaciones',
-      views: {
-        'menuContent': {
-         templateUrl: 'templates/notificaciones.html'
-        }
-      }
-    })
     .state('freepong.home', {
       url: '/home',
       views: {
@@ -103,15 +95,6 @@ angular.module('freepong.routes', ['ngMap'])
         }
       }
     })
-    .state('freepong.perfilpartida', {
-      url: "/perfilpartida/:id",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/perfilpartida.html",
-          controller: 'PerfilPartidaController'
-        }
-      }
-    })
     .state('freepong.posicion', {
       url: '/posicion',
       views: {
@@ -130,15 +113,16 @@ angular.module('freepong.routes', ['ngMap'])
         }
       }
     })
-    .state('freepong.registro', {
+    .state('registro', {
       url: '/registro',
-      views: {
-        'menuContent': {
-         templateUrl: 'templates/registro.html',
-         controller: 'registroController'
-        }
-      }
+      templateUrl: 'templates/registro.html',
+      controller: 'registroController'
     })
+    // .state('registrodos', {
+    //   url: '/registrodos',
+    //   templateUrl: 'templates/registrodos.html',
+    //   controller: 'registrodosController'
+    // })
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',

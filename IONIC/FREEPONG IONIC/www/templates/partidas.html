@@ -26,8 +26,8 @@
         <p><strong>Partida Nº: </strong>{{$index+1}}</p>
         <p><strong>Nombre mesa: </strong>{{partida.IDmesa.nombre}}</p>
         <p><strong>Fecha Partida: </strong>{{partida.FechaPartida}}</p>
-        <p><strong>Fecha de creación: </strong>{{partida.created | date:'mediumDate'}}</p> 
-        <br>
+       <!--  <p><strong>Fecha de creación: </strong>{{partida.created | date:'mediumDate'}}</p> 
+        <br> -->
         <button class="button button-small button-positive icon ion-eye" ng-show="!verPartida" style="width: 100%" ng-click="verPartida=true">
         &nbsp;&nbsp;&nbsp;Mostrar Horarios
         </button>

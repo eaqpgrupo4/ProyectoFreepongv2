@@ -1,7 +1,7 @@
 
 // var socket = io ({forceNew: true});
-var socket = io.connect('http://localhost:3000', {'forceNew': true});
-var _base = "http://localhost:3000";
+var socket = io.connect('http://147.83.7.158:3000', {'forceNew': true});
+var _base = "http://147.83.7.158:3000";
 angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 'freepong.services', 'freepong.directives', 'ngCordovaOauth', 'ngCordova', 'pickadate'])
 
 .run(function($ionicPlatform, $rootScope, $ionicLoading, $location, $timeout) {
@@ -117,6 +117,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
 })
 
 .controller('MiPerfilController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $ionicHistory) {
+  $scope.$on('$ionicView.beforeEnter', function(){
     //Guardar datos en local Storage//
     var idusuario = window.localStorage['idusuario'];
     var login = window.localStorage['login'];
@@ -150,6 +151,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
           id:idusuario
       });
     };
+  });
 }])
 
 .controller('EditarPerfilController', ['$rootScope', '$state', '$stateParams', '$scope', '$http', '$ionicModal', '$ionicHistory', function ($rootScope, $state, $stateParams, $scope, $http, $ionicModal, $ionicHistory) {
@@ -179,6 +181,22 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         $http.get(_base + '/usuario/ObtenerUsuarioPorID/' + id).success(function (data) {
             usuario = data;
             $scope.usuario = usuario;
+            window.localStorage['nombre'] = usuario.nombre;
+            window.localStorage['apellidos'] = usuario.apellidos;
+            window.localStorage['email'] = usuario.email;
+            window.localStorage['password'] = usuario.password;
+            window.localStorage['telefono'] = usuario.telefono;
+            $rootScope.nombre = usuario.nombre;
+            $rootScope.apellidos = usuario.apellidos;
+            $rootScope.password = usuario.password;
+            $scope.id = idusuario;
+            $scope.login = login;
+            $scope.nombre = nombre;
+            $scope.apellidos = apellidos;
+            $scope.telefono = telefono;
+            $scope.email = email;
+            $scope.saldo = saldo;
+            $scope.urlfoto = urlfoto;
             console.log("usuario: ", usuario);
             console.log("usuario.nombre: ", $scope.usuario.nombre);
             console.log("usuario.apellidos: ", usuario.apellidos);
@@ -194,7 +212,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       $state.go('login');
     }
     $scope.registro = function (){
-      $state.go('freepong.registro');
+      $state.go('registro');
     }
 }])
 
@@ -621,6 +639,9 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       login: '',
       password: ''
   }
+  $scope.registro = function (){
+      $state.go('registro');
+  }
   $scope.loginUser = function () {
       $ionicHistory.clearCache();
       $ionicHistory.clearHistory();
@@ -774,7 +795,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         });
      }
      $scope.facebookLogin = function () {
-        $cordovaOauth.facebook("230153647346505", ["email", "user_location"]).then(function (result) {
+        $cordovaOauth.facebook("203907273328129", ["email", "user_location"]).then(function (result) {
             $localStorage.accessToken = result.access_token;
             console.log(result);
             $rootScope.tipologin = "facebook";
@@ -785,66 +806,82 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
         });
     };
 
+    // $scope.twitterLogin = function () {
+    //     var usuariot = {};
+    //     var api_key = "tWqQ3nPA0aULUz7Z7c9H6hTZM";
+    //     var api_secret = "HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA";
+    //     $cordovaOauth.twitter(api_key, api_secret, ["email"]).then(function (usuario) {
+    //             $rootScope.login = usuario.screen_name;
+    //             $rootScope._id = usuario.user_id;
+    //             console.log(usuario);
+    //             $rootScope.tipologin = "twitter";
+    //             var user = {};
+    //             user.login = usuario.screen_name;
+    //             api.signup(user).success(function (data) {
+    //                 usuariot = data;
+    //                 console.log(data);
+    //                 console.log(data);
+    //               }).error(function (data) {
+    //                 api.loginTwitter(usuariot).success(function (data) {
+    //                   var id = data.usuario[0]._id;
+    //                   window.localStorage['idusuario'] = data.usuario[0]._id;
+    //                   window.localStorage['login'] = data.usuario[0].login;
+    //                   console.log("id: "+id);
+    //                   api.getUsuario(id).success(function (data) {
+    //                       usuario = {};
+    //                       $scope.usuario = data;
+    //                        window.localStorage['login'] = data.login;
+    //                     }).error(function(data){
+    //                   })
+    //                 })
+    //             })
+    //             /// Logeamos
+    //             api.loginTwitter(usuariot).success(function (data) {
+    //               var id = data.usuario._id;
+    //               window.localStorage['idusuario'] = data.usuario._id;
+    //               window.localStorage['login'] = data.usuario.login;
+    //               console.log("id: "+id);
+    //               api.getUsuario(id).success(function (data) {
+    //                   usuario = {};
+    //                   $scope.usuario = data;
+    //                    window.localStorage['login'] = data.login;
+    //                 }).error(function(data){
+    //               })
+    //             })
+    //             $state.go('freepong.home');
+    //         },
+    //         function (error) {
+    //           alert("There was a problem signing in!  See the console for logs");
+    //             console.log(error);
+    //         });
+    // };
     $scope.twitterLogin = function () {
-        var usuariot = {};
-        var api_key = "tWqQ3nPA0aULUz7Z7c9H6hTZM";
-        var api_secret = "HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA";
-        $cordovaOauth.twitter(api_key, api_secret, ["email"]).then(function (usuario) {
-                $rootScope.login = usuario.screen_name;
-                $rootScope._id = usuario.user_id;
-                console.log(usuario);
-                $rootScope.tipologin = "twitter";
-                var user = {};
-                user.login = usuario.screen_name;
-                api.signup(user).success(function (data) {
-                    usuariot = data;
-                    console.log(data);
-                    console.log(data);
-                  }).error(function (data) {
-                    api.loginTwitter(usuariot).success(function (data) {
-                      var id = data.usuario[0]._id;
-                      window.localStorage['idusuario'] = data.usuario[0]._id;
-                      window.localStorage['login'] = data.usuario[0].login;
-                      console.log("id: "+id);
-                      api.getUsuario(id).success(function (data) {
-                          usuario = {};
-                          $scope.usuario = data;
-                           window.localStorage['login'] = data.login;
-                        }).error(function(data){
-                      })
-                    })
-                })
-                /// Logeamos
-                api.loginTwitter(usuariot).success(function (data) {
-                  var id = data.usuario._id;
-                  window.localStorage['idusuario'] = data.usuario._id;
-                  window.localStorage['login'] = data.usuario.login;
-                  console.log("id: "+id);
-                  api.getUsuario(id).success(function (data) {
-                      usuario = {};
-                      $scope.usuario = data;
-                       window.localStorage['login'] = data.login;
-                    }).error(function(data){
-                  })
-                })
-                $state.go('freepong.home');
-            },
-            function (error) {
-              alert("There was a problem signing in!  See the console for logs");
-                console.log(error);
-            });
+      $cordovaOauth.twitter("tWqQ3nPA0aULUz7Z7c9H6hTZM", "HlmYdbkX3NaRIgkh2YTsjffqe6f1gUj3stdXXugxZcsHb0dauA").then(function (usuario) {
+        api.signup_twitter(usuario).success(function (data) {
+          window.localStorage['idusuario'] = data._id;
+          window.localStorage['login'] = data.login;
+          var idusuario = window.localStorage['idusuario'];
+          var login = window.localStorage['login'];
+          $rootScope.login = login;
+          $rootScope.idusuario = idusuario;
+          console.log()
+        }).error(function (data) {
+        })
+        $state.go('freepong.home');
+      }, function (error) {
+        console.log(JSON.stringify(error));
+      });
     };
 }])
 
-.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal) {
+.controller('registroxxController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal) {
    
-  $ionicModal.fromTemplateUrl('my-modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function (modal) {
-      $scope.modal = modal;
-    }); 
-
+  // $ionicModal.fromTemplateUrl('my-modal.html', {
+  //     scope: $scope,
+  //     animation: 'slide-in-up'
+  //   }).then(function (modal) {
+  //     $scope.modal = modal;
+  //   }); 
     var nombre;
     var apellidos;
     var login;
@@ -853,8 +890,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     var password;
     var email;
     var saldo;
-    var urlfoto;   
-
+    var urlfoto;
 
     // $scope.usuario = {
     //       nombre: '',
@@ -867,7 +903,6 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     // }
     $scope.usuario = {}
     $scope.registerUser = function () {
-     
       $rootScope.hideLoading();
       api.signup($scope.usuario).success(function (data) {
         $scope.usuario.login = data.login;
@@ -921,7 +956,7 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
     //   alert ("Ha ocurrido un error =" + error.code);
     // }
 
-    $scope.addMedia = function () {
+    $scope.addFoto = function () {
       console.log("hola");
       navigator.camera.getPicture(uploadPhoto, function (message) {
           $rootScope.toast('Error al obtener la foto');
@@ -954,12 +989,442 @@ angular.module('freepong', ['ionic', 'freepong.controllers', 'freepong.routes', 
       $state.go ('login');
     }
     function fail(error) {
+      console.log(error);
       alert(error.code);
     }
     $scope.closeRegister = function () {
       $scope.modal.hide();
       $state.go("login");
     }
+}])
+
+.controller('registroController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$cordovaCamera', '$cordovaFileTransfer', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $cordovaCamera, $cordovaFileTransfer, $timeout) {
+   
+  // $ionicModal.fromTemplateUrl('my-modal.html', {
+  //     scope: $scope,
+  //     animation: 'slide-in-up'
+  //   }).then(function (modal) {
+  //     $scope.modal = modal;
+  //   }); 
+    var nombre;
+    var apellidos;
+    var login;
+    var telefono;
+    var saldo;
+    var password;
+    var email;
+    var saldo;
+    var urlfoto;  
+    var bool = false;
+    var targetPath = '';
+
+  
+    // $scope.usuario = {
+    //       nombre: '',
+    //       apellidos: '',
+    //       email: '',
+    //       telefono: '',
+    //       login: '',
+    //       password: '',
+    //       saldo: ''
+    // }
+    $scope.usuario = {}
+    $scope.registerUser = function () {
+      $rootScope.hideLoading();
+      api.signup($scope.usuario).success(function (data) {
+        $scope.usuario.login = data.login;
+        login = data.login;
+        loginloc = data.login;
+        $rootScope.toast('Registrándote en FreePong...');
+        console.log("data: ",data);
+        console.log("login: ",login);
+        console.log("loginloc: ",loginloc);
+        //$state.go('login');
+        $scope.usuario = {}
+      }).error(function (data) {
+        $rootScope.hideLoading();
+        $rootScope.toast('El usuario ya existe');
+        $scope.usuario = {}
+      })
+    }
+
+    $scope.takePhoto = function () {
+        var options = {
+          quality: 75,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          allowEdit: true,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 300,
+          targetHeight: 300,
+          popoverOptions: CameraPopoverOptions,
+          saveToPhotoAlbum: false
+        };
+   
+          $cordovaCamera.getPicture(options).then(function (imageData) {
+              urlfoto = imageData;
+              $scope.imgURI = "data:image/jpeg;base64," + imageData;
+              console.log('$scope.imgURI: ',$scope.imgURI);
+              console.log('imageData: ',imageData);
+          }, function (err) {
+            // An error occured. Show a message to the user
+          });
+    }
+
+    // $scope.choosePhoto = function () {
+    //       var options = {
+    //       quality: 75,
+    //       destinationType: Camera.DestinationType.DATA_URL,
+    //       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //       allowEdit: true,
+    //       encodingType: Camera.EncodingType.JPEG,
+    //       targetWidth: 300,
+    //       targetHeight: 300,
+    //       popoverOptions: CameraPopoverOptions,
+    //       saveToPhotoAlbum: false
+    //     };
+   
+    //       $cordovaCamera.getPicture(options).then(function (imageData) {
+    //           urlfoto = imageData;
+    //           $scope.imgURI = "data:image/jpeg;base64," + imageData;
+    //           console.log('$scope.imgURI: ',$scope.imgURI);
+    //           console.log('imageData: ',imageData);
+    //       }, function (err) {
+    //         // An error occured. Show a message to the user
+    //       });
+    // }
+
+    $scope.choosePhoto = function () {
+
+      navigator.camera.getPicture(uploadPhoto, function (message) {
+          $rootScope.toast('Error al obtener la foto');
+        }, {
+          quality: 75,
+          destinationType: navigator.camera.DestinationType.FILE_URI,
+          sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+        }
+      );
+
+    }
+
+    function uploadPhoto(imageURI) {
+
+      var options = new FileUploadOptions();
+      options.fileKey = "file";
+      options.fileName = "image.jpg";
+      options.mimeType = "image/jpg";
+
+      var params = new Object();
+      params.value1 = "test";
+      params.value2 = "param";
+
+      options.params = params;
+      options.chunkedMode = false;
+      // $scope.imageURI = imageURI;
+      // console.log("imageURI ",imageURI);
+      var ft = new FileTransfer();
+     
+
+      ft.upload(imageURI, _base + "/usuario/uploadionic/" + login, win, fail, options);
+    }
+
+    function win(r) {
+      console.log("Code = " + r.responseCode);
+      console.log("Response = " + r.response);
+      console.log("Sent = " + r.bytesSent);
+    }
+
+    function fail(error) {
+      alert(error.code);
+      console.log(error);
+    }
+    // $scope.obtenerFoto = function () {
+    //   navigator.camera.getPicture(correcto, error, {
+    //     quality:100,
+    //     allowEdit:false
+    // });
+    // function correcto (rutaImagen){
+    //   document.getElementById("ImgCamara").src = rutaImagen;
+    //   fichero = rutaImagen;
+    // }
+    // function error (message){
+    //   alert("Error"+message);
+    // }
+    // function enviarDatos (){
+    //   var options = new FileUploadOptions();
+    //   options.fileKey = "file";
+    //   options.fileName = fichero.substr(fichero.lastIndexOf('/')+1);
+    //   options.mimeType = "image/jpg";
+    //   options.chunkedMode = true;
+
+    //   var params = new Object();
+    //   params.descripcion = document.getElementById("descripcion").value;
+    //   options.params = params;
+
+    //   var ft = new FileTransfer();
+    //   var percentageUpload = 0;
+    //   ft.upload(fichero, "http://147.83.7.158:3000/public/images", win, fail, options);
+    // }
+    // function win (r){
+    //   alert ("Respuesta servidor =" + r.Respuesta);
+    // }
+    // function fail (error){
+    //   alert ("upload error source " + error.source);
+    //   alert ("upload error target =" + error.target);
+    //   alert ("Ha ocurrido un error =" + error.code);
+    // }
+    // $scope.takePhoto = function () {
+    //     var options = {
+    //       quality: 75,
+    //       destinationType: Camera.DestinationType.DATA_URL,
+    //       sourceType: Camera.PictureSourceType.CAMERA,
+    //       allowEdit: true,
+    //       encodingType: Camera.EncodingType.JPEG,
+    //       targetWidth: 300,
+    //       targetHeight: 300,
+    //       popoverOptions: CameraPopoverOptions,
+    //       saveToPhotoAlbum: false
+    //     };
+   
+    //       $cordovaCamera.getPicture(options).then(function (imageData) {
+    //           urlfoto = imageData;
+    //           $scope.imgURI = "data:image/jpeg;base64," + imageData;
+    //           console.log('$scope.imgURI: ',$scope.imgURI);
+    //           console.log('imageData: ',imageData);
+    //       }, function (err) {
+    //         // An error occured. Show a message to the user
+    //       });
+    // }
+                
+    // $scope.choosePhoto = function () {
+    //       var options = {
+    //       quality: 75,
+    //       destinationType: Camera.DestinationType.DATA_URL,
+    //       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //       allowEdit: true,
+    //       encodingType: Camera.EncodingType.JPEG,
+    //       targetWidth: 300,
+    //       targetHeight: 300,
+    //       popoverOptions: CameraPopoverOptions,
+    //       saveToPhotoAlbum: false
+    //     };
+   
+    //       $cordovaCamera.getPicture(options).then(function (imageData) {
+    //           urlfoto = imageData;
+    //           $scope.imgURI = "data:image/jpeg;base64," + imageData;
+    //           console.log('$scope.imgURI: ',$scope.imgURI);
+    //           console.log('imageData: ',imageData);
+    //       }, function (err) {
+    //         // An error occured. Show a message to the user
+    //       });
+    // }
+
+    // $scope.takePhoto = function () {
+    //     var options = {
+    //       quality: 75,
+    //       destinationType: Camera.DestinationType.FILE_URI,
+    //       sourceType: Camera.PictureSourceType.CAMERA,
+    //       allowEdit: true,
+    //       encodingType: Camera.EncodingType.JPEG,
+    //       targetWidth: 300,
+    //       targetHeight: 300,
+    //       popoverOptions: CameraPopoverOptions,
+    //       saveToPhotoAlbum: false
+    //     };
+   
+    //       $cordovaCamera.getPicture(options).then(function (imageData) {
+              
+    //           $scope.imgURI =  imageData;
+    //           console.log('$scope.imgURI: ',$scope.imgURI);
+              
+    //       }, function (err) {
+    //         // An error occured. Show a message to the user
+    //       });
+    // }
+                
+    // $scope.choosePhoto = function () {
+    //       var options = {
+    //         quality: 75,
+    //         destinationType: Camera.DestinationType.FILE_URI,
+    //         sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //         allowEdit: true,
+    //         encodingType: Camera.EncodingType.JPEG,
+    //         targetWidth: 300,
+    //         targetHeight: 300,
+    //         popoverOptions: CameraPopoverOptions,
+    //         saveToPhotoAlbum: false
+    //     };
+   
+    //       $cordovaCamera.getPicture(options).then(function (imageData) {
+              
+    //           $scope.imgURI = imageData;
+    //           console.log('$scope.imgURI: ',$scope.imgURI);
+              
+    //       }, function (err) {
+    //         // An error occured. Show a message to the user
+    //       });
+    // }
+
+    // $scope.subirFoto = function () {
+    //  function win(r) {
+    //       console.log("Code = " + r.responseCode);
+    //       console.log("Response = " + r.response);
+    //       console.log("Sent = " + r.bytesSent);
+    //       console.log("r =" + r);
+    //   }
+
+    //   function fail(error) {
+    //       alert("An error has occurred: Code = " + error.code);
+    //       console.log("upload error source " + error.source);
+    //       console.log("upload error target " + error.target);
+    //       console.log("error = " + error);
+    //   }
+
+    //   var uri = encodeURI(_base+"/usuario/upload/"+loginloc);
+    //   console.log("uri = " + uri);
+
+    //   var options = new FileUploadOptions();
+    //   options.fileKey="file";
+    //   options.fileName="image.jpg";
+    //   options.mimeType="image/jpg";
+
+    //   var params = new Object();
+    //   params.value1 = "test";
+    //   params.value2 = "param";
+
+    //   options.params = params;
+    //   options.chunkedMode = false;
+
+    //   var ft = new FileTransfer();
+    //   ft.onprogress = function(progressEvent) {
+    //       if (progressEvent.lengthComputable) {
+    //           loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+    //       } else {
+    //           loadingStatus.increment();
+    //       }
+    //   };
+    //   ft.upload(fileURL, uri, win, fail, options);
+
+
+
+    // }
+    // $scope.addFoto = function () {
+    //   console.log("hola");
+    //   navigator.camera.getPicture(uploadPhoto, function (message) {
+    //       $rootScope.toast('Error al obtener la foto');
+    //     }, 
+    //     {
+    //       quality: 50,
+    //       destinationType: navigator.camera.DestinationType.FILE_URI,
+    //       sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+    //     }
+    //   );
+    // }
+    // function uploadPhoto(urlfoto) {
+    //   var options = new FileUploadOptions();
+    //   options.fileKey = "file";
+    //   options.fileName = "image.jpg";
+    //   options.mimeType = "image/jpg";
+    //   var params = new Object();
+    //   params.value1 = "test";
+    //   params.value2 = "param";
+    //   options.params = params;
+    //   options.chunkedMode = false;
+    //   var ft = new FileTransfer();
+    //   ft.upload(urlfoto, _base + "/usuario/upload/" + loginloc, win, fail, options);
+    // }
+    // function win(r) {
+    //   console.log("Code = " + r.responseCode);
+    //   console.log("Response = " + r.response);
+    //   console.log("Sent = " + r.bytesSent);
+    //   $scope.modal.hide();
+    //   $state.go ('login');
+    // }
+    // function fail(error) {
+    //   console.log(error);
+    //   alert(error.code);
+    // }
+    // $scope.closeRegister = function () {
+    //   $scope.modal.hide();
+    //   $state.go("login");
+    // }
+}])
+
+.controller('registrodosController', ['$rootScope', '$state', '$scope', '$cordovaOauth', 'API', '$http', '$ionicModal', '$cordovaCamera', '$cordovaFileTransfer', function ($rootScope, $state, $scope, $cordovaOauth, api, $http, $ionicModal, $cordovaCamera, $cordovaFileTransfer) {
+    var picture = '';
+    $scope.newUser = {};
+    // $timeout(function() {
+    //     $scope.$parent.hideHeader();
+    // }, 0);
+    //ionicMaterialInk.displayEffect();
+    $scope.takePicture = function(options){
+        var options = {
+            quality: 80,
+            sourceType: 1
+        }
+        $cordovaCamera.getPicture(options).then(function(imageData){
+            picture=imageData;
+        }, function(err){
+            console.log(err);
+        })
+    }
+    $scope.getPicture = function(options){
+        var options = {
+            quality: 80,
+            sourceType: 0
+        }
+        $cordovaCamera.getPicture(options).then(function(imageData){
+            picture=imageData;
+            console.log("picture: ",picture);
+        }, function(err){
+            console.log(err);
+        })
+    }
+    $scope.crearUser = function () {
+        console.log($scope.newUser);
+        var UsuarioLocalNuevo = new FormData();
+        UsuarioLocalNuevo.append('nombre', $scope.newUser.nombre);
+        UsuarioLocalNuevo.append('apellidos', $scope.newUser.apellidos);
+        UsuarioLocalNuevo.append('email', $scope.newUser.email);
+        UsuarioLocalNuevo.append('telefono', $scope.newUser.telefono);
+        UsuarioLocalNuevo.append('login', $scope.newUser.login);
+        UsuarioLocalNuevo.append('password', $scope.newUser.password);
+        
+        $http.post(_base + '/usuario/CrearUsuario',UsuarioLocalNuevo)
+            .success(function (data) {
+            $state.go('app.login');
+        }).error(function (err) {
+            console.log(err);
+            $ionicPopup.alert({
+                title: 'Fill the fields correctly ',
+                content: err
+            });
+
+        });
+    }
+    $scope.User = function () {
+        var options ={
+        fileKey: "file",
+        fileName: 'filename.jpg',
+        mimeType: 'image/jpeg',
+        chunkedMode:false,
+        params: { 
+            nombre: $scope.newUser.nombre,
+            apellidos: $scope.newUser.apellidos,
+            email: $scope.newUser.email,
+            telefono: $scope.newUser.telefono,
+            login: $scope.newUser.login,
+            password: $scope.newUser.password,
+            }
+        };
+        $cordovaFileTransfer.upload(_base+'/usuario/signup/',picture,options).then(
+        function (data){
+            $state.go('login');
+        }, function (err){
+            console.log(err);
+        });
+    }
+    
 }])
             //   api.getUsuarios().success(function (data) {
             // ****$scope.usuarios.splice(0,1);  //= data;

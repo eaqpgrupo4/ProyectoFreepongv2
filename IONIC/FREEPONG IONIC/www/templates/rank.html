@@ -19,7 +19,7 @@
       <div ng-repeat="usuario in usuarios | orderBy:'puntuacion':true | filter:searchText">
         <div>
           <a class="item item-avatar" ng-click="vistaPerfil(usuario._id)">
-  	      	<img src="http://localhost:3000{{usuario.urlfoto}}">
+  	      	<img src="http://147.83.7.158:3000{{usuario.urlfoto}}">
             <h3><strong>Posición Nº:{{$index+1}}</strong></h3>
   	      	<h2 style="color:blue"><strong>{{usuario.login}}</strong></h2>
             <p><strong style="color:purple">Puntuación: </strong><strong style="color:brown">{{usuario.puntuacion | number}}</strong> <strong style="color:green">%</strong></p>

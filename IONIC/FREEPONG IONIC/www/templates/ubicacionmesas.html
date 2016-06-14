@@ -6,7 +6,7 @@
 			<marker ng-repeat="mesa in mesas" icon="{{image}}" shape="{{shape}}" id="custom-marker-{{$index}}" animation="Animation.DROP" position="{{mesa.localizacion}}"
 			title="{{mesa.nombre}}" on-click="showCustomMarker(event,'custom-marker-'+$index)"></marker>
 			<custom-marker ng-repeat="mesa in mesas" id="custom-marker-{{$index}}" visible="false" position="{{mesa.localizacion}}" on-click="closeCustomMarker()">
-				<img id="mesa" width="150" height="100" src="http://localhost:3000{{mesa.urlfoto}}" ng-click="vistaPerfil(mesa._id)"><br/>
+				<img id="mesa" width="150" height="100" src="http://147.83.7.158:3000{{mesa.urlfoto}}" ng-click="vistaPerfil(mesa._id)"><br/>
             	<a style="font-size:20px" ng-click="vistaPerfil(mesa._id)">{{mesa.nombre}}</a>
 			</custom-marker>
 		</ng-map>

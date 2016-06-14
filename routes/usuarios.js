@@ -242,7 +242,66 @@ module.exports = function (app) {
         {
             var tmp_path = files.file.path;
             var tipo = files.file.type;//tipo del archivo
+            console.log("tmp_path ",tmp_path);
+            console.log("tipo ",tipo);
+            if (tipo == 'image/png' || tipo == 'image/jpg' || tipo == 'image/jpeg')
+            {
+                //Si es de tipo png jpg o jpeg
+                var aleatorio = Math.floor((Math.random() * 9999) + 1);//Variable aleatoria
+                filename = aleatorio + "" + files.file.name;//nombre del archivo mas variable aleatoria
 
+                var target_path = './public/images/' + filename;// hacia donde subiremos nuestro archivo dentro de nuestro servidor
+                fs.rename(tmp_path, target_path, function (err)
+                {
+                    //Escribimos el archivo
+                    fs.unlink(tmp_path, function (err)
+                    {//borramos el archivo tmp
+                        //damos una respuesta al cliente
+
+                    });
+
+                });
+                Usuario.findOne({login: u}, function (err, usuario)
+                {
+
+                    imagen = "/images/" + filename;
+
+                    usuario.urlfoto = imagen;
+
+                    usuario.save(function (err)
+                    {
+                        if (err) return res.send(500, err.message);
+                        res.status(200).jsonp(usuario);
+                    });
+                });
+
+            } else
+            {
+
+            }
+
+            if (err)
+            {
+
+                return;
+            }
+
+
+        });
+
+    };
+
+    uploadimageionic = function (req, res){
+
+        var u = req.params.login;
+        console.log('POST/Cargar imagen '+u);
+        var form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields, files)
+        {
+            var tmp_path = files.file.path;
+            var tipo = files.file.type;//tipo del archivo
+            console.log("tmp_path ",tmp_path);
+            console.log("tipo ",tipo);
             if (tipo == 'image/png' || tipo == 'image/jpg' || tipo == 'image/jpeg')
             {
                 //Si es de tipo png jpg o jpeg
@@ -410,7 +469,6 @@ module.exports = function (app) {
 
 
     //ENDPOINTS
-    app.post('/usuario/uploadionic/:username', uploadimage_ionic);
     app.post('/usuario/signup/', signup);
     app.post('/usuario/CrearUsuario', CrearUsuario);
     app.get('/usuario/ObtenerUsuarios', ObtenerUsuarios);
@@ -423,6 +481,7 @@ module.exports = function (app) {
     app.post('/usuario/Login', loginIN);
     app.post('/usuario/LoginTwitter', loginTwitter);
     app.put('/usuario/upload/:login', uploadimage);
+    app.post('/usuario/uploadionic/:login', uploadimageionic);
     app.post('/usuario/twitter/', addUserTwitter);
 }
 

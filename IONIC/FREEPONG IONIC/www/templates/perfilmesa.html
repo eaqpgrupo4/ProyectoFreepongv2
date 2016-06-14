@@ -8,7 +8,7 @@
                     </div>
                     <br>
                     <div class="imagenPerfil">
-                        <img class="imgPerfil col-90" src="http://localhost:3000{{mesa.urlfoto}}">
+                        <img class="imgPerfil col-90" src="http://147.83.7.158:3000{{mesa.urlfoto}}">
                     </div>
                     <div class="textPerfil">
                         <br>
@@ -33,7 +33,7 @@
                     <marker icon="{{image}}" shape="{{shape}}" id="custom-marker-{{$index}}" animation="Animation.DROP" position="{{mesa.localizacion}}"
                     title="{{mesa.nombre}}" on-click="showCustomMarker(event,'custom-marker-'+$index)"></marker>
                     <custom-marker id="custom-marker-{{$index}}" visible="false" position="{{mesa.localizacion}}" on-click="closeCustomMarker()">
-                        <img id="mesa" width="150" height="100" src="http://localhost:3000{{mesa.urlfoto}}"><br/>
+                        <img id="mesa" width="150" height="100" src="http://147.83.7.158:3000{{mesa.urlfoto}}"><br/>
                         <p style="font-size:20px">{{mesa.nombre}}</p>
                     </custom-marker>
                 </ng-map>

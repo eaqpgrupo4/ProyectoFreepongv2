@@ -460,15 +460,43 @@ input[type="number"]{
 
 #datos01{
 	background-color: #886aea;
-	color: white;
-	color: black; 
 	border-radius:10px 10px 0px 0px;
+	width: 100%;
+	border-width: 0px;
+	color: white;
 }
 
-#datos02,#datos07,#datos03,#datos04,#datos05,#datos08,#datos09{
-	background-color: rgba(136, 106, 234, 0.33);
-	color: black; 
-	border-radius: 0px;
+#datos02,#datos03,#datos04,#datos05,#datos08,#datos09{
+	/*background-color: rgba(136, 106, 234, 0.33);*/
+	color: black;
+	border-left-color: #886aea;
+	border-left-width: 2px;
+	background-color: white; 
+}
+
+#datos07{
+	background-color: #886aea;
+	border-radius:0px 0px 10px 10px;
+	height: 40px;
+	padding-bottom: -20px;
+	padding-top: -30px;
+}
+
+#creado{
+	margin-top: -25px;
+	color: white;
+	font-style: italic;
+	font-size: 12px;
+}
+
+.tituloInicio2{
+	margin-left: -20px;
+	margin-bottom: -45px;
+	margin-top: -30px;
+}
+
+#botonesReg{
+	margin-bottom: -20px;
 }
 
 

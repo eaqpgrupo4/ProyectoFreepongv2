@@ -7,7 +7,7 @@
         <div class="col-md-4  list-wrapper" >
             <div ng-show="!mostrar" class="col-md-12 list-wrapper-header" ng-click="mostrar = true">
                 <div class="profile_pic">
-                    <img class="profile_pic" ng-src="http://localhost:3000{{userlocal.urlfoto}}">
+                    <img class="profile_pic" ng-src="http://147.83.7.158:3000{{userlocal.urlfoto}}">
                 </div>
                 <div class="user-meta">
                     <span class="user-name">{{userlocal.login}}</span>
@@ -19,7 +19,7 @@
             </div>
             <div id="headchat" class="col-md-12 list-wrapper-header" ng-click="mostrar = false" ng-show="mostrar">
                 <div class="profile_pic">
-                    <img class="profile_pic" ng-src="http://localhost:3000{{userlocal.urlfoto}}">
+                    <img class="profile_pic" ng-src="http://147.83.7.158:3000{{userlocal.urlfoto}}">
                 </div>
                 <div class="user-meta">
                     <span class="user-name">{{userlocal.login}}</span>
@@ -32,7 +32,7 @@
             <div class="scroll-container" ng-show="mostrar">
                 <div class="userlist-single" ng-repeat="usuario in usuariosactivos" ng-hide="usuario.login==userlocal.login" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
                     <div class="userlist-user-meta">
-                        <img class="img-circle" ng-src="http://localhost:3000{{usuario.urlfoto}}"/>
+                        <img class="img-circle" ng-src="http://147.83.7.158:3000{{usuario.urlfoto}}"/>
                         <span  class="userlist-userName">{{usuario.login}}</span>
                         <span id="isTyping_{{usuario.login}}" class="is-typing">está conectado</span>
                     </div>
